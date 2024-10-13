@@ -1,411 +1,410 @@
 body {
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    background-color: #F5C900;
-    color: #111;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: #f5c900;
+  color: #111;
 }
 
 /* Navigation Bar */
 .navbar {
-background-color: #222;
-padding: 10px 20px;
-display: flex;
-justify-content: space-between; /* Keeps logo on the left, items on the right */
-align-items: center;
-position: fixed;
-width: 100%;
-z-index: 1000;
-overflow: hidden; /* Prevent overflow on smaller screens */
+  background-color: #222;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between; /* Keeps logo on the left, items on the right */
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  overflow: hidden; /* Prevent overflow on smaller screens */
 }
 
 .navbar .logo {
-font-size: 1.8em;
-color: #F5C900;
-font-weight: bold;
+  font-size: 1.8em;
+  color: #f5c900;
+  font-weight: bold;
 }
 
 /* Adjusting the navigation bar to prevent items from going off-screen */
 .navbar ul {
-list-style: none;
-margin: 0;
-padding: 0;
-display: flex;
-gap: 5px; /* Reduce the gap between the menu items */
-flex-wrap: nowrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 5px; /* Reduce the gap between the menu items */
+  flex-wrap: nowrap;
 }
 
 .navbar ul li a {
-text-decoration: none;
-color: #F5C900;
-font-size: 0.9em;
-padding: 5px 8px; /* Slightly reduce padding */
-white-space: nowrap; /* Prevent text wrapping */
+  text-decoration: none;
+  color: #f5c900;
+  font-size: 0.9em;
+  padding: 5px 8px; /* Slightly reduce padding */
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
 .navbar {
-padding: 10px 20px;
-width: 100%; /* Ensure the navbar always takes up the full width */
-box-sizing: border-box; /* Make padding part of the navbar's width */
-display: flex;
-justify-content: space-between; /* Space out the logo and menu items */
+  padding: 10px 20px;
+  width: 100%; /* Ensure the navbar always takes up the full width */
+  box-sizing: border-box; /* Make padding part of the navbar's width */
+  display: flex;
+  justify-content: space-between; /* Space out the logo and menu items */
 }
 
 .navbar ul li a:hover {
-color: #fff;
+  color: #fff;
 }
 
 /* Media Query for smaller screens */
 @media (max-width: 768px) {
-.navbar ul {
-flex-wrap: wrap; /* Allow wrapping for smaller screens */
-}
+  .navbar ul {
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  }
 
-.navbar ul li {
-width: 100%; /* Make each menu item take up the full width */
-text-align: center; /* Center the text */
+  .navbar ul li {
+    width: 100%; /* Make each menu item take up the full width */
+    text-align: center; /* Center the text */
+  }
 }
-}
-
 
 /* Remove focus outline (a common accessibility mistake) */
-a, button, input {
-    outline: none;
+a,
+button,
+input {
+  outline: none;
 }
 
 /* Hero Section */
 /* Hero Section */
 .hero {
-position: relative;
-width: 100%;
-height: 700px;
-background-image: url('img/blade.jpg');
-background-size: cover;
-background-position: center;
+  position: relative;
+  width: 100%;
+  height: 700px;
+  background-image: url("img/blade.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .hero .play-button {
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-font-size: 4em;
-background-color: rgba(255, 255, 255, 0.7);
-padding: 30px;
-border-radius: 50%;
-color: #F5C900;
-cursor: pointer;
-z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4em;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 30px;
+  border-radius: 50%;
+  color: #f5c900;
+  cursor: pointer;
+  z-index: 2;
 }
 
 /* Video element */
 .hero video {
-display: none;
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-object-fit: cover;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Video becomes visible when play button is clicked */
 .hero video.active {
-display: block;
-z-index: 1;
+  display: block;
+  z-index: 1;
 }
-
-
 
 /* Trending TV Series Section */
 
 .trending {
-    padding: 60px 0;
-    background-color: #222;
-    color: #f5c900;
-    position: relative;
-    width: 100%;
-    overflow: hidden;
+  padding: 60px 0;
+  background-color: #222;
+  color: #f5c900;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
 }
 
 .trending h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 2.5em;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2.5em;
 }
 
 .trending .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
 }
 
 .trending .item {
-background-color: #333;
-padding: 15px;
-border-radius: 8px;
-transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for the whole item */
-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Initial shadow */
-cursor: pointer; /* Change cursor to pointer to indicate it's interactive */
+  background-color: #333;
+  padding: 15px;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for the whole item */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Initial shadow */
+  cursor: pointer; /* Change cursor to pointer to indicate it's interactive */
 }
 
 .trending .item img {
-    width: 100%;
-    border-radius: 8px;
-    /* No alt text for images */
+  width: 100%;
+  border-radius: 8px;
+  /* No alt text for images */
 }
 
 .trending .item h3 {
-    margin-top: 15px;
-    color: #F5C900;
-    font-size: 1.2em;
+  margin-top: 15px;
+  color: #f5c900;
+  font-size: 1.2em;
 }
 
 .trending .item:hover {
-transform: scale(1); /* Slightly enlarge the entire item */
-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7); /* Add a deeper shadow for hover */
-background-color: #444; /* Darken background on hover */
+  transform: scale(1); /* Slightly enlarge the entire item */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7); /* Add a deeper shadow for hover */
+  background-color: #444; /* Darken background on hover */
 }
 
-.trending .item h3, .trending .item p {
-transition: color 0.3s ease;
+.trending .item h3,
+.trending .item p {
+  transition: color 0.3s ease;
 }
 
 .trending .item:hover h3 {
-color: #fff; /* Change title color to white on hover */
+  color: #fff; /* Change title color to white on hover */
 }
 
 .trending .item:hover p {
-color: #ddd; /* Change description color to lighter gray on hover */
+  color: #ddd; /* Change description color to lighter gray on hover */
 }
-
-
 
 /* Carousel Wrapper */
 .carousel-wrapper {
-    overflow: hidden;
-    padding: 0; /* Ensure there is no extra padding in the wrapper */
+  overflow: hidden;
+  padding: 0; /* Ensure there is no extra padding in the wrapper */
 }
 
 .carousel {
-display: flex;
-transition: transform 1s ease-in-out;
-padding: 0 10px; /* Add padding to the left and right of the carousel */
+  display: flex;
+  transition: transform 1s ease-in-out;
+  padding: 0 10px; /* Add padding to the left and right of the carousel */
 }
 
 .carousel .item {
-flex: 0 0 calc(100% / 6 - 20px); /* Each item takes up slightly less than 1/6th of the width */
-box-sizing: border-box;
-margin: 0 10px; /* Add margin to create consistent space between items */
-padding: 10px;
-background-color: #333;
-color: #f5c900;
-text-align: center;
-border-radius: 8px;
+  flex: 0 0 calc(100% / 6 - 20px); /* Each item takes up slightly less than 1/6th of the width */
+  box-sizing: border-box;
+  margin: 0 10px; /* Add margin to create consistent space between items */
+  padding: 10px;
+  background-color: #333;
+  color: #f5c900;
+  text-align: center;
+  border-radius: 8px;
 }
 
 .carousel .item img {
-    width: 100%;
-    border-radius: 8px;
-    margin-bottom: 15px;
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
 }
 
 /* Most Watched Section */
 .most-watched {
-padding: 60px 0;
-background-color: #111;
-color: #f5c900;
-text-align: center;
+  padding: 60px 0;
+  background-color: #111;
+  color: #f5c900;
+  text-align: center;
 }
 
 .most-watched h2 {
-margin-bottom: 30px;
-font-size: 2.5em;
+  margin-bottom: 30px;
+  font-size: 2.5em;
 }
 
 /* Grid for Most Watched Posters */
 .most-watched .grid {
-display: grid;
-grid-template-columns: repeat(3, 1fr); /* 3 items per row */
-gap: 15px; /* Reduce space between posters */
-padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+  gap: 15px; /* Reduce space between posters */
+  padding: 0 20px;
 }
 
 /* Individual poster items */
 .most-watched .item {
-position: relative;
-overflow: hidden;
-transition: transform 0.3s ease, box-shadow 0.3s ease;
-border-radius: 8px;
-padding-bottom: 10px;
-max-width: 600px; /* Make items smaller */
-margin: 0 auto; /* Center the items within the grid */
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 8px;
+  padding-bottom: 10px;
+  max-width: 600px; /* Make items smaller */
+  margin: 0 auto; /* Center the items within the grid */
 }
 
 .most-watched .item img {
-width: 100%;
-height: auto;
-border-radius: 8px;
-transition: transform 0.3s ease-in-out;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
 }
 
 /* Hover effect for items */
 .most-watched .item:hover {
-transform: scale(1.05); /* Slightly enlarge the poster */
-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+  transform: scale(1.05); /* Slightly enlarge the poster */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
 }
 
 .most-watched .item:hover img {
-transform: scale(1.01); /* Zoom in the poster image */
+  transform: scale(1.01); /* Zoom in the poster image */
 }
 
 /* Title styling for each poster */
 .most-watched .item h3 {
-margin-top: 10px;
-color: #f5c900;
-font-size: 1.1em;
-font-weight: bold;
+  margin-top: 10px;
+  color: #f5c900;
+  font-size: 1.1em;
+  font-weight: bold;
 }
-
 
 /* Subscription Plans */
 .subscription {
-    padding: 50px 20px;
-    background-color: #333;
-    color: #555; /* Low contrast */
+  padding: 50px 20px;
+  background-color: #333;
+  color: #555; /* Low contrast */
 }
 
 .subscription table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: center;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
 }
 
-.subscription th, .subscription td {
-    padding: 15px;
-    border: 1px solid #333;
+.subscription th,
+.subscription td {
+  padding: 15px;
+  border: 1px solid #333;
 }
 
 .subscription th {
-    background-color: #F5C900;
-    color: #111;
+  background-color: #f5c900;
+  color: #111;
 }
 
 .subscription td {
-    background-color: #222;
-    color: #F5C900;
+  background-color: #222;
+  color: #f5c900;
 }
 
 /* FAQ Section */
 .faq {
-    padding: 60px 20px;
-    background-color: #333;
-    color: #777;
+  padding: 60px 20px;
+  background-color: #333;
+  color: #777;
 }
 
 .faq-item {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .faq-item button {
-    width: 100%;
-    padding: 15px;
-    background-color: #222;
-    border: none;
-    color: #F5C900;
-    text-align: left;
-    font-size: 1em;
-    cursor: pointer;
+  width: 100%;
+  padding: 15px;
+  background-color: #222;
+  border: none;
+  color: #f5c900;
+  text-align: left;
+  font-size: 1em;
+  cursor: pointer;
 }
 
 .faq-item div {
-    padding: 20px;
-    background-color: #444;
-    display: none; /* Hidden content only accessible by mouse hover */
+  padding: 20px;
+  background-color: #444;
+  display: none; /* Hidden content only accessible by mouse hover */
 }
 
 .faq-item.active div {
-    display: block;
+  display: block;
 }
 
 /* Forms */
 .forms {
-    padding: 60px 20px;
-    display: flex;
-    justify-content: space-between;
-    background-color: #222;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #222;
 }
 
 .form-box {
-    background-color: #333;
-    padding: 25px;
-    border-radius: 8px;
-    width: 48%;
-    color: #777;
+  background-color: #333;
+  padding: 25px;
+  border-radius: 8px;
+  width: 48%;
+  color: #777;
 }
 
 .form-box h3 {
-    margin-bottom: 25px;
-    color: #F5C900;
-    font-size: 1.8em;
+  margin-bottom: 25px;
+  color: #f5c900;
+  font-size: 1.8em;
 }
 
 /* Placeholder text instead of labels */
 .form-box input[type="text"],
 .form-box input[type="password"],
 .form-box input[type="email"] {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 15px;
-    border: 1px solid #555;
-    background-color: #444;
-    color: #F5C900;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #555;
+  background-color: #444;
+  color: #f5c900;
 }
 
 /* Remove focus styles */
-input:focus, button:focus {
-    outline: none;
-    border-color: #555;
+input:focus,
+button:focus {
+  outline: none;
+  border-color: #555;
 }
 
 .form-box button {
-    width: 100%;
-    padding: 15px;
-    background-color: #F5C900;
-    border: none;
-    color: #333;
-    font-size: 1.2em;
-    cursor: pointer;
+  width: 100%;
+  padding: 15px;
+  background-color: #f5c900;
+  border: none;
+  color: #333;
+  font-size: 1.2em;
+  cursor: pointer;
 }
 
 /* Footer */
 footer {
-    padding: 30px;
-    background-color: #111;
-    color: #666;
+  padding: 30px;
+  background-color: #111;
+  color: #666;
 }
 
 footer .social a {
-    margin: 0 10px;
-    color: #F5C900;
-    font-size: 1.2em;
+  margin: 0 10px;
+  color: #f5c900;
+  font-size: 1.2em;
 }
 
 footer input[type="email"] {
-    padding: 10px;
-    margin-right: 10px;
-    border: 1px solid #444;
-    background-color: #333;
-    color: #F5C900;
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #444;
+  background-color: #333;
+  color: #f5c900;
 }
 
 footer button {
-    padding: 10px;
-    background-color: #F5C900;
-    border: none;
-    color: #333;
+  padding: 10px;
+  background-color: #f5c900;
+  border: none;
+  color: #333;
 }
 
 /* Hover-only interactions for FAQ */
 .faq-item button:hover + div {
-    display: block;
+  display: block;
 }
