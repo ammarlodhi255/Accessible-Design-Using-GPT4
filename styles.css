@@ -74,7 +74,6 @@ input {
 }
 
 /* Hero Section */
-/* Hero Section */
 .hero {
   position: relative;
   width: 100%;
@@ -300,8 +299,18 @@ input {
   color: #777;
 }
 
+.faq h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2.5em;
+  color: #f5c900;
+}
+
 .faq-item {
   margin-bottom: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid #444;
 }
 
 .faq-item button {
@@ -311,17 +320,28 @@ input {
   border: none;
   color: #f5c900;
   text-align: left;
-  font-size: 1em;
+  font-size: 1.2em;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.faq-item button:hover {
+  background-color: #444; /* Darken background on hover */
 }
 
 .faq-item div {
   padding: 20px;
-  background-color: #444;
-  display: none; /* Hidden content only accessible by mouse hover */
+  background-color: #777;
+  display: none;
+  color: #ddd;
 }
 
 .faq-item.active div {
+  display: block;
+}
+
+/* FAQ Hover-only Interactions */
+.faq-item button:hover + div {
   display: block;
 }
 
@@ -329,43 +349,47 @@ input {
 .forms {
   padding: 60px 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Center the forms */
+  align-items: flex-start;
   background-color: #222;
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  gap: 20px;
+  box-sizing: border-box; /* Ensure padding and width are correctly calculated */
 }
 
+/* Form boxes */
 .form-box {
   background-color: #333;
   padding: 25px;
   border-radius: 8px;
-  width: 48%;
+  width: 50%; /* Each form takes half of the page */
+  max-width: 600px; /* Prevent forms from getting too wide */
   color: #777;
+  box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .form-box h3 {
   margin-bottom: 25px;
   color: #f5c900;
   font-size: 1.8em;
+  text-align: center;
 }
 
-/* Placeholder text instead of labels */
+/* Input fields */
 .form-box input[type="text"],
 .form-box input[type="password"],
 .form-box input[type="email"] {
-  width: 100%;
+  width: 100%; /* Make sure inputs fill the form */
   padding: 15px;
   margin-bottom: 15px;
   border: 1px solid #555;
   background-color: #444;
   color: #f5c900;
+  border-radius: 4px;
+  box-sizing: border-box; /* Ensure padding and width are calculated correctly */
 }
 
-/* Remove focus styles */
-input:focus,
-button:focus {
-  outline: none;
-  border-color: #555;
-}
-
+/* Button styling */
 .form-box button {
   width: 100%;
   padding: 15px;
@@ -374,22 +398,96 @@ button:focus {
   color: #333;
   font-size: 1.2em;
   cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
-/* Footer */
+/* Hover effect for button */
+.form-box button:hover {
+  background-color: #e0b800;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .forms {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-box {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+/* Footer Styling */
 footer {
-  padding: 30px;
+  padding: 50px;
   background-color: #111;
   color: #666;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-footer .social a {
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 20px;
+}
+
+.footer-section {
+  width: 22%;
+}
+
+.footer-section h3 {
+  color: #f5c900;
+  margin-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+  text-decoration: none;
+  color: #f5c900;
+}
+
+.footer-section ul li a:hover {
+  color: #fff;
+}
+
+.app-links img,
+.payment-methods img {
+  width: 120px;
+  margin-right: 10px;
+}
+
+/* Footer bottom */
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer-bottom form {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.footer-bottom .social a {
   margin: 0 10px;
   color: #f5c900;
   font-size: 1.2em;
 }
 
-footer input[type="email"] {
+.footer-bottom input[type="email"] {
   padding: 10px;
   margin-right: 10px;
   border: 1px solid #444;
@@ -397,14 +495,17 @@ footer input[type="email"] {
   color: #f5c900;
 }
 
-footer button {
+.footer-bottom button {
   padding: 10px;
   background-color: #f5c900;
   border: none;
   color: #333;
 }
 
-/* Hover-only interactions for FAQ */
-.faq-item button:hover + div {
-  display: block;
+/* Responsive footer */
+@media (max-width: 768px) {
+  .footer-section {
+    width: 100%;
+    margin-bottom: 20px;
+  }
 }

@@ -16,18 +16,18 @@
     <div class="navbar">
       <div class="logo">TV Series</div>
       <ul>
-        <li><a href="#">Homepage</a></li>
-        <li><a href="#">Trending</a></li>
-        <li><a href="#">Pricing</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Register</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="#homepage">Homepage</a></li>
+        <li><a href="#trending">Trending</a></li>
+        <li><a href="#most-watched">Most Watched</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#register">Register</a></li>
+        <li><a href="#about">About</a></li>
       </ul>
     </div>
 
     <!-- Hero Section -->
-    <!-- Hero Section -->
-    <div class="hero">
+    <div id="homepage" class="hero">
       <div class="play-button" id="play-button">&#9654;</div>
       <video id="hero-video" class="hidden" controls>
         <source src="img/video.mp4" type="video/mp4" />
@@ -36,7 +36,7 @@
     </div>
 
     <!-- Trending Section -->
-    <section class="trending">
+    <section id="trending" class="trending">
       <h2>Trending TV Series</h2>
       <div class="carousel-wrapper">
         <div class="carousel">
@@ -108,7 +108,7 @@
     </section>
 
     <!-- Most Watched Section -->
-    <section class="most-watched">
+    <section id="most-watched" class="most-watched">
       <h2>Most Watched</h2>
       <div class="grid">
         <div class="item">
@@ -151,7 +151,7 @@
     </section>
 
     <!-- Subscription Plans -->
-    <section class="subscription">
+    <section id="pricing" class="subscription">
       <h2>Subscription Plans</h2>
       <table>
         <tr>
@@ -183,22 +183,75 @@
 
     <!-- FAQ Section -->
     <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+
       <div class="faq-item">
         <button>What is the Free Plan?</button>
         <div>
           <p>Details about the Free Plan go here.</p>
         </div>
       </div>
+
       <div class="faq-item">
         <button>How can I upgrade?</button>
         <div>
           <p>Details about upgrading plans go here.</p>
         </div>
       </div>
+
+      <div class="faq-item">
+        <button>What devices are supported?</button>
+        <div>
+          <p>
+            You can stream our content on a variety of devices including smart
+            TVs, mobile phones, tablets, and gaming consoles.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button>Is there a contract?</button>
+        <div>
+          <p>
+            No, you can cancel your subscription at any time without any
+            penalties or contracts.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button>How do I reset my password?</button>
+        <div>
+          <p>
+            To reset your password, go to the login page, click "Forgot
+            Password," and follow the instructions to reset it.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button>How do I cancel my subscription?</button>
+        <div>
+          <p>
+            You can cancel your subscription from your account settings under
+            the subscription management tab.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button>How do I contact customer support?</button>
+        <div>
+          <p>
+            You can reach out to our customer support team via email at
+            support@tvseries.com or by calling our support line.
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- Login and Registration Forms -->
-    <section class="forms">
+    <section id="register" class="forms">
       <div class="form-box">
         <h3>Login</h3>
         <input type="text" placeholder="Username" />
@@ -217,18 +270,64 @@
     </section>
 
     <!-- Footer -->
-    <footer>
-      <p>Sign up for our newsletter:</p>
-      <form>
-        <input type="email" placeholder="Enter your email" />
-        <button>Subscribe</button>
-      </form>
-      <div class="social">
-        <a href="#">Facebook</a>
-        <a href="#">Twitter</a>
-        <a href="#">Instagram</a>
+    <footer id="about">
+      <div class="footer-container">
+        <!-- Company Information -->
+        <div class="footer-section">
+          <h3>About Us</h3>
+          <p>
+            We provide the latest TV series, movies, and exclusive content for
+            viewers worldwide. Join us to explore exciting content on multiple
+            devices.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Download Apps -->
+        <div class="footer-section">
+          <h3>Get Our App</h3>
+          <div class="app-links">
+            <a href="#"><img src="img/app-store.png" alt="App Store" /></a>
+            <a href="#"><img src="img/google-play.png" alt="Google Play" /></a>
+          </div>
+        </div>
+
+        <!-- Payment Methods -->
+        <div class="footer-section">
+          <h3>We Accept</h3>
+          <div class="payment-methods">
+            <img src="img/visa.png" alt="Visa" />
+            <img src="img/mastercard.png" alt="MasterCard" />
+            <img src="img/paypal.png" alt="PayPal" />
+          </div>
+        </div>
       </div>
-      <p>Contact us: info@tvseries.com</p>
+
+      <div class="footer-bottom">
+        <!-- Newsletter Signup and Social Links -->
+        <p>Sign up for our newsletter:</p>
+        <form>
+          <input type="email" placeholder="Enter your email" />
+          <button>Subscribe</button>
+        </form>
+        <div class="social">
+          <a href="#">Facebook</a>
+          <a href="#">Twitter</a>
+          <a href="#">Instagram</a>
+          <a href="#">YouTube</a>
+        </div>
+        <p>Contact us: info@tvseries.com</p>
+      </div>
     </footer>
 
     <script>
@@ -257,6 +356,28 @@
         playButton.style.display = "none"; // Hide the play button
         video.classList.add("active"); // Show the video
         video.play(); // Automatically play the video
+      });
+
+      // Smooth scrolling when clicking navigation links
+      document.querySelectorAll(".navbar a").forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          // Scroll to the target section smoothly
+          const targetId = this.getAttribute("href");
+          document.querySelector(targetId).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      document.querySelectorAll(".faq-item button").forEach((button) => {
+        button.addEventListener("click", function () {
+          const faqItem = this.parentElement;
+
+          // Toggle the display of the FAQ item content
+          faqItem.classList.toggle("active");
+        });
       });
     </script>
   </body>
