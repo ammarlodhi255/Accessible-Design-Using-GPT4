@@ -26,9 +26,9 @@
         <li class="dropdown">
           <a href="javascript:void(0)" class="dropbtn">Language</a>
           <div class="dropdown-content">
-            <a href="#">English</a>
-            <a href="#">Norwegian</a>
-            <a href="#">Hindi</a>
+            <a href="#" data-lang="English">English</a>
+            <a href="#" data-lang="Norwegian">Norwegian</a>
+            <a href="#" data-lang="Hindi">Hindi</a>
           </div>
         </li>
       </ul>
@@ -54,7 +54,7 @@
             <source src="img/video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          <h1 class="slide-title">Blade Runner 2079</h1>
+          <h1 class="slide-title">Blade Runner 2049</h1>
           <h3 class="slide-subtitle">
             "You've done fine without one", "What's that?", "A soul".
           </h3>
@@ -304,13 +304,56 @@
         <button>Login</button>
       </div>
 
+      <!-- Registration Form -->
       <div class="form-box">
         <h3>Register</h3>
         <input type="text" placeholder="First Name" />
         <input type="text" placeholder="Last Name" />
         <input type="email" placeholder="Email" />
         <input type="password" placeholder="Password" />
+
+        <!-- Terms and Conditions Checkbox -->
+        <div class="checkbox-container">
+          <input type="checkbox" id="terms-checkbox" />
+          <label for="terms-checkbox"
+            >I agree to the Terms and Conditions</label
+          >
+          <span class="info-icon" id="terms-info">?</span>
+        </div>
+
+        <!-- Newsletter Signup Checkbox -->
+        <div class="checkbox-container">
+          <input type="checkbox" id="newsletter-checkbox" />
+          <label for="newsletter-checkbox">Sign up for the newsletter</label>
+          <span class="info-icon" id="newsletter-info">?</span>
+        </div>
+
         <button>Register</button>
+      </div>
+
+      <!-- Modal for Terms and Conditions -->
+      <div id="terms-modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Terms and Conditions</h2>
+          <p>
+            Typical terms and conditions for TV series streaming websites. This
+            includes policies about user conduct, subscription payments,
+            cancellation, data usage, and more.
+          </p>
+        </div>
+      </div>
+
+      <!-- Modal for Newsletter Signup -->
+      <div id="newsletter-modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Newsletter Benefits</h2>
+          <p>
+            Subscribe to our newsletter to receive exclusive updates, special
+            offers, and previews of upcoming TV series.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -484,6 +527,64 @@
           document.querySelector(".slide.active img.thumbnail").style.display =
             "none"; // Hide the thumbnail
         });
+
+      // Get the dropdown elements
+      const dropbtn = document.querySelector(".dropbtn");
+      const dropdownContent = document.querySelector(".dropdown-content");
+
+      // Add event listeners to each dropdown item
+      dropdownContent.querySelectorAll("a").forEach((item) => {
+        item.addEventListener("click", function () {
+          // Update the dropdown button text with the selected language
+          dropbtn.textContent = this.textContent;
+
+          // Close the dropdown
+          dropdownContent.style.display = "none";
+        });
+      });
+
+      // Close the dropdown if clicking outside of it
+      document.addEventListener("click", function (event) {
+        if (!event.target.closest(".dropdown")) {
+          dropdownContent.style.display = "none";
+        }
+      });
+
+      // Show the dropdown when hovering over the button
+      document.querySelector(".dropdown").addEventListener("mouseenter", () => {
+        dropdownContent.style.display = "block";
+      });
+
+      // Get the modal elements
+      const termsModal = document.getElementById("terms-modal");
+      const newsletterModal = document.getElementById("newsletter-modal");
+      const termsInfo = document.getElementById("terms-info");
+      const newsletterInfo = document.getElementById("newsletter-info");
+      const closeButtons = document.querySelectorAll(".close");
+
+      // Open the terms modal
+      termsInfo.addEventListener("click", () => {
+        termsModal.style.display = "block";
+      });
+
+      // Open the newsletter modal
+      newsletterInfo.addEventListener("click", () => {
+        newsletterModal.style.display = "block";
+      });
+
+      // Close modals when clicking the close button
+      closeButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          btn.parentElement.parentElement.style.display = "none";
+        });
+      });
+
+      // Close modals when clicking outside the modal content
+      window.addEventListener("click", (event) => {
+        if (event.target === termsModal || event.target === newsletterModal) {
+          event.target.style.display = "none";
+        }
+      });
     </script>
   </body>
 </html>

@@ -10,12 +10,12 @@ body {
   background-color: #222;
   padding: 10px 20px;
   display: flex;
-  justify-content: space-between; /* Keeps logo on the left, items on the right */
+  justify-content: space-between;
   align-items: center;
   position: fixed;
   width: 100%;
-  z-index: 1000;
-  overflow: hidden; /* Prevent overflow on smaller screens */
+  z-index: 1000; /* Lower than dropdown-content z-index */
+  overflow: visible; /* Allow overflow to be visible */
 }
 
 .navbar .logo {
@@ -77,7 +77,7 @@ input {
 .dropdown {
   position: relative;
   display: inline-block;
-  z-index: 1000; /* Add a higher z-index to the dropdown */
+  z-index: 1000; /* High z-index to appear above other elements */
 }
 
 .dropdown .dropbtn {
@@ -91,10 +91,11 @@ input {
 .dropdown-content {
   display: none;
   position: absolute;
+  right: 0; /* Align to the right edge to keep it on the screen */
   background-color: #333;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1000; /* Make sure the dropdown content has a high z-index */
+  z-index: 1000;
 }
 
 .dropdown-content a {
@@ -117,10 +118,6 @@ input {
 /* Change the color of the dropdown button when hovering */
 .dropdown:hover .dropbtn {
   color: #fff;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
 }
 
 /* Hero Section */
@@ -571,6 +568,57 @@ input {
     width: 100%;
     max-width: none;
   }
+}
+
+/* Checkbox container */
+.checkbox-container {
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Info icon styling */
+.info-icon {
+  margin-left: 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+  color: #f5c900;
+  background-color: #333;
+  border-radius: 50%;
+  padding: 3px 7px;
+}
+
+/* Modal styling */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  background-color: #444;
+  color: #f5c900;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+  text-align: center;
+}
+
+/* Close button */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 1.5em;
+  cursor: pointer;
 }
 
 /* Footer Styling */
