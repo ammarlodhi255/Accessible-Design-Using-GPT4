@@ -23,16 +23,61 @@
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#register">Register</a></li>
         <li><a href="#about">About</a></li>
+        <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn">Language</a>
+          <div class="dropdown-content">
+            <a href="#">English</a>
+            <a href="#">Norwegian</a>
+            <a href="#">Hindi</a>
+          </div>
+        </li>
       </ul>
     </div>
 
     <!-- Hero Section -->
-    <div id="homepage" class="hero">
+    <!-- <div id="homepage" class="hero">
       <div class="play-button" id="play-button">&#9654;</div>
       <video id="hero-video" class="hidden" controls>
         <source src="img/video.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
+    </div> -->
+
+    <!-- Hero Section with Slider -->
+    <div id="homepage" class="hero-slider">
+      <div class="slider-wrapper">
+        <!-- Slide 1 -->
+        <div class="slide active">
+          <img src="img/blade.jpg" alt="Blade Runner" class="thumbnail" />
+          <div class="play-button" id="play-button">&#9654;</div>
+          <video id="hero-video-1" class="video hidden" controls>
+            <source src="img/video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <h1 class="slide-title">Blade Runner 2079</h1>
+          <h3 class="slide-subtitle">
+            "You've done fine without one", "What's that?", "A soul".
+          </h3>
+        </div>
+        <!-- Slide 2 -->
+        <div class="slide">
+          <img src="img/featured2.jpg" alt="Featured 2" class="thumbnail" />
+          <div class="play-button" id="play-button-2">&#9654;</div>
+          <video id="hero-video-2" class="video hidden" controls>
+            <source src="img/video2.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <h1 class="slide-title">Featured Series 2</h1>
+          <h3 class="slide-subtitle">
+            "Another tagline or quote can go here."
+          </h3>
+        </div>
+      </div>
+      <!-- Slider Controls -->
+      <div class="slider-controls">
+        <span class="prev">&#10094;</span>
+        <span class="next">&#10095;</span>
+      </div>
     </div>
 
     <!-- Trending Section -->
@@ -182,7 +227,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="faq">
+    <section id="faq" class="faq">
       <h2>Frequently Asked Questions</h2>
 
       <div class="faq-item">
@@ -280,6 +325,8 @@
             viewers worldwide. Join us to explore exciting content on multiple
             devices.
           </p>
+          <p>123 Streaming St, Entertainment City, World 45678</p>
+          <button class="contact-button">Contact</button>
         </div>
 
         <!-- Quick Links -->
@@ -290,6 +337,10 @@
             <li><a href="#">Privacy Policy</a></li>
             <li><a href="#">Help Center</a></li>
             <li><a href="#">Contact Us</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Affiliate Program</a></li>
           </ul>
         </div>
 
@@ -309,6 +360,8 @@
             <img src="img/visa.png" alt="Visa" />
             <img src="img/mastercard.png" alt="MasterCard" />
             <img src="img/paypal.png" alt="PayPal" />
+            <img src="img/amex.png" alt="American Express" />
+            <img src="img/bitcoin.png" alt="Bitcoin" />
           </div>
         </div>
       </div>
@@ -325,6 +378,8 @@
           <a href="#">Twitter</a>
           <a href="#">Instagram</a>
           <a href="#">YouTube</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">Pinterest</a>
         </div>
         <p>Contact us: info@tvseries.com</p>
       </div>
@@ -349,14 +404,14 @@
       // Set the carousel to swipe every 4 seconds
       setInterval(swipeCarousel, 4000);
 
-      const playButton = document.getElementById("play-button");
-      const video = document.getElementById("hero-video");
+      // const playButton = document.getElementById("play-button");
+      // const video = document.getElementById("hero-video");
 
-      playButton.addEventListener("click", function () {
-        playButton.style.display = "none"; // Hide the play button
-        video.classList.add("active"); // Show the video
-        video.play(); // Automatically play the video
-      });
+      // playButton.addEventListener("click", function () {
+      //   playButton.style.display = "none"; // Hide the play button
+      //   video.classList.add("active"); // Show the video
+      //   video.play(); // Automatically play the video
+      // });
 
       // Smooth scrolling when clicking navigation links
       document.querySelectorAll(".navbar a").forEach((anchor) => {
@@ -379,6 +434,56 @@
           faqItem.classList.toggle("active");
         });
       });
+
+      const slides = document.querySelectorAll(".slide");
+      const next = document.querySelector(".next");
+      const prev = document.querySelector(".prev");
+      let currentSlide = 0;
+
+      // Function to show the current slide
+      function showSlide(index) {
+        slides.forEach((slide) => slide.classList.remove("active"));
+        slides[index].classList.add("active");
+        document.querySelector(
+          ".slider-wrapper"
+        ).style.transform = `translateX(${-index * 100}%)`;
+      }
+
+      // Move to next slide
+      next.addEventListener("click", () => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      });
+
+      // Move to previous slide
+      prev.addEventListener("click", () => {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+      });
+
+      // Play video and hide the thumbnail for slide 1
+      document
+        .getElementById("play-button")
+        .addEventListener("click", function () {
+          this.style.display = "none"; // Hide the play button
+          document.querySelector(".slide.active img.thumbnail").style.display =
+            "none"; // Hide the thumbnail
+          const video = document.getElementById("hero-video-1");
+          video.classList.add("active"); // Show the video
+          video.play(); // Start playing the video
+        });
+
+      // Play video and hide the thumbnail for slide 2 (if needed)
+      document
+        .getElementById("play-button-2")
+        .addEventListener("click", function () {
+          this.style.display = "none"; // Hide the play button
+          const video = document.getElementById("hero-video-2");
+          video.classList.add("active"); // Show the video
+          video.play(); // Start playing the video
+          document.querySelector(".slide.active img.thumbnail").style.display =
+            "none"; // Hide the thumbnail
+        });
     </script>
   </body>
 </html>

@@ -73,6 +73,56 @@ input {
   outline: none;
 }
 
+/* Dropdown Menu */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  z-index: 1000; /* Add a higher z-index to the dropdown */
+}
+
+.dropdown .dropbtn {
+  text-decoration: none;
+  color: #f5c900;
+  padding: 5px 8px;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Make sure the dropdown content has a high z-index */
+}
+
+.dropdown-content a {
+  color: #f5c900;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #444;
+  color: #fff;
+}
+
+/* Show the dropdown on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the color of the dropdown button when hovering */
+.dropdown:hover .dropbtn {
+  color: #fff;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
 /* Hero Section */
 .hero {
   position: relative;
@@ -112,6 +162,109 @@ input {
 .hero video.active {
   display: block;
   z-index: 1;
+}
+
+/* Hero Slider */
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: 1000px;
+  overflow: hidden;
+}
+
+.slider-wrapper {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  position: relative;
+  min-width: 100%;
+  height: 100%;
+}
+
+.thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4em;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 30px;
+  border-radius: 50%;
+  color: #f5c900;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* Slide Title */
+.slide-title {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3em;
+  color: #fff;
+  text-align: center;
+  z-index: 3;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* Slide Subtitle */
+.slide-subtitle {
+  position: absolute;
+  top: 72%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5em;
+  color: #fff;
+  text-align: center;
+  z-index: 3;
+  margin-top: 10px; /* Optional: Adjust spacing below the title */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Add subtle shadow for readability */
+}
+
+/* Video element */
+.video {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover; /* Make video cover the entire area without stretching */
+  z-index: 1;
+}
+
+.video.active {
+  display: block;
+  z-index: 1;
+}
+
+/* Slider Controls */
+.slider-controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+.slider-controls span {
+  font-size: 3em;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+  padding: 0 20px;
 }
 
 /* Trending TV Series Section */
@@ -500,6 +653,68 @@ footer {
   background-color: #f5c900;
   border: none;
   color: #333;
+}
+
+/* Footer Styling */
+footer {
+  padding: 50px;
+  background-color: #111;
+  color: #666;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.footer-section {
+  width: 22%;
+}
+
+.footer-section h3 {
+  color: #f5c900;
+  margin-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+  text-decoration: none;
+  color: #f5c900;
+}
+
+.footer-section ul li a:hover {
+  color: #fff;
+}
+
+.contact-button {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #f5c900;
+  border: none;
+  color: #111;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.contact-button:hover {
+  background-color: #e0b800;
+}
+
+/* Responsive footer */
+@media (max-width: 768px) {
+  .footer-section {
+    width: 100%;
+    margin-bottom: 20px;
+  }
 }
 
 /* Responsive footer */
