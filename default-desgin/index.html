@@ -45,7 +45,15 @@
                 “You’ve done fine without one”<br />“What’s that?”<br />“A soul”
               </p>
             </div>
+            <!-- Video for Slide 1 -->
+            <video
+              id="video1"
+              class="video"
+              src="img/video.mp4"
+              controls
+            ></video>
           </div>
+
           <!-- Slide 2 -->
           <div class="slide">
             <img src="img/clique.avif" alt="Featured Series 2" />
@@ -54,7 +62,15 @@
               <h1>Sample Title for Series 2</h1>
               <p>Placeholder text for quote or description</p>
             </div>
+            <!-- Video for Slide 2 -->
+            <video
+              id="video2"
+              class="video"
+              src="videos/clique.mp4"
+              controls
+            ></video>
           </div>
+
           <!-- Slide 3 -->
           <div class="slide">
             <img src="img/endeavor.avif" alt="Featured Series 3" />
@@ -63,11 +79,18 @@
               <h1>Sample Title for Series 3</h1>
               <p>Placeholder text for quote or description</p>
             </div>
+            <!-- Video for Slide 3 -->
+            <video
+              id="video3"
+              class="video"
+              src="videos/endeavor.mp4"
+              controls
+            ></video>
           </div>
         </div>
 
         <!-- Play button fixed in the center -->
-        <div class="play-button">Play</div>
+        <div class="play-button" id="play-button">Play</div>
 
         <!-- Left arrow for manual navigation -->
         <div class="left-arrow">&#10094;</div>
@@ -113,32 +136,32 @@
             <p>Brief description of Series 6.</p>
           </div>
           <div class="carousel-item">
-            <img src="img/baptiste.avif" alt="Series 7" />
+            <img src="img/annika.jpeg" alt="Series 7" />
             <h3>Series 7</h3>
             <p>Brief description of Series 7.</p>
           </div>
           <div class="carousel-item">
-            <img src="img/clique.avif" alt="Series 8" />
+            <img src="img/long-call.jpeg" alt="Series 8" />
             <h3>Series 8</h3>
             <p>Brief description of Series 8.</p>
           </div>
           <div class="carousel-item">
-            <img src="img/endeavor.avif" alt="Series 9" />
+            <img src="img/unforgiven.jpeg" alt="Series 9" />
             <h3>Series 9</h3>
             <p>Brief description of Series 9.</p>
           </div>
           <div class="carousel-item">
-            <img src="img/ragdoll.avif" alt="Series 10" />
+            <img src="img/shetland.jpeg" alt="Series 10" />
             <h3>Series 10</h3>
             <p>Brief description of Series 10.</p>
           </div>
           <div class="carousel-item">
-            <img src="img/unforgotten.avif" alt="Series 11" />
+            <img src="img/ridley.jpeg" alt="Series 11" />
             <h3>Series 11</h3>
             <p>Brief description of Series 11.</p>
           </div>
           <div class="carousel-item">
-            <img src="img/investigation.avif" alt="Series 12" />
+            <img src="img/karen.jpeg" alt="Series 12" />
             <h3>Series 12</h3>
             <p>Brief description of Series 12.</p>
           </div>
@@ -151,7 +174,7 @@
       <h2>Most Watched</h2>
       <div class="movie-grid">
         <div class="movie-item">
-          <img src="img/baptiste.avif" alt="Movie 1" />
+          <img src="img/murders.jpeg" alt="Movie 1" />
           <h3>Movie 1</h3>
         </div>
         <div class="movie-item">
@@ -381,24 +404,88 @@
     </section>
 
     <!-- Footer Section -->
-    <footer>
-      <div class="newsletter">
-        <h2>Subscribe to our Newsletter</h2>
-        <form>
-          <input type="email" placeholder="Enter your email" required />
-          <button type="submit">Subscribe</button>
-        </form>
-      </div>
-      <div class="footer-info">
-        <p>Contact us: info@tvseries.com | Follow us on:</p>
-        <div class="social-media">
-          <a href="#">Facebook</a>
-          <a href="#">Twitter</a>
-          <a href="#">Instagram</a>
-          <a href="#">YouTube</a>
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- About Us Section -->
+        <div class="footer-about">
+          <h2>About Us</h2>
+          <p>
+            We provide access to the latest TV series, movies, and exclusive
+            content. Stream your favorite shows anytime, anywhere with our
+            easy-to-use platform.
+          </p>
+          <p>Address: 123 Movie Lane, Film City, CA 94016</p>
+          <button class="contact-button">Contact Us</button>
         </div>
-      </div>
-    </footer>
+
+        <!-- Quick Links Section -->
+        <div class="footer-quick-links">
+          <h2>Quick Links</h2>
+          <ul>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Affiliate Program</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter Subscription Section -->
+        <div class="footer-newsletter">
+          <h2>Subscribe to our Newsletter</h2>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email" required />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+
+        <!-- Social Media Links Section -->
+        <div class="footer-social-media">
+          <h2>Follow Us</h2>
+          <div class="social-links">
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+            <a href="#">YouTube</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Pinterest</a>
+          </div>
+          <p>Support Email: support@tvseries.com</p>
+        </div>
+
+        <!-- Get Our App Section -->
+        <div class="footer-app-links">
+          <h2>Get Our App</h2>
+          <div class="app-links">
+            <a href="#">Download on the App Store</a>
+            <a href="#">Get it on Google Play</a>
+          </div>
+        </div>
+
+<!-- Payment Methods Section -->
+<div class="footer-payment-methods">
+    <h2>Payment Methods</h2>
+    <div class="payment-icons">
+      <a href="https://www.visa.com" target="_blank" rel="noopener noreferrer">
+        <img src="img/icons/visa.png" alt="Visa" />
+      </a>
+      <a href="https://www.mastercard.com" target="_blank" rel="noopener noreferrer">
+        <img src="img/icons/mscard.png" alt="MasterCard" />
+      </a>
+      <a href="https://www.paypal.com" target="_blank" rel="noopener noreferrer">
+        <img src="img/icons/paypal.png" alt="PayPal" />
+      </a>
+      <a href="https://www.americanexpress.com" target="_blank" rel="noopener noreferrer">
+        <img src="img/icons/american.png" alt="American Express" />
+      </a>
+      <a href="https://www.bitcoin.org" target="_blank" rel="noopener noreferrer">
+        <img src="img/icons/bitcoin.png" alt="Bitcoin" />
+      </a>
+    </div>
+  </div>
   </body>
 
   <script>
@@ -425,7 +512,7 @@
     const leftArrow = document.querySelector(".left-arrow");
     let currentIndex = 0; // Track the current slide index
     const totalSlides = document.querySelectorAll(".slide").length; // Get total number of slides
-
+    const slides = document.querySelectorAll(".slide");
     // Function to slide right when the right arrow is clicked
     rightArrow.addEventListener("click", function () {
       if (currentIndex < totalSlides - 1) {
@@ -445,6 +532,21 @@
       }
       slider.style.transform = `translateX(-${currentIndex * 100}%)`; // Shift the slider to the previous slide
     });
+
+    const playButton = document.getElementById("play-button");
+
+    // Function to play the video
+    playButton.addEventListener("click", function () {
+      const currentSlide = slides[currentIndex];
+      const video = currentSlide.querySelector(".video");
+
+      // Add a "playing" class to hide the image and text, and show the video
+      currentSlide.classList.add("playing");
+
+      // Start the video and ensure it plays in full width
+      video.play();
+    });
+
     // Get all necessary elements
     const languageOptions = document.querySelectorAll(".language-option");
     const languageMenu = document.getElementById("language-menu");

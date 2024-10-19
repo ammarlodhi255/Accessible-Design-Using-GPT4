@@ -182,6 +182,30 @@ body {
   line-height: 1.4; /* Line height for better readability */
 }
 
+/* Video Styling */
+.video {
+  display: none; /* Hide videos by default */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20; /* Ensure the video is on top */
+}
+
+/* Hide the play button and text when playing */
+.playing .play-button,
+.playing .text-content,
+.playing img {
+  display: none;
+}
+
+/* Ensure the video is visible when playing */
+.playing .video {
+  display: block;
+}
+
 /* Left arrow for manual navigation */
 .left-arrow {
   position: absolute;
@@ -531,28 +555,163 @@ form input[type="checkbox"] {
   }
 }
 
-/* Footer */
-footer {
+/* Footer Section */
+.footer {
+  background-color: #222;
+  color: white;
+  padding: 50px 20px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 20px; /* Add spacing between sections */
+}
+
+.footer h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.footer p {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+/* About Us Section */
+.footer-about {
+  flex: 1;
+  min-width: 220px;
+  max-width: 250px; /* Ensure consistent sizing */
+  margin-bottom: 30px;
+}
+
+.footer-about button.contact-button {
   background-color: #f5b700;
   color: black;
-  padding: 40px 20px;
-  text-align: center;
-}
-
-.newsletter input[type="email"] {
-  padding: 10px;
-  width: 50%;
-  margin-right: 10px;
+  padding: 10px 20px;
+  border: none;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  cursor: pointer;
 }
 
-footer .social-media {
-  margin-top: 20px;
+/* Quick Links Section */
+.footer-quick-links {
+  flex: 1;
+  min-width: 180px;
+  max-width: 250px;
+  margin-bottom: 30px;
 }
 
-footer .social-media a {
-  margin: 0 10px;
+.footer-quick-links ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-quick-links ul li {
+  margin-bottom: 8px;
+}
+
+.footer-quick-links ul li a {
+  color: white;
   text-decoration: none;
+  font-size: 16px;
+}
+
+.footer-quick-links ul li a:hover {
+  color: #f5b700;
+}
+
+/* Newsletter Section */
+.footer-newsletter {
+  flex: 2; /* Make this section slightly larger to fit the input box */
+  min-width: 260px;
+  margin-bottom: 30px;
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.newsletter-form input[type="email"] {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.newsletter-form button {
+  background-color: #f5b700;
   color: black;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Social Media Section */
+.footer-social-media {
+  flex: 1;
+  min-width: 220px;
+  max-width: 250px;
+  margin-bottom: 30px;
+}
+
+.footer-social-media .social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-social-media .social-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.footer-social-media .social-links a:hover {
+  color: #f5b700;
+}
+
+/* App Links Section */
+.footer-app-links {
+  flex: 1;
+  min-width: 220px;
+  max-width: 250px;
+  margin-bottom: 30px;
+}
+
+.footer-app-links .app-links a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.footer-app-links .app-links a:hover {
+  color: #f5b700;
+}
+
+/* Payment Methods Section */
+.footer-payment-methods {
+  flex: 1;
+  min-width: 220px;
+  max-width: 250px;
+  margin-bottom: 30px;
+}
+
+.payment-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.payment-icons img {
+  width: 50px;
+  height: auto;
 }
