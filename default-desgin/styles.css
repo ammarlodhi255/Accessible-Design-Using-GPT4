@@ -37,7 +37,7 @@ body {
 }
 
 .navbar .menu li {
-  position: relative; /* Ensure relative positioning to parent the dropdown */
+  position: relative;
   display: inline-block;
 }
 
@@ -45,25 +45,36 @@ body {
   color: white;
   text-decoration: none;
   font-weight: bold;
-  white-space: nowrap; /* Prevent text from breaking into multiple lines */
+  white-space: nowrap;
 }
 
 /* Dropdown Container */
 .navbar .dropdown {
   position: relative;
-  display: inline-block;
 }
 
 /* Dropdown Content (Hidden by Default) */
 .navbar .dropdown-content {
-  display: none;
+  display: none; /* Ensure it is hidden initially */
   position: absolute;
   background-color: #f5b700;
-  top: 100%; /* Align directly below the "Language" menu item */
+  top: 100%; /* Align below the parent */
   left: 0;
   min-width: 100px;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1000;
+  white-space: nowrap;
+}
+
+/* Adjust Dropdown for Right Overflow */
+.navbar .dropdown-content.right-align {
+  right: 0;
+  left: auto;
+}
+
+/* Show dropdown when hovering over both the parent and dropdown content */
+.navbar .dropdown:hover .dropdown-content {
+  display: block;
 }
 
 /* Dropdown Items */
@@ -76,13 +87,8 @@ body {
   text-align: left;
 }
 
-/* Show dropdown when hovering over both the parent and dropdown content */
-.navbar .dropdown:hover .dropdown-content {
-  display: block; /* Keep the dropdown visible when hovering */
-}
-
 .navbar .dropdown-content a:hover {
-  background-color: #ddd; /* Highlight option on hover */
+  background-color: #ddd;
   color: black;
 }
 
@@ -109,36 +115,34 @@ body {
   text-align: center;
   height: 800px;
   overflow: hidden;
-  padding: 0; /* Ensure no padding */
-  margin: 0; /* Ensure no margin */
+  padding: 0;
+  margin: 0;
 }
 
-/* Slider container */
 .slider-wrapper {
   position: relative;
   height: 100%;
   width: 100%;
-  overflow: hidden; /* Hide extra slides */
+  overflow: hidden;
 }
 
-/* Slider that holds all the slides */
 .slider {
   display: flex;
-  transition: transform 1s ease-in-out; /* Smooth transition between slides */
+  transition: transform 1s ease-in-out;
   height: 100%;
 }
 
-/* Each slide */
 .slide {
-  width: 100%; /* Each slide takes up the full width of the slider-wrapper */
+  width: 100%;
   height: 100%;
-  flex-shrink: 0; /* Prevent slides from shrinking */
+  flex-shrink: 0;
+  position: relative;
 }
 
 .slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures image takes the full container width and height without distortion */
+  object-fit: cover;
 }
 
 /* Play button - fixed in the center */
@@ -154,6 +158,28 @@ body {
   color: #f5b700;
   cursor: pointer;
   z-index: 10; /* Keep the play button on top */
+}
+
+/* Title and Subtext Styling */
+.text-content {
+  position: absolute;
+  top: 65%; /* Position below the play button */
+  left: 50%;
+  transform: translate(-50%, 0); /* Center the text horizontally */
+  color: white;
+  text-align: center;
+  z-index: 10; /* Ensure text is on top */
+}
+
+.text-content h1 {
+  font-size: 48px; /* Large text for the title */
+  font-weight: bold;
+  margin-bottom: 10px; /* Space between title and subtext */
+}
+
+.text-content p {
+  font-size: 18px; /* Smaller text for the subtext */
+  line-height: 1.4; /* Line height for better readability */
 }
 
 /* Left arrow for manual navigation */
@@ -216,24 +242,52 @@ body {
 
 .carousel-wrapper {
   width: 100%;
-  overflow: hidden; /* Hide the overflow to create sliding effect */
+  overflow: hidden;
   position: relative;
 }
 
 .carousel {
   display: flex;
-  transition: transform 1s ease-in-out; /* Smooth transition for the carousel swipe */
+  transition: transform 1s ease-in-out;
 }
 
 .carousel-item {
   min-width: 15.66%; /* Show 6 items at a time */
-  text-align: center;
   padding: 10px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .carousel-item img {
   width: 100%;
   border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.carousel-item h3,
+.carousel-item p {
+  text-align: center;
+  color: black;
+  margin: 10px 0; /* Ensure the text remains below the image */
+  position: relative;
+  z-index: 2; /* Ensure text stays above the image */
+}
+
+/* Hover Effect */
+.carousel-item:hover {
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+}
+
+.carousel-item:hover img {
+  transform: scale(1.05); /* Scale up the image */
+  z-index: 1; /* Ensure the image stays behind the text */
+}
+
+.carousel-item:hover h3,
+.carousel-item:hover p {
+  color: #000000; /* Change text color */
 }
 
 /* Smooth Transition Effects */
@@ -264,9 +318,36 @@ body {
   gap: 20px;
 }
 
+.movie-item {
+  position: relative;
+  text-align: center;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
 .movie-item img {
-  width: 100%;
+  width: 80%;
   border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.movie-item h3 {
+  margin-top: 10px;
+  transition: color 0.3s ease-in-out;
+  color: black; /* Ensure the movie title is visible */
+}
+
+/* Hover Effect */
+.movie-item:hover {
+  transform: scale(1.01); /* Scale up the entire movie item on hover */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+.movie-item:hover img {
+  transform: scale(1.02); /* Scale up the image slightly more on hover */
+}
+
+.movie-item:hover h3 {
+  color: #f5b700; /* Change the movie title color on hover */
 }
 
 /* Subscription Plans */
@@ -303,45 +384,72 @@ table td {
   background-color: white;
   color: #f5b700;
   padding: 10px;
+  width: 100%;
   border: none;
+  text-align: left;
+  font-size: 18px;
   cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+  background-color: #f5b700;
+  color: white;
 }
 
 .faq-answer {
   background-color: #f5b700;
   color: black;
   padding: 10px;
-  display: none;
+  display: none; /* Hidden by default */
+  text-align: left;
+  font-size: 16px;
+}
+
+.faq-item.active .faq-answer {
+  display: block; /* Show when active */
+}
+
+.faq-item.active .faq-question {
+  background-color: #f5b700;
+  color: white;
 }
 
 /* Forms Section */
 .forms {
   display: flex;
-  padding: 40px 20px;
-  background-color: #333;
+  justify-content: center; /* Center the forms horizontally */
+  align-items: center; /* Center the forms vertically */
+  height: 50vh; /* Full viewport height to center vertically */
 }
 
 .form-container {
   display: flex;
-  justify-content: space-around;
-  width: 100%;
+  justify-content: space-between; /* Space between login and register forms */
+  width: 80%; /* Reduce the width of the form container */
+  max-width: 900px; /* Limit the maximum width of the container */
 }
 
 form {
   background-color: white;
   padding: 20px;
   border-radius: 10px;
-  width: 45%;
+  width: 100%;
+  max-width: 400px; /* Ensure each form does not exceed a reasonable width */
+  box-sizing: border-box; /* Ensure padding doesn't affect width */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
 }
 
 form input[type="text"],
 form input[type="email"],
 form input[type="password"] {
-  width: 100%;
+  width: 100%; /* Ensure input fields take full width of form */
   padding: 10px;
   margin: 10px 0;
   border: 1px solid #ccc;
   border-radius: 5px;
+  box-sizing: border-box; /* Include padding within width */
 }
 
 form button {
@@ -351,6 +459,76 @@ form button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  width: 100%; /* Make button full width */
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+form label {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+form input[type="checkbox"] {
+  margin-right: 10px;
+}
+/* Info Icon Styling */
+.info-icon {
+  font-size: 14px;
+  color: #f5b700;
+  cursor: pointer;
+  margin-left: 5px;
+  text-decoration: underline;
+}
+
+/* Modal Styling */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 999; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgba(0, 0, 0, 0.8); /* Black background with opacity */
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+
+/* Modal Content Styling */
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 60%;
+  max-width: 500px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+  animation: slide-down 0.5s ease;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Footer */

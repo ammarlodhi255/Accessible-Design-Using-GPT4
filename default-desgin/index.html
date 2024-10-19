@@ -38,16 +38,32 @@
           <!-- Slide 1 -->
           <div class="slide">
             <img src="img/blade.jpg" alt="Featured Series 1" />
+            <!-- Main Title and Subtext for Slide 1 -->
+            <div class="text-content">
+              <h1>Blade Runner 2049</h1>
+              <p>
+                “You’ve done fine without one”<br />“What’s that?”<br />“A soul”
+              </p>
+            </div>
           </div>
           <!-- Slide 2 -->
           <div class="slide">
             <img src="img/clique.avif" alt="Featured Series 2" />
+            <!-- Placeholder Title and Subtext for Slide 2 -->
+            <div class="text-content">
+              <h1>Sample Title for Series 2</h1>
+              <p>Placeholder text for quote or description</p>
+            </div>
           </div>
           <!-- Slide 3 -->
           <div class="slide">
             <img src="img/endeavor.avif" alt="Featured Series 3" />
+            <!-- Placeholder Title and Subtext for Slide 3 -->
+            <div class="text-content">
+              <h1>Sample Title for Series 3</h1>
+              <p>Placeholder text for quote or description</p>
+            </div>
           </div>
-          <!-- Add more slides as needed -->
         </div>
 
         <!-- Play button fixed in the center -->
@@ -135,14 +151,41 @@
       <h2>Most Watched</h2>
       <div class="movie-grid">
         <div class="movie-item">
-          <img src="" alt="Movie 1" />
+          <img src="img/baptiste.avif" alt="Movie 1" />
           <h3>Movie 1</h3>
         </div>
         <div class="movie-item">
-          <img src="" alt="Movie 2" />
+          <img src="img/clique.avif" alt="Movie 2" />
           <h3>Movie 2</h3>
         </div>
-        <!-- Add more movie items as needed -->
+        <div class="movie-item">
+          <img src="img/endeavor.avif" alt="Movie 2" />
+          <h3>Movie 2</h3>
+        </div>
+        <div class="movie-item">
+          <img src="img/unforgotten.avif" alt="Movie 1" />
+          <h3>Movie 1</h3>
+        </div>
+        <div class="movie-item">
+          <img src="img/investigation.avif" alt="Movie 2" />
+          <h3>Movie 2</h3>
+        </div>
+        <div class="movie-item">
+          <img src="img/ragdoll.avif" alt="Movie 2" />
+          <h3>Movie 2</h3>
+        </div>
+        <div class="movie-item">
+          <img src="img/unforgotten.avif" alt="Movie 1" />
+          <h3>Movie 1</h3>
+        </div>
+        <div class="movie-item">
+          <img src="img/investigation.avif" alt="Movie 2" />
+          <h3>Movie 2</h3>
+        </div>
+        <div class="movie-item">
+          <img src="img/ragdoll.avif" alt="Movie 2" />
+          <h3>Movie 2</h3>
+        </div>
       </div>
     </section>
 
@@ -180,13 +223,62 @@
     <!-- FAQ Section -->
     <section class="faq">
       <h2>Frequently Asked Questions</h2>
+
       <div class="faq-item">
-        <button class="faq-question">What is the refund policy?</button>
+        <button class="faq-question">
+          What payment methods do you accept?
+        </button>
         <div class="faq-answer">
-          <p>Our refund policy...</p>
+          <p>
+            We accept all major credit cards, PayPal, and other digital payment
+            methods.
+          </p>
         </div>
       </div>
-      <!-- Add more FAQ items as needed -->
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Can I download content to watch offline?
+        </button>
+        <div class="faq-answer">
+          <p>
+            Yes, you can download select content to watch offline on your mobile
+            devices.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">How many users can use my account?</button>
+        <div class="faq-answer">
+          <p>
+            You can create up to 5 user profiles under a single account, each
+            with personalized recommendations.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">What is your refund policy?</button>
+        <div class="faq-answer">
+          <p>
+            We offer a 30-day refund period from the time of your subscription
+            purchase.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How do I update my account information?
+        </button>
+        <div class="faq-answer">
+          <p>
+            You can update your account information by navigating to the
+            ‘Account Settings’ tab on your profile.
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- Login and Registration Forms -->
@@ -200,6 +292,7 @@
             <button type="submit">Login</button>
           </form>
         </div>
+
         <div class="registration-form">
           <h2>Register</h2>
           <form>
@@ -207,13 +300,82 @@
             <input type="text" placeholder="Last Name" required />
             <input type="email" placeholder="Email" required />
             <input type="password" placeholder="Password" required />
-            <label><input type="checkbox" /> Newsletter</label>
-            <label
-              ><input type="checkbox" /> Agree to Terms
-              <span class="info">i</span></label
-            >
+
+            <!-- Checkbox for Terms and Conditions -->
+            <label>
+              <input type="checkbox" required />
+              I agree to the
+              <a href="#" id="terms-link">terms and conditions</a>
+              <span class="info-icon" id="terms-info">?</span>
+            </label>
+
+            <!-- Checkbox for Newsletter Subscription -->
+            <label>
+              <input type="checkbox" />
+              Sign up for the newsletter
+              <span class="info-icon" id="newsletter-info">?</span>
+            </label>
+
             <button type="submit">Register</button>
           </form>
+        </div>
+      </div>
+
+      <!-- Modal for Terms and Conditions -->
+      <div id="terms-modal" class="modal">
+        <div class="modal-content">
+          <span class="close-btn" id="close-terms">&times;</span>
+          <h2>Terms and Conditions</h2>
+          <p>
+            By registering, you agree to the following terms and conditions:
+          </p>
+          <ul>
+            <li>You must be at least 18 years old to create an account.</li>
+            <li>
+              You are responsible for maintaining the confidentiality of your
+              login credentials.
+            </li>
+            <li>
+              Our services are provided on a subscription basis, and you agree
+              to pay the subscription fee unless canceled.
+            </li>
+            <li>
+              Downloading or sharing content without permission is strictly
+              prohibited.
+            </li>
+            <li>
+              We reserve the right to modify or discontinue the service at any
+              time.
+            </li>
+            <li>For any questions, please contact our support team.</li>
+          </ul>
+          <p>
+            Make sure to review the full terms and conditions for more detailed
+            information.
+          </p>
+        </div>
+      </div>
+
+      <!-- Modal for Newsletter Information -->
+      <div id="newsletter-modal" class="modal">
+        <div class="modal-content">
+          <span class="close-btn" id="close-newsletter">&times;</span>
+          <h2>Newsletter Information</h2>
+          <p>By signing up for our newsletter, you will receive:</p>
+          <ul>
+            <li>Exclusive updates on upcoming shows and new releases.</li>
+            <li>
+              Special discounts and offers only available to newsletter
+              subscribers.
+            </li>
+            <li>Personalized recommendations based on your viewing habits.</li>
+            <li>Access to early-bird content and behind-the-scenes videos.</li>
+          </ul>
+          <p>
+            You can unsubscribe at any time by clicking the "unsubscribe" link
+            in any of our emails. We respect your privacy, and your information
+            will not be shared with third parties.
+          </p>
         </div>
       </div>
     </section>
@@ -283,21 +445,114 @@
       }
       slider.style.transform = `translateX(-${currentIndex * 100}%)`; // Shift the slider to the previous slide
     });
-    // Select all language options and the main language menu item
+    // Get all necessary elements
     const languageOptions = document.querySelectorAll(".language-option");
     const languageMenu = document.getElementById("language-menu");
+    const languageDropdown = document.querySelector(".dropdown-content");
+    const languageMenuItem = document.querySelector(".dropdown");
+
+    // Function to adjust dropdown position based on its proximity to the right edge of the screen
+    function adjustDropdownPosition() {
+      const dropdownRect = languageDropdown.getBoundingClientRect();
+      const viewportWidth = window.innerWidth;
+
+      // Check if the dropdown's right edge goes beyond the screen width
+      if (dropdownRect.right > viewportWidth) {
+        // Align to the right if it's too close to the edge
+        languageDropdown.style.left = "auto"; // Remove left alignment
+        languageDropdown.style.right = "0"; // Align to the right edge of the parent
+      } else {
+        // Normal alignment if there's enough space
+        languageDropdown.style.left = "0";
+        languageDropdown.style.right = "auto";
+      }
+    }
 
     // Add click event listeners to each language option
     languageOptions.forEach((option) => {
       option.addEventListener("click", function (event) {
-        event.preventDefault(); // Prevent the default anchor click behavior
+        event.preventDefault(); // Prevent default link behavior
 
         // Get the selected language from the data-lang attribute
         const selectedLanguage = this.getAttribute("data-lang");
 
         // Update the text of the "Language" menu item to the selected language
         languageMenu.textContent = selectedLanguage;
+
+        // Hide the dropdown after selection
+        languageDropdown.style.display = "none";
       });
+    });
+
+    // Show the dropdown when hovering over the "Language" menu item
+    languageMenuItem.addEventListener("mouseenter", function () {
+      languageDropdown.style.display = "block"; // Show the dropdown
+      adjustDropdownPosition(); // Adjust position if needed
+    });
+
+    // Hide the dropdown when the mouse leaves the menu item or dropdown
+    languageMenuItem.addEventListener("mouseleave", function () {
+      languageDropdown.style.display = "none";
+    });
+
+    // Get all FAQ question buttons
+    const faqQuestions = document.querySelectorAll(".faq-question");
+
+    // Add click event to each question
+    faqQuestions.forEach((question) => {
+      question.addEventListener("click", function () {
+        // Toggle active class on the parent faq-item
+        const parent = this.parentElement;
+        parent.classList.toggle("active");
+
+        // Collapse all other FAQ items except the one clicked
+        faqQuestions.forEach((otherQuestion) => {
+          const otherParent = otherQuestion.parentElement;
+          if (otherParent !== parent) {
+            otherParent.classList.remove("active");
+          }
+        });
+      });
+    });
+
+    // Get elements for terms modal
+    const termsModal = document.getElementById("terms-modal");
+    const termsLink = document.getElementById("terms-info");
+    const closeTerms = document.getElementById("close-terms");
+
+    // Get elements for newsletter modal
+    const newsletterModal = document.getElementById("newsletter-modal");
+    const newsletterLink = document.getElementById("newsletter-info");
+    const closeNewsletter = document.getElementById("close-newsletter");
+
+    // Show Terms Modal when info icon is clicked
+    termsLink.addEventListener("click", function () {
+      termsModal.style.display = "flex";
+    });
+
+    // Show Newsletter Modal when info icon is clicked
+    newsletterLink.addEventListener("click", function () {
+      newsletterModal.style.display = "flex";
+    });
+
+    // Close Terms Modal when close button is clicked
+    closeTerms.addEventListener("click", function () {
+      termsModal.style.display = "none";
+    });
+
+    // Close Newsletter Modal when close button is clicked
+    closeNewsletter.addEventListener("click", function () {
+      newsletterModal.style.display = "none";
+    });
+
+    // Close Modals when clicking outside the modal content
+    window.addEventListener("click", function (event) {
+      if (event.target === termsModal) {
+        termsModal.style.display = "none";
+      }
+      if (event.target === newsletterModal) {
+        newsletterModal.style.display = "none";
+      }
     });
   </script>
 </html>
