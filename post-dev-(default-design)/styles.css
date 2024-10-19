@@ -1,0 +1,717 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #333;
+  color: white;
+}
+
+/* Navigation Bar */
+.navbar {
+  background-color: #f5b700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.navbar .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+.navbar .menu {
+  list-style-type: none;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar .menu li {
+  position: relative;
+  display: inline-block;
+}
+
+.navbar .menu li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+/* Dropdown Container */
+.navbar .dropdown {
+  position: relative;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.navbar .dropdown-content {
+  display: none; /* Ensure it is hidden initially */
+  position: absolute;
+  background-color: #f5b700;
+  top: 100%; /* Align below the parent */
+  left: 0;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  white-space: nowrap;
+}
+
+/* Adjust Dropdown for Right Overflow */
+.navbar .dropdown-content.right-align {
+  right: 0;
+  left: auto;
+}
+
+/* Show dropdown when hovering over both the parent and dropdown content */
+.navbar .dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Dropdown Items */
+.navbar .dropdown-content a {
+  display: block;
+  padding: 10px;
+  color: black;
+  text-decoration: none;
+  font-weight: normal;
+  text-align: left;
+}
+
+.navbar .dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Media Queries for Smaller Screens */
+@media screen and (max-width: 1024px) {
+  .navbar .menu {
+    flex-wrap: wrap; /* This allows menu items to wrap to the next line */
+    justify-content: flex-end;
+  }
+
+  .navbar .menu li {
+    margin: 0 10px; /* Reduce margin on smaller screens */
+  }
+
+  .navbar {
+    padding: 10px 15px; /* Reduce padding for the navbar on smaller screens */
+  }
+}
+
+/* Hero Section */
+.hero {
+  margin-top: 70px; /* Adjusted to account for the height of the fixed navigation bar */
+  position: relative;
+  text-align: center;
+  height: 800px;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.slider-wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  transition: transform 1s ease-in-out;
+  height: 100%;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Play button - fixed in the center */
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 50%;
+  font-size: 24px;
+  color: #f5b700;
+  cursor: pointer;
+  z-index: 10; /* Keep the play button on top */
+}
+
+/* Title and Subtext Styling */
+.text-content {
+  position: absolute;
+  top: 65%; /* Position below the play button */
+  left: 50%;
+  transform: translate(-50%, 0); /* Center the text horizontally */
+  color: white;
+  text-align: center;
+  z-index: 10; /* Ensure text is on top */
+}
+
+.text-content h1 {
+  font-size: 48px; /* Large text for the title */
+  font-weight: bold;
+  margin-bottom: 10px; /* Space between title and subtext */
+}
+
+.text-content p {
+  font-size: 18px; /* Smaller text for the subtext */
+  line-height: 1.4; /* Line height for better readability */
+}
+
+/* Video Styling */
+.video {
+  display: none; /* Hide videos by default */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20; /* Ensure the video is on top */
+}
+
+/* Hide the play button and text when playing */
+.playing .play-button,
+.playing .text-content,
+.playing img {
+  display: none;
+}
+
+/* Ensure the video is visible when playing */
+.playing .video {
+  display: block;
+}
+
+/* Left arrow for manual navigation */
+.left-arrow {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  font-size: 36px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10; /* Keep the arrow on top */
+  transition: background-color 0.3s ease;
+}
+
+.left-arrow:hover {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.8
+  ); /* Darken the arrow background on hover */
+}
+
+/* Right arrow for manual navigation */
+.right-arrow {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  font-size: 36px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10; /* Keep the arrow on top */
+  transition: background-color 0.3s ease;
+}
+
+.right-arrow:hover {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.8
+  ); /* Darken the arrow background on hover */
+}
+
+/* Trending Section */
+.trending {
+  padding: 40px 20px;
+  background-color: #f5b700;
+  color: black;
+  text-align: center;
+}
+
+.carousel-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel {
+  display: flex;
+  transition: transform 1s ease-in-out;
+}
+
+.carousel-item {
+  min-width: 15.66%; /* Show 6 items at a time */
+  padding: 10px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.carousel-item img {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.carousel-item h3,
+.carousel-item p {
+  text-align: center;
+  color: black;
+  margin: 10px 0; /* Ensure the text remains below the image */
+  position: relative;
+  z-index: 2; /* Ensure text stays above the image */
+}
+
+/* Hover Effect */
+.carousel-item:hover {
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+}
+
+.carousel-item:hover img {
+  transform: scale(1.05); /* Scale up the image */
+  z-index: 1; /* Ensure the image stays behind the text */
+}
+
+.carousel-item:hover h3,
+.carousel-item:hover p {
+  color: #000000; /* Change text color */
+}
+
+/* Smooth Transition Effects */
+@keyframes swipe-carousel {
+  0%,
+  20% {
+    transform: translateX(0);
+  }
+  40%,
+  60% {
+    transform: translateX(-100%);
+  }
+  80%,
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Most Watched Section */
+.most-watched {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.movie-item {
+  position: relative;
+  text-align: center;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.movie-item img {
+  width: 80%;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.movie-item h3 {
+  margin-top: 10px;
+  transition: color 0.3s ease-in-out;
+  color: black; /* Ensure the movie title is visible */
+}
+
+/* Hover Effect */
+.movie-item:hover {
+  transform: scale(1.01); /* Scale up the entire movie item on hover */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+.movie-item:hover img {
+  transform: scale(1.02); /* Scale up the image slightly more on hover */
+}
+
+.movie-item:hover h3 {
+  color: #f5b700; /* Change the movie title color on hover */
+}
+
+/* Subscription Plans */
+.plans {
+  padding: 40px 20px;
+  background-color: white;
+  color: black;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+table th,
+table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+/* FAQ Section */
+.faq {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.faq-item {
+  margin-bottom: 20px;
+}
+
+.faq-question {
+  background-color: white;
+  color: #f5b700;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  font-size: 18px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+  background-color: #f5b700;
+  color: white;
+}
+
+.faq-answer {
+  background-color: #f5b700;
+  color: black;
+  padding: 10px;
+  display: none; /* Hidden by default */
+  text-align: left;
+  font-size: 16px;
+}
+
+.faq-item.active .faq-answer {
+  display: block; /* Show when active */
+}
+
+.faq-item.active .faq-question {
+  background-color: #f5b700;
+  color: white;
+}
+
+/* Forms Section */
+.forms {
+  display: flex;
+  justify-content: center; /* Center the forms horizontally */
+  align-items: center; /* Center the forms vertically */
+  height: 50vh; /* Full viewport height to center vertically */
+}
+
+.form-container {
+  display: flex;
+  justify-content: space-between; /* Space between login and register forms */
+  width: 80%; /* Reduce the width of the form container */
+  max-width: 900px; /* Limit the maximum width of the container */
+}
+
+form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px; /* Ensure each form does not exceed a reasonable width */
+  box-sizing: border-box; /* Ensure padding doesn't affect width */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+  width: 100%; /* Ensure input fields take full width of form */
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Include padding within width */
+}
+
+form button {
+  background-color: #f5b700;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%; /* Make button full width */
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+form label {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+form input[type="checkbox"] {
+  margin-right: 10px;
+}
+/* Info Icon Styling */
+.info-icon {
+  font-size: 14px;
+  color: #f5b700;
+  cursor: pointer;
+  margin-left: 5px;
+  text-decoration: underline;
+}
+
+/* Modal Styling */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 999; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgba(0, 0, 0, 0.8); /* Black background with opacity */
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+
+/* Modal Content Styling */
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 60%;
+  max-width: 500px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+  animation: slide-down 0.5s ease;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Footer Section */
+.footer {
+  background-color: #222;
+  color: white;
+  padding: 50px 20px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 20px; /* Add spacing between sections */
+}
+
+.footer h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.footer p {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+/* About Us Section */
+.footer-about {
+  flex: 1;
+  min-width: 220px;
+  max-width: 250px; /* Ensure consistent sizing */
+  margin-bottom: 30px;
+}
+
+.footer-about button.contact-button {
+  background-color: #f5b700;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Quick Links Section */
+.footer-quick-links {
+  flex: 1;
+  min-width: 180px;
+  max-width: 250px;
+  margin-bottom: 30px;
+}
+
+.footer-quick-links ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-quick-links ul li {
+  margin-bottom: 8px;
+}
+
+.footer-quick-links ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.footer-quick-links ul li a:hover {
+  color: #f5b700;
+}
+
+/* Newsletter Section */
+.footer-newsletter {
+  flex: 2; /* Make this section slightly larger to fit the input box */
+  min-width: 260px;
+  margin-bottom: 30px;
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.newsletter-form input[type="email"] {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.newsletter-form button {
+  background-color: #f5b700;
+  color: black;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Social Media Section */
+.footer-social-media {
+  flex: 1;
+  min-width: 220px;
+  max-width: 250px;
+  margin-bottom: 30px;
+}
+
+.footer-social-media .social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-social-media .social-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.footer-social-media .social-links a:hover {
+  color: #f5b700;
+}
+
+/* App Links Section */
+.footer-app-links {
+  flex: 1;
+  min-width: 220px;
+  max-width: 250px;
+  margin-bottom: 30px;
+}
+
+.footer-app-links .app-links a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.footer-app-links .app-links a:hover {
+  color: #f5b700;
+}
+
+/* Payment Methods Section */
+.footer-payment-methods {
+  flex: 1;
+  min-width: 220px;
+  max-width: 250px;
+  margin-bottom: 30px;
+}
+
+.payment-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.payment-icons img {
+  width: 50px;
+  height: auto;
+}
