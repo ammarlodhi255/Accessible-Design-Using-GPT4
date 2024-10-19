@@ -21,10 +21,33 @@ body {
   box-sizing: border-box;
 }
 
-.navbar .logo {
+/* Adjust the logo's size and alignment in the navbar */
+.logo img {
+  width: 50px; /* Adjust this size as needed */
+  height: auto;
+  vertical-align: middle;
+}
+
+/* Styling for the Site Name beside the Logo */
+.site-name {
   font-size: 24px;
+  color: white; /* Ensure text color contrasts well with the navbar */
   font-weight: bold;
-  color: white;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+/* Optional: Ensure the logo and site name are aligned properly */
+.logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none; /* Remove underline from the link */
+}
+
+/* Optional: Ensure the logo and navigation items are vertically aligned */
+.navbar .menu {
+  display: flex;
+  align-items: center; /* Vertically align the menu with the logo */
 }
 
 .navbar .menu {
@@ -349,7 +372,7 @@ body {
 }
 
 .movie-item img {
-  width: 80%;
+  width: 70%;
   border-radius: 10px;
   transition: transform 0.3s ease-in-out;
 }
@@ -363,7 +386,6 @@ body {
 /* Hover Effect */
 .movie-item:hover {
   transform: scale(1.01); /* Scale up the entire movie item on hover */
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
 }
 
 .movie-item:hover img {
