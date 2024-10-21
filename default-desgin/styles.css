@@ -396,11 +396,11 @@ body {
   color: #f5b700; /* Change the movie title color on hover */
 }
 
-/* Subscription Plans */
+/* Subscription Plans Section */
 .plans {
   padding: 40px 20px;
-  background-color: white;
-  color: black;
+  background-color: #333; /* Change this to match the body background color */
+  color: white; /* Make the text white for consistency */
   text-align: center;
 }
 
@@ -408,12 +408,24 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
+  background-color: transparent; /* Ensure table has no white background */
 }
 
 table th,
 table td {
   padding: 10px;
   border: 1px solid #ddd;
+  color: white; /* Adjust text color to white for consistency */
+}
+
+/* Optional: Add a subtle background color to table rows for readability */
+table tr:nth-child(even) {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Light overlay for every other row */
 }
 
 /* FAQ Section */

@@ -1,0 +1,159 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+}
+
+.navbar {
+  background-color: #333;
+  color: #fff;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar .menu {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar .menu li {
+  display: inline;
+}
+
+.navbar .menu a {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 16px;
+}
+
+.navbar select {
+  padding: 8px;
+  background-color: #444;
+  color: white;
+}
+
+.hero-section {
+  position: relative;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  height: 400px;
+}
+
+.hero-section .slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-section .slide {
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.hero-section .slide.active {
+  display: block;
+}
+
+.hero-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 15px 30px;
+  background-color: #f5b700;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.hero-video {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.trending-section,
+.most-watched-section,
+.subscription-plans,
+.faq-section,
+.forms-section {
+  padding: 40px 20px;
+}
+
+.trending-grid,
+.most-watched-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.trending-grid {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.most-watched-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.subscription-plans table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.subscription-plans th,
+.subscription-plans td {
+  border: 1px solid #333;
+  padding: 10px;
+  text-align: center;
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.footer-column {
+  padding: 10px;
+}
+
+.footer-column ul {
+  list-style-type: none;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+
+.footer-column a {
+  color: #f5b700;
+  text-decoration: none;
+}
