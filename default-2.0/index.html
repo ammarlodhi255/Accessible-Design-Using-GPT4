@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!-- Navigation Bar -->
     <nav class="navbar">
-      <div class="logo">TVSeriesLogo</div>
+      <div class="logo">
+        <img src="img/movies.png" alt="TV Series Logo" class="navbar-logo" />
+        <!-- Added logo here -->
+      </div>
       <ul class="nav-links">
         <li><a href="#">Homepage</a></li>
         <li><a href="#">Trending</a></li>
@@ -19,7 +21,6 @@
         <li><a href="#">Register</a></li>
         <li><a href="#">About</a></li>
         <li class="dropdown">
-          <!-- The button text will be updated by JavaScript -->
           <a href="#" id="language-button">Language</a>
           <ul class="dropdown-content">
             <li><a href="#" class="language-option">English</a></li>
@@ -337,6 +338,8 @@
 
     <!-- Login and Registration Forms -->
     <section class="forms-section">
+      <h2>Login and Register</h2>
+      <!-- Added Heading -->
       <div class="form-container">
         <!-- Login Form -->
         <form class="login-form">
@@ -488,7 +491,7 @@
         });
 
         // Show the selected video based on the slide index and play it
-        const selectedVideo = document.getElementById(`video${slideIndex}`);
+        const selectedVideo = document.getElementById(video${slideIndex});
         selectedVideo.style.display = "block";
         selectedVideo.play();
       }
@@ -504,7 +507,7 @@
       function slideCarousel() {
         // Toggle between first 6 and next 6 items
         position = position === 0 ? -100 : 0; // Move to the left (show the next 6 items) or back to the right
-        carouselItems.style.transform = `translateX(${position}%)`;
+        carouselItems.style.transform = translateX(${position}%);
       }
 
       // Automatic sliding every 4 seconds
