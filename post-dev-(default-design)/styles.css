@@ -3,607 +3,521 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #333;
-  color: white;
+  background-color: white;
+  color: #333;
 }
 
-/* Navigation Bar */
+/* Adjust Navbar Height and Logo Size */
 .navbar {
-  background-color: #f5b700;
+  background-color: #333; /* Darker background for better contrast */
+  color: #fff;
+  padding: 20px 30px; /* More padding for a spacious navbar */
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-  box-sizing: border-box;
+  align-items: center; /* Vertical center alignment for logo and links */
+  position: relative;
+  z-index: 10;
+  border-bottom: 2px solid #f5b700; /* Add a nice separator line below the navbar */
 }
 
-.navbar .logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: white;
+/* Adjust Logo Size */
+.navbar .logo img.navbar-logo {
+  max-height: 60px; /* Increase height for better visibility */
+  width: auto;
+  margin-right: 20px;
 }
 
-.navbar .menu {
+/* Adjust Links for Better Vertical Alignment */
+.navbar .nav-links {
   list-style-type: none;
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
   margin: 0;
   padding: 0;
+  display: flex;
+  gap: 30px; /* More spacing between links */
 }
 
-.navbar .menu li {
-  position: relative;
-  display: inline-block;
-}
-
-.navbar .menu li a {
+.navbar .nav-links a {
   color: white;
   text-decoration: none;
-  font-weight: bold;
-  white-space: nowrap;
+  font-size: 1.1em; /* Increase font size for better readability */
+  font-weight: 500;
 }
 
-/* Dropdown Container */
+.navbar .nav-links a:hover {
+  color: #f5b700; /* Add hover effect to match the gold color theme */
+}
+
+/* Make Dropdown Stay Visible on Hover */
 .navbar .dropdown {
   position: relative;
 }
 
-/* Dropdown Content (Hidden by Default) */
 .navbar .dropdown-content {
-  display: none; /* Ensure it is hidden initially */
+  display: none;
   position: absolute;
-  background-color: #f5b700;
-  top: 100%; /* Align below the parent */
-  left: 0;
-  min-width: 100px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-  white-space: nowrap;
-}
-
-/* Adjust Dropdown for Right Overflow */
-.navbar .dropdown-content.right-align {
+  background-color: #333;
+  top: 100%;
   right: 0;
-  left: auto;
+  list-style: none;
+  padding: 0;
+  z-index: 30;
+  width: 150px;
 }
 
-/* Show dropdown when hovering over both the parent and dropdown content */
-.navbar .dropdown:hover .dropdown-content {
+.navbar .dropdown:hover .dropdown-content,
+.navbar .dropdown-content:hover {
   display: block;
 }
 
-/* Dropdown Items */
 .navbar .dropdown-content a {
   display: block;
   padding: 10px;
-  color: black;
+  color: white;
   text-decoration: none;
-  font-weight: normal;
-  text-align: left;
 }
 
 .navbar .dropdown-content a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Media Queries for Smaller Screens */
-@media screen and (max-width: 1024px) {
-  .navbar .menu {
-    flex-wrap: wrap; /* This allows menu items to wrap to the next line */
-    justify-content: flex-end;
-  }
-
-  .navbar .menu li {
-    margin: 0 10px; /* Reduce margin on smaller screens */
-  }
-
-  .navbar {
-    padding: 10px 15px; /* Reduce padding for the navbar on smaller screens */
-  }
+  background-color: #555;
 }
 
 /* Hero Section */
-.hero {
-  margin-top: 70px; /* Adjusted to account for the height of the fixed navigation bar */
+.hero-section {
   position: relative;
-  text-align: center;
-  height: 800px;
-  overflow: hidden;
-  padding: 0;
-  margin: 0;
-}
-
-.slider-wrapper {
-  position: relative;
-  height: 100%;
+  height: 1000px; /* Fixed height */
   width: 100%;
-  overflow: hidden;
+  background-color: #ddd;
+  z-index: 1; /* Ensure the hero section is below the navbar and dropdown */
+  overflow: hidden; /* Prevents overflow outside the section */
 }
 
-.slider {
-  display: flex;
-  transition: transform 1s ease-in-out;
-  height: 100%;
-}
-
-.slide {
+.hero-slider {
+  position: relative;
   width: 100%;
   height: 100%;
-  flex-shrink: 0;
-  position: relative;
 }
 
 .slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain; /* Fit the image completely inside the section */
+  object-position: center; /* Center the image */
+  display: block;
 }
 
-/* Play button - fixed in the center */
-.play-button {
+.centered-heading {
+  text-align: center;
+  margin: 20px 0; /* Optional margin for spacing */
+}
+
+/* Video will fill the entire hero section when visible */
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the video covers the entire section */
+  display: none; /* Initially hidden */
+}
+
+/* Slider Arrows */
+.arrow {
+  position: absolute;
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  z-index: 2; /* Ensure the arrows appear above the images */
+}
+
+.arrow.left {
+  left: 10px; /* Position on the far left, with a small gap */
+}
+
+.arrow.right {
+  right: 10px; /* Position on the far right, with a small gap */
+}
+
+/* Play Button */
+.play-btn {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 20px;
-  border-radius: 50%;
-  font-size: 24px;
-  color: #f5b700;
-  cursor: pointer;
-  z-index: 10; /* Keep the play button on top */
-}
-
-/* Title and Subtext Styling */
-.text-content {
-  position: absolute;
-  top: 65%; /* Position below the play button */
-  left: 50%;
-  transform: translate(-50%, 0); /* Center the text horizontally */
+  background-color: #f5b700;
   color: white;
-  text-align: center;
-  z-index: 10; /* Ensure text is on top */
-}
-
-.text-content h1 {
-  font-size: 48px; /* Large text for the title */
-  font-weight: bold;
-  margin-bottom: 10px; /* Space between title and subtext */
-}
-
-.text-content p {
-  font-size: 18px; /* Smaller text for the subtext */
-  line-height: 1.4; /* Line height for better readability */
-}
-
-/* Video Styling */
-.video {
-  display: none; /* Hide videos by default */
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 20; /* Ensure the video is on top */
-}
-
-/* Hide the play button and text when playing */
-.playing .play-button,
-.playing .text-content,
-.playing img {
-  display: none;
-}
-
-/* Ensure the video is visible when playing */
-.playing .video {
-  display: block;
-}
-
-/* Left arrow for manual navigation */
-.left-arrow {
-  position: absolute;
-  top: 50%;
-  left: 20px;
-  transform: translateY(-50%);
-  font-size: 36px;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 10px;
-  border-radius: 50%;
+  border: none;
+  padding: 15px 30px;
   cursor: pointer;
-  z-index: 10; /* Keep the arrow on top */
-  transition: background-color 0.3s ease;
-}
-
-.left-arrow:hover {
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.8
-  ); /* Darken the arrow background on hover */
-}
-
-/* Right arrow for manual navigation */
-.right-arrow {
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
-  font-size: 36px;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 10px;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 10; /* Keep the arrow on top */
-  transition: background-color 0.3s ease;
-}
-
-.right-arrow:hover {
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.8
-  ); /* Darken the arrow background on hover */
+  font-size: 1.5em;
+  border-radius: 50px; /* Round button */
 }
 
 /* Trending Section */
-.trending {
-  padding: 40px 20px;
-  background-color: #f5b700;
-  color: black;
-  text-align: center;
+.trending-section {
+  padding: 20px;
 }
 
-.carousel-wrapper {
+.trending-carousel {
   width: 100%;
-  overflow: hidden;
+  overflow: hidden; /* Hides items that are outside the view */
   position: relative;
 }
 
-.carousel {
+.carousel-items {
   display: flex;
-  transition: transform 1s ease-in-out;
+  width: 100%; /* Adjusted to fit 12 items in a carousel */
+  transition: transform 1s ease-in-out; /* Smooth animation for sliding */
 }
 
-.carousel-item {
-  min-width: 15.66%; /* Show 6 items at a time */
+.trending-item {
+  flex: 1 0 16.66%; /* Each item takes up 1/6th of the carousel container */
+  box-sizing: border-box;
+  text-align: center;
   padding: 10px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+  border-radius: 20px; /* Rounded corners for the container */
+  overflow: hidden; /* Ensure the image doesn't overflow the container */
+  margin: 0 auto; /* Center the container */
+  margin: 1px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow to give a soft round effect */
 }
 
-.carousel-item img {
+.trending-item img {
   width: 100%;
-  border-radius: 10px;
-  transition: transform 0.3s ease-in-out;
+  height: auto;
+  max-width: 300px; /* Medium-sized poster */
+  border-radius: 15px; /* Slightly rounded image corners to match the container */
+  transition: transform 0.3s ease; /* Smooth scaling effect on hover */
 }
 
-.carousel-item h3,
-.carousel-item p {
-  text-align: center;
-  color: black;
-  margin: 10px 0; /* Ensure the text remains below the image */
-  position: relative;
-  z-index: 2; /* Ensure text stays above the image */
+.trending-item h3 {
+  font-size: 1.2em;
+  margin-top: 10px;
+  transition: color 0.3s ease; /* Smooth text color transition on hover */
 }
 
-/* Hover Effect */
-.carousel-item:hover {
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+/* Fancy Hover Effect */
+.trending-item:hover {
+  transform: scale(1); /* Slightly enlarge the item on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More prominent shadow on hover */
 }
 
-.carousel-item:hover img {
-  transform: scale(1.05); /* Scale up the image */
-  z-index: 1; /* Ensure the image stays behind the text */
+.trending-item:hover img {
+  transform: scale(1.05); /* Scale the image slightly more on hover */
 }
 
-.carousel-item:hover h3,
-.carousel-item:hover p {
-  color: #000000; /* Change text color */
-}
-
-/* Smooth Transition Effects */
-@keyframes swipe-carousel {
-  0%,
-  20% {
-    transform: translateX(0);
-  }
-  40%,
-  60% {
-    transform: translateX(-100%);
-  }
-  80%,
-  100% {
-    transform: translateX(0);
-  }
+.trending-item:hover h3 {
+  color: #f5b700; /* Change text color to match your dark yellow theme on hover */
 }
 
 /* Most Watched Section */
-.most-watched {
-  padding: 40px 20px;
-  text-align: center;
+.most-watched-section {
+  padding: 20px;
 }
 
-.movie-grid {
+.grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
   gap: 20px;
 }
 
-.movie-item {
-  position: relative;
+.grid-item {
   text-align: center;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border-radius: 20px; /* Make the entire container rounded */
+  overflow: hidden; /* Ensure content stays within the rounded border */
+  padding: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+  background-color: #fff; /* Optional: Add background color for better visibility */
 }
 
-.movie-item img {
-  width: 80%;
-  border-radius: 10px;
-  transition: transform 0.3s ease-in-out;
+.grid-item:hover {
+  transform: scale(1.01); /* Slightly increase the size on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a shadow on hover */
 }
 
-.movie-item h3 {
+.grid-item img {
+  width: 100%;
+  height: auto;
+  max-width: 500px; /* Medium-sized image */
+  border-radius: 15px; /* Rounded corners for the images */
+  transition: transform 0.3s ease; /* Smooth image scaling effect */
+}
+
+.grid-item:hover img {
+  transform: scale(1.02); /* Slightly scale the image on hover */
+}
+
+.grid-item h3 {
+  font-size: 1.2em;
   margin-top: 10px;
-  transition: color 0.3s ease-in-out;
-  color: black; /* Ensure the movie title is visible */
-}
-
-/* Hover Effect */
-.movie-item:hover {
-  transform: scale(1.01); /* Scale up the entire movie item on hover */
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
-}
-
-.movie-item:hover img {
-  transform: scale(1.02); /* Scale up the image slightly more on hover */
-}
-
-.movie-item:hover h3 {
-  color: #f5b700; /* Change the movie title color on hover */
+  text-align: center;
 }
 
 /* Subscription Plans */
-.plans {
-  padding: 40px 20px;
-  background-color: white;
-  color: black;
-  text-align: center;
+.subscription-plans {
+  padding: 20px;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 20px 0;
 }
 
 table th,
 table td {
-  padding: 10px;
   border: 1px solid #ddd;
-}
-
-/* FAQ Section */
-.faq {
-  padding: 40px 20px;
+  padding: 10px;
   text-align: center;
 }
 
-.faq-item {
-  margin-bottom: 20px;
+/* FAQ Section */
+.faq-section {
+  padding: 20px;
 }
 
-.faq-question {
-  background-color: white;
-  color: #f5b700;
-  padding: 10px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  font-size: 18px;
+.faq-item h3 {
   cursor: pointer;
-  outline: none;
-  transition: background-color 0.3s ease;
 }
 
-.faq-question:hover {
-  background-color: #f5b700;
-  color: white;
+.faq-item .answer {
+  display: none;
 }
 
-.faq-answer {
-  background-color: #f5b700;
-  color: black;
-  padding: 10px;
-  display: none; /* Hidden by default */
-  text-align: left;
-  font-size: 16px;
-}
-
-.faq-item.active .faq-answer {
-  display: block; /* Show when active */
-}
-
-.faq-item.active .faq-question {
-  background-color: #f5b700;
-  color: white;
+.faq-item h3:hover + .answer {
+  display: block;
 }
 
 /* Forms Section */
-.forms {
-  display: flex;
-  justify-content: center; /* Center the forms horizontally */
-  align-items: center; /* Center the forms vertically */
-  height: 50vh; /* Full viewport height to center vertically */
+/* Ensure enough space between sections */
+.forms-section {
+  padding: 40px;
+  text-align: center;
+  margin-bottom: 100px; /* Add space between the form and footer */
+}
+
+.forms-section h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
 }
 
 .form-container {
   display: flex;
-  justify-content: space-between; /* Space between login and register forms */
-  width: 80%; /* Reduce the width of the form container */
-  max-width: 900px; /* Limit the maximum width of the container */
+  justify-content: center; /* Center the forms horizontally */
+  align-items: flex-start; /* Align forms to the top */
+  gap: 50px; /* Add spacing between the forms */
+  margin: 0 auto; /* Center the form container itself */
 }
 
-form {
-  background-color: white;
+.login-form,
+.register-form {
+  background-color: #f9f9f9;
   padding: 20px;
-  border-radius: 10px;
+  width: 400px; /* Increased the width to make forms wider */
+  box-sizing: border-box;
+  border-radius: 10px; /* Rounded corners for the forms */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.login-form input,
+.register-form input {
   width: 100%;
-  max-width: 400px; /* Ensure each form does not exceed a reasonable width */
-  box-sizing: border-box; /* Ensure padding doesn't affect width */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
-}
-
-form input[type="text"],
-form input[type="email"],
-form input[type="password"] {
-  width: 100%; /* Ensure input fields take full width of form */
   padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
+  margin-bottom: 10px;
   border-radius: 5px;
-  box-sizing: border-box; /* Include padding within width */
+  border: 1px solid #ccc;
 }
 
-form button {
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px; /* Gap between checkbox and text */
+  margin-bottom: 15px; /* Space between each checkbox-row */
+}
+
+.checkbox input[type="checkbox"] {
+  margin-right: 10px; /* Space between checkbox and label */
+}
+
+.checkbox label {
+  flex-grow: 1; /* Make the label take up remaining space */
+  text-align: left; /* Align label text to the left */
+}
+
+.info-icon {
+  margin-left: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #555;
+  font-size: 1.2em;
+}
+
+.info-icon:hover {
+  color: #f5b700;
+}
+
+/* Optional: Adjust the size of checkboxes for better alignment */
+.checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+
+.btn {
   background-color: #f5b700;
   color: white;
   padding: 10px 20px;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
-  width: 100%; /* Make button full width */
-  font-size: 16px;
-  box-sizing: border-box;
-}
-
-form label {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-}
-
-form input[type="checkbox"] {
-  margin-right: 10px;
-}
-/* Info Icon Styling */
-.info-icon {
-  font-size: 14px;
-  color: #f5b700;
-  cursor: pointer;
-  margin-left: 5px;
-  text-decoration: underline;
+  border-radius: 25px; /* Round border */
+  font-size: 1em;
+  width: 100%; /* Full width button */
+  max-width: 300px; /* Add max width to prevent button from stretching too far */
 }
 
 /* Modal Styling */
 .modal {
   display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 999; /* Sit on top */
+  position: fixed;
+  z-index: 100; /* Sit on top */
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  background-color: rgba(0, 0, 0, 0.8); /* Black background with opacity */
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.3s ease;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+  overflow: auto; /* Enable scroll if needed */
 }
 
-/* Modal Content Styling */
 .modal-content {
-  background-color: white;
+  background-color: #fff;
+  margin: 15% auto; /* Center vertically and horizontally */
   padding: 20px;
+  border: 1px solid #888;
+  width: 50%; /* 50% of the viewport width */
   border-radius: 10px;
-  width: 60%;
-  max-width: 500px;
-  text-align: center;
-  position: relative;
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
-  animation: slide-down 0.5s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Fancy shadow */
+  animation: slideIn 0.3s ease-out; /* Animation */
 }
 
 /* Close Button */
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 20px;
-  color: #333;
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
   cursor: pointer;
 }
 
-@keyframes slide-down {
+/* Info Icon Styling */
+.info-icon {
+  margin-left: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #555;
+  font-size: 1.2em;
+}
+
+.info-icon:hover {
+  color: #f5b700; /* Highlight color on hover */
+}
+
+/* Modal Slide-in Animation */
+@keyframes slideIn {
   from {
+    transform: translateY(-20%);
     opacity: 0;
-    transform: translateY(-50px);
   }
   to {
-    opacity: 1;
     transform: translateY(0);
+    opacity: 1;
   }
 }
 
-/* Footer Section */
-.footer {
-  background-color: #222;
+/* Info Icon Styling */
+.info-icon {
+  margin-left: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #555;
+  font-size: 1.2em;
+}
+
+.info-icon:hover {
+  color: #f5b700; /* Highlight color on hover */
+}
+
+/* Footer Styles */
+footer {
+  background-color: #000;
   color: white;
-  padding: 50px 20px;
+  padding: 40px 20px;
+  position: relative;
+  width: 100%;
 }
 
 .footer-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-  gap: 20px; /* Add spacing between sections */
+  justify-content: space-between; /* Ensure sections are spaced evenly */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 20px; /* Add space between sections */
 }
 
-.footer h2 {
-  font-size: 24px;
-  margin-bottom: 15px;
+.footer-container > div {
+  flex: 1; /* Allow each section to grow equally */
+  min-width: 200px; /* Ensure minimum width for each section */
+  max-width: 300px; /* Set maximum width to prevent large sections */
 }
 
-.footer p {
-  margin-bottom: 10px;
-  font-size: 16px;
+.footer-about,
+.footer-quick-links,
+.footer-newsletter,
+.footer-social,
+.footer-app,
+.footer-payment {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between content inside sections */
 }
 
-/* About Us Section */
-.footer-about {
-  flex: 1;
-  min-width: 220px;
-  max-width: 250px; /* Ensure consistent sizing */
-  margin-bottom: 30px;
-}
-
-.footer-about button.contact-button {
+.footer-about button {
+  align-self: flex-start; /* Align button to the left */
   background-color: #f5b700;
-  color: black;
-  padding: 10px 20px;
+  color: white;
   border: none;
-  border-radius: 5px;
+  padding: 10px 20px;
   cursor: pointer;
+  border-radius: 20px;
+  white-space: nowrap; /* Prevent text wrapping inside the button */
 }
 
-/* Quick Links Section */
-.footer-quick-links {
-  flex: 1;
-  min-width: 180px;
-  max-width: 250px;
-  margin-bottom: 30px;
+.footer-newsletter input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+.footer-newsletter .btn {
+  padding: 10px 20px;
+  background-color: #f5b700;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  white-space: nowrap; /* Prevent text wrapping inside the button */
+  width: auto;
+}
+
+.footer-app img,
+.footer-payment img {
+  width: 40px;
+  margin: 5px;
 }
 
 .footer-quick-links ul {
@@ -612,106 +526,189 @@ form input[type="checkbox"] {
 }
 
 .footer-quick-links ul li {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .footer-quick-links ul li a {
-  color: white;
+  color: #f5b700;
   text-decoration: none;
-  font-size: 16px;
 }
 
 .footer-quick-links ul li a:hover {
+  text-decoration: underline;
+}
+
+.footer-social a {
   color: #f5b700;
-}
-
-/* Newsletter Section */
-.footer-newsletter {
-  flex: 2; /* Make this section slightly larger to fit the input box */
-  min-width: 260px;
-  margin-bottom: 30px;
-}
-
-.newsletter-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.newsletter-form input[type="email"] {
-  padding: 10px;
+  text-decoration: none;
   margin-bottom: 10px;
-  border: none;
-  border-radius: 5px;
-  width: 100%;
 }
 
-.newsletter-form button {
-  background-color: #f5b700;
-  color: black;
-  padding: 10px;
+.footer-social a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Footer - Stack on small screens */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center; /* Center sections on small screens */
+  }
+
+  .footer-container > div {
+    max-width: 100%; /* Allow full width on smaller screens */
+  }
+
+  .footer-about button {
+    align-self: center; /* Center button on small screens */
+  }
+}
+
+/* Buttons */
+.btn {
+  background-color: #f5b700; /* Dark yellow color */
+  color: white;
+  padding: 10px 20px;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
+  border-radius: 25px; /* Round border */
+  font-size: 1em;
 }
 
-/* Social Media Section */
-.footer-social-media {
-  flex: 1;
-  min-width: 220px;
-  max-width: 250px;
-  margin-bottom: 30px;
+/* Centered Headings for Sections */
+.trending-section h2,
+.most-watched-section h2,
+.subscription-plans h2,
+.faq-section h2,
+.forms-section h2 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
 }
 
-.footer-social-media .social-links {
+/* Trending Section */
+.trending-section {
+  padding: 20px;
+}
+
+.trending-carousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-items {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  width: 100%;
+  transition: transform 1s ease-in-out;
 }
 
-.footer-social-media .social-links a {
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
+/* Most Watched Section */
+.most-watched-section {
+  padding: 20px;
 }
 
-.footer-social-media .social-links a:hover {
-  color: #f5b700;
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
-/* App Links Section */
-.footer-app-links {
-  flex: 1;
-  min-width: 220px;
-  max-width: 250px;
+/* Add a subtle box-shadow or border for separation between sections */
+section:not(.hero-section) {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05); /* Subtle shadow to lift sections */
+  border-radius: 10px; /* Rounded corners for sections */
+  margin: 40px 0; /* Separate sections with margin */
+  padding: 60px 20px; /* More padding for sections to create space */
+  margin-bottom: 40px; /* Space between sections */
+  background-color: white; /* Default background for sections */
+}
+
+/* Optional: Alternating Background Colors for Better Separation */
+.trending-section {
+  background-color: #f9f9f9; /* Light grey for separation */
+}
+
+.most-watched-section {
+  background-color: #ffffff; /* Back to white */
+}
+
+.subscription-plans {
+  background-color: #f9f9f9; /* Alternating background */
+}
+
+.faq-section {
+  background-color: #ffffff; /* Back to white */
+}
+
+.forms-section {
+  background-color: #f9f9f9; /* Alternating background */
+}
+
+/* Divider Line Option: To add a line between sections */
+section:not(:first-of-type) {
+  border-top: 1px solid rgba(0, 0, 0, 0.1); /* Thin top border to separate sections */
+  padding-top: 40px; /* Space after the border */
+}
+
+/* Additional Styling for Headings */
+h2 {
+  font-size: 2.5em;
   margin-bottom: 30px;
+  text-align: center;
+  color: #f5b700; /* Gold color */
+  position: relative;
 }
 
-.footer-app-links .app-links a {
+/* Optional: Add a subtle underline below the heading */
+h2::after {
+  content: "";
   display: block;
-  color: white;
-  text-decoration: none;
-  margin-bottom: 10px;
-  font-size: 16px;
+  width: 80px;
+  height: 3px;
+  background-color: #f5b700; /* Match the brand color */
+  margin: 10px auto;
 }
 
-.footer-app-links .app-links a:hover {
-  color: #f5b700;
+/* To maintain the hover effect for grid items in Trending and Most Watched */
+.grid-item,
+.trending-item {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for the grid items */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Payment Methods Section */
-.footer-payment-methods {
-  flex: 1;
-  min-width: 220px;
-  max-width: 250px;
+/* Keep the hover effect smooth and light */
+.grid-item:hover,
+.trending-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.forms-section h2 {
+  font-size: 2.5em;
   margin-bottom: 30px;
+  text-align: center;
+  color: #f5b700; /* Gold color for consistency */
+  position: relative;
 }
 
-.payment-icons {
-  display: flex;
-  gap: 10px;
+/* Optional: Add the subtle underline to match other headings */
+.forms-section h2::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  background-color: #f5b700;
+  margin: 10px auto;
 }
 
-.payment-icons img {
-  width: 50px;
-  height: auto;
+/* Divider Between Sections */
+.section-divider {
+  background: url("wave-divider.svg") no-repeat center top;
+  background-size: cover;
+  height: 100px;
+  margin-bottom: -50px;
 }

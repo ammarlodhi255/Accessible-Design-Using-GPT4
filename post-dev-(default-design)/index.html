@@ -7,10 +7,12 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!-- Navigation Bar -->
     <nav class="navbar">
-      <div class="logo">TV Series Logo</div>
-      <ul class="menu">
+      <div class="logo">
+        <img src="img/movies.png" alt="TV Series Logo" class="navbar-logo" />
+        <!-- Added logo here -->
+      </div>
+      <ul class="nav-links">
         <li><a href="#">Homepage</a></li>
         <li><a href="#">Trending</a></li>
         <li><a href="#">Most Watched</a></li>
@@ -19,645 +21,549 @@
         <li><a href="#">Register</a></li>
         <li><a href="#">About</a></li>
         <li class="dropdown">
-          <a href="#" id="language-menu">Language</a>
-          <div class="dropdown-content">
-            <a href="#" class="language-option" data-lang="English">English</a>
-            <a href="#" class="language-option" data-lang="Norwegian"
-              >Norwegian</a
-            >
-            <a href="#" class="language-option" data-lang="Hindi">Hindi</a>
-          </div>
+          <a href="#" id="language-button">Language</a>
+          <ul class="dropdown-content">
+            <li><a href="#" class="language-option">English</a></li>
+            <li><a href="#" class="language-option">Norwegian</a></li>
+            <li><a href="#" class="language-option">Hindi</a></li>
+          </ul>
         </li>
       </ul>
     </nav>
 
-    <!-- Hero Section with Manual Slider and Left/Right Arrows -->
-    <section class="hero">
-      <div class="slider-wrapper">
-        <div class="slider">
+    <!-- Main content starts here -->
+    <main id="main-content">
+      <!-- Add the level one heading here -->
+      <h1 class="centered-heading">Welcome to TV Series Hub</h1>
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="hero-slider">
           <!-- Slide 1 -->
-          <div class="slide">
+          <div class="slide" id="slide1">
             <img src="img/blade.jpg" alt="Featured Series 1" />
-            <!-- Main Title and Subtext for Slide 1 -->
-            <div class="text-content">
-              <h1>Blade Runner 2049</h1>
-              <p>
-                “You’ve done fine without one”<br />“What’s that?”<br />“A soul”
-              </p>
-            </div>
-            <!-- Video for Slide 1 -->
-            <video
-              id="video1"
-              class="video"
-              src="img/video.mp4"
-              controls
-            ></video>
+            <button class="play-btn" onclick="playVideo(1)">Play</button>
           </div>
+          <video id="video1" class="hero-video" controls style="display: none">
+            <source src="img/video.mp4" type="video/mp4" />
+            <!-- Provide path to video 1 -->
+            Your browser does not support the video tag.
+          </video>
 
           <!-- Slide 2 -->
-          <div class="slide">
+          <div class="slide" id="slide2">
             <img src="img/clique.avif" alt="Featured Series 2" />
-            <!-- Placeholder Title and Subtext for Slide 2 -->
-            <div class="text-content">
-              <h1>Sample Title for Series 2</h1>
-              <p>Placeholder text for quote or description</p>
-            </div>
-            <!-- Video for Slide 2 -->
-            <video
-              id="video2"
-              class="video"
-              src="videos/clique.mp4"
-              controls
-            ></video>
+            <button class="play-btn" onclick="playVideo(2)">Play</button>
           </div>
+          <video id="video2" class="hero-video" controls style="display: none">
+            <source src="videos/video2.mp4" type="video/mp4" />
+            <!-- Provide path to video 2 -->
+            Your browser does not support the video tag.
+          </video>
 
           <!-- Slide 3 -->
-          <div class="slide">
+          <div class="slide" id="slide3">
             <img src="img/endeavor.avif" alt="Featured Series 3" />
-            <!-- Placeholder Title and Subtext for Slide 3 -->
-            <div class="text-content">
-              <h1>Sample Title for Series 3</h1>
-              <p>Placeholder text for quote or description</p>
+            <button class="play-btn" onclick="playVideo(3)">Play</button>
+          </div>
+          <video id="video3" class="hero-video" controls style="display: none">
+            <source src="videos/video3.mp4" type="video/mp4" />
+            <!-- Provide path to video 3 -->
+            Your browser does not support the video tag.
+          </video>
+
+          <!-- Arrow buttons for navigating slides -->
+          <button class="arrow left" onclick="prevSlide()">&#10094;</button>
+          <button class="arrow right" onclick="nextSlide()">&#10095;</button>
+        </div>
+      </section>
+
+      <!-- Trending TV Series Section -->
+      <section class="trending-section">
+        <h2>Trending TV Series</h2>
+        <div class="trending-carousel">
+          <div class="carousel-items">
+            <!-- 12 Trending Series Items with specified image paths -->
+            <div class="trending-item">
+              <img src="img/baptiste.avif" alt="Baptiste" />
+              <h3>Baptiste</h3>
             </div>
-            <!-- Video for Slide 3 -->
-            <video
-              id="video3"
-              class="video"
-              src="videos/endeavor.mp4"
-              controls
-            ></video>
+            <div class="trending-item">
+              <img src="img/clique.avif" alt="Clique" />
+              <h3>Clique</h3>
+            </div>
+            <div class="trending-item">
+              <img src="img/endeavor.avif" alt="Endeavor" />
+              <h3>Endeavor</h3>
+            </div>
+            <div class="trending-item">
+              <img src="img/ragdoll.avif" alt="Ragdoll" />
+              <h3>Ragdoll</h3>
+            </div>
+            <div class="trending-item">
+              <img src="img/unforgotten.avif" alt="Unforgotten" />
+              <h3>Unforgotten</h3>
+            </div>
+            <div class="trending-item">
+              <img src="img/investigation.avif" alt="The Investigation" />
+              <h3>The Investigation</h3>
+            </div>
+            <div class="trending-item">
+              <img src="img/annika.jpeg" alt="Annika" />
+              <h3>Annika</h3>
+            </div>
+            <div class="trending-item">
+              <img src="img/long-call.jpeg" alt="The Long Call" />
+              <h3>The Long Call</h3>
+            </div>
+            <div class="trending-item">
+              <img src="img/unforgiven.jpeg" alt="Unforgiven" />
+              <h3>Unforgiven</h3>
+            </div>
+            <div class="trending-item">
+              <img src="img/shetland.jpeg" alt="Shetland" />
+              <h3>Shetland</h3>
+            </div>
+            <div class="trending-item">
+              <img src="img/ridley.jpeg" alt="Ridley" />
+              <h3>Ridley</h3>
+            </div>
+            <div class="trending-item">
+              <img src="img/karen.jpeg" alt="Karen" />
+              <h3>Karen</h3>
+            </div>
           </div>
         </div>
+      </section>
 
-        <!-- Play button fixed in the center -->
-        <div class="play-button" id="play-button">Play</div>
-
-        <!-- Left arrow for manual navigation -->
-        <div class="left-arrow">&#10094;</div>
-
-        <!-- Right arrow for manual navigation -->
-        <div class="right-arrow">&#10095;</div>
-      </div>
-    </section>
-
-    <!-- Trending TV Series Section -->
-    <section class="trending">
-      <h2>Trending TV Series</h2>
-      <div class="carousel-wrapper">
-        <div class="carousel">
-          <div class="carousel-item">
-            <img src="img/baptiste.avif" alt="Series 1" />
-            <h3>Series 1</h3>
-            <p>Brief description of Series 1.</p>
+      <!-- Most Watched Section -->
+      <section class="most-watched-section">
+        <h2>Most Watched</h2>
+        <div class="grid-container">
+          <div class="grid-item">
+            <img src="img/river.jpeg" alt="River" />
+            <h3>River</h3>
           </div>
-          <div class="carousel-item">
-            <img src="img/clique.avif" alt="Series 2" />
-            <h3>Series 2</h3>
-            <p>Brief description of Series 2.</p>
+          <div class="grid-item">
+            <img src="img/sherwood.jpeg" alt="Sherwood" />
+            <h3>Sherwood</h3>
           </div>
-          <div class="carousel-item">
-            <img src="img/endeavor.avif" alt="Series 3" />
-            <h3>Series 3</h3>
-            <p>Brief description of Series 3.</p>
+          <div class="grid-item">
+            <img src="img/valk.jpeg" alt="Valkyrien" />
+            <h3>Valkyrien</h3>
           </div>
-          <div class="carousel-item">
-            <img src="img/ragdoll.avif" alt="Series 4" />
-            <h3>Series 4</h3>
-            <p>Brief description of Series 4.</p>
+          <div class="grid-item">
+            <img src="img/murders.jpeg" alt="Murders" />
+            <h3>Murders</h3>
           </div>
-          <div class="carousel-item">
-            <img src="img/unforgotten.avif" alt="Series 5" />
-            <h3>Series 5</h3>
-            <p>Brief description of Series 5.</p>
+          <div class="grid-item">
+            <img src="img/marcella.jpeg" alt="Marcella" />
+            <h3>Marcella</h3>
           </div>
-          <div class="carousel-item">
-            <img src="img/investigation.avif" alt="Series 6" />
-            <h3>Series 6</h3>
-            <p>Brief description of Series 6.</p>
+          <div class="grid-item">
+            <img src="img/bancroft.jpeg" alt="Bancroft" />
+            <h3>Bancroft</h3>
           </div>
-          <div class="carousel-item">
-            <img src="img/annika.jpeg" alt="Series 7" />
-            <h3>Series 7</h3>
-            <p>Brief description of Series 7.</p>
+          <div class="grid-item">
+            <img src="img/valley.jpeg" alt="The Valley" />
+            <h3>The Valley</h3>
           </div>
-          <div class="carousel-item">
-            <img src="img/long-call.jpeg" alt="Series 8" />
-            <h3>Series 8</h3>
-            <p>Brief description of Series 8.</p>
+          <div class="grid-item">
+            <img src="img/crime.jpeg" alt="Crime" />
+            <h3>Crime</h3>
           </div>
-          <div class="carousel-item">
-            <img src="img/unforgiven.jpeg" alt="Series 9" />
-            <h3>Series 9</h3>
-            <p>Brief description of Series 9.</p>
-          </div>
-          <div class="carousel-item">
-            <img src="img/shetland.jpeg" alt="Series 10" />
-            <h3>Series 10</h3>
-            <p>Brief description of Series 10.</p>
-          </div>
-          <div class="carousel-item">
-            <img src="img/ridley.jpeg" alt="Series 11" />
-            <h3>Series 11</h3>
-            <p>Brief description of Series 11.</p>
-          </div>
-          <div class="carousel-item">
-            <img src="img/karen.jpeg" alt="Series 12" />
-            <h3>Series 12</h3>
-            <p>Brief description of Series 12.</p>
+          <div class="grid-item">
+            <img src="img/harbour.jpeg" alt="Safe Harbour" />
+            <h3>Safe Harbour</h3>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Most Watched Section -->
-    <section class="most-watched">
-      <h2>Most Watched</h2>
-      <div class="movie-grid">
+      <!-- Subscription Plans -->
+      <section class="subscription-plans">
+        <h2>Subscription Plans</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Plan</th>
+              <th>Devices</th>
+              <th>Video Quality</th>
+              <th>Exclusive Content</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Free</td>
+              <td>1</td>
+              <td>720p</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>Plus</td>
+              <td>2</td>
+              <td>1080p</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>Pro</td>
+              <td>4</td>
+              <td>4K</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Family</td>
+              <td>6</td>
+              <td>4K HDR</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Premium</td>
+              <td>Unlimited</td>
+              <td>8K</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Basic</td>
+              <td>1</td>
+              <td>480p</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>Student</td>
+              <td>1</td>
+              <td>1080p</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Enterprise</td>
+              <td>Unlimited</td>
+              <td>4K HDR</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Gold</td>
+              <td>5</td>
+              <td>4K HDR</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Family Plus</td>
+              <td>8</td>
+              <td>4K HDR</td>
+              <td>Yes</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
 
-        <div class="movie-item">
-            <img src="img/river.jpeg" alt="Movie 1" />
-            <h3>Movie 1</h3>
-          </div>
-          <div class="movie-item">
-            <img src="img/sherwood.jpeg" alt="Movie 2" />
-            <h3>Movie 2</h3>
-          </div>
-          <div class="movie-item">
-            <img src="img/valk.jpeg" alt="Movie 2" />
-            <h3>Movie 2</h3>
-          </div>
-        <div class="movie-item">
-          <img src="img/murders.jpeg" alt="Movie 1" />
-          <h3>Movie 1</h3>
-        </div>
-        
-        <div class="movie-item">
-          <img src="img/marcella.jpeg" alt="Movie 2" />
-          <h3>Movie 2</h3>
-        </div>
-        <div class="movie-item">
-            <img src="img/bancroft.jpeg" alt="Movie 2" />
-            <h3>Movie 2</h3>
-          </div>
-        
-        <div class="movie-item">
-          <img src="img/valley.jpeg" alt="Movie 1" />
-          <h3>Movie 1</h3>
-        </div>
-        <div class="movie-item">
-          <img src="img/crime.jpeg" alt="Movie 2" />
-          <h3>Movie 2</h3>
-        </div>
-        <div class="movie-item">
-          <img src="img/harbour.jpeg" alt="Movie 2" />
-          <h3>Movie 2</h3>
-        </div>
-      </div>
-    </section>
+      <!-- FAQ Section -->
+      <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
 
-    <!-- Subscription Plans Section -->
-    <section class="plans">
-      <h2>Subscription Plans</h2>
-      <table>
-        <tr>
-          <th>Plan</th>
-          <th>Devices</th>
-          <th>Quality</th>
-          <th>Exclusive Content</th>
-        </tr>
-        <tr>
-          <td>Free</td>
-          <td>1</td>
-          <td>SD</td>
-          <td>No</td>
-        </tr>
-        <tr>
-          <td>Plus</td>
-          <td>2</td>
-          <td>HD</td>
-          <td>Yes</td>
-        </tr>
-        <tr>
-          <td>Pro</td>
-          <td>4</td>
-          <td>4K</td>
-          <td>Yes</td>
-        </tr>
-      </table>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq">
-      <h2>Frequently Asked Questions</h2>
-
-      <div class="faq-item">
-        <button class="faq-question">
-          What payment methods do you accept?
-        </button>
-        <div class="faq-answer">
-          <p>
-            We accept all major credit cards, PayPal, and other digital payment
-            methods.
+        <div class="faq-item">
+          <h3>What is the cancellation policy?</h3>
+          <p class="answer">
+            You can cancel anytime through your account settings without any
+            penalties.
           </p>
         </div>
-      </div>
 
-      <div class="faq-item">
-        <button class="faq-question">
-          Can I download content to watch offline?
-        </button>
-        <div class="faq-answer">
-          <p>
-            Yes, you can download select content to watch offline on your mobile
-            devices.
+        <div class="faq-item">
+          <h3>How can I upgrade my plan?</h3>
+          <p class="answer">
+            To upgrade, go to your account settings, select "Subscription," and
+            choose the plan you'd like to upgrade to.
           </p>
         </div>
-      </div>
 
-      <div class="faq-item">
-        <button class="faq-question">How many users can use my account?</button>
-        <div class="faq-answer">
-          <p>
-            You can create up to 5 user profiles under a single account, each
-            with personalized recommendations.
+        <div class="faq-item">
+          <h3>What payment methods are accepted?</h3>
+          <p class="answer">
+            We accept Visa, MasterCard, PayPal, American Express, and Bitcoin
+            for payments.
           </p>
         </div>
-      </div>
 
-      <div class="faq-item">
-        <button class="faq-question">What is your refund policy?</button>
-        <div class="faq-answer">
-          <p>
-            We offer a 30-day refund period from the time of your subscription
-            purchase.
+        <div class="faq-item">
+          <h3>Can I download content to watch offline?</h3>
+          <p class="answer">
+            Yes, our Plus and Pro plans allow you to download content to watch
+            offline on your devices.
           </p>
         </div>
-      </div>
 
-      <div class="faq-item">
-        <button class="faq-question">
-          How do I update my account information?
-        </button>
-        <div class="faq-answer">
-          <p>
-            You can update your account information by navigating to the
-            ‘Account Settings’ tab on your profile.
+        <div class="faq-item">
+          <h3>How do I reset my password?</h3>
+          <p class="answer">
+            To reset your password, click on "Forgot Password" on the login
+            page, and follow the instructions sent to your email.
           </p>
         </div>
-      </div>
-    </section>
 
-    <!-- Login and Registration Forms -->
-    <section class="forms">
-      <div class="form-container">
-        <div class="login-form">
-          <h2>Login</h2>
-          <form>
+        <div class="faq-item">
+          <h3>Is there a free trial available?</h3>
+          <p class="answer">
+            Yes, we offer a 7-day free trial on all of our paid subscription
+            plans.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Can I share my account with family members?</h3>
+          <p class="answer">
+            Yes, certain plans like Family and Family Plus allow account sharing
+            across multiple devices.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What is the refund policy?</h3>
+          <p class="answer">
+            We offer a full refund if you cancel within the first 14 days of
+            your subscription, no questions asked.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>How can I contact customer support?</h3>
+          <p class="answer">
+            You can reach our customer support team via email at
+            support@tvseries.com or through the live chat option on our website.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Are there parental controls available?</h3>
+          <p class="answer">
+            Yes, we offer customizable parental controls that allow you to
+            restrict content based on ratings or categories.
+          </p>
+        </div>
+      </section>
+
+      <!-- Login and Registration Forms -->
+      <section class="forms-section">
+        <h2>Login and Register</h2>
+        <!-- Added Heading -->
+        <div class="form-container">
+          <!-- Login Form -->
+          <form class="login-form">
+            <h2>Login</h2>
             <input type="text" placeholder="Username" required />
             <input type="password" placeholder="Password" required />
-            <button type="submit">Login</button>
+            <button type="submit" class="btn">Login</button>
           </form>
-        </div>
 
-        <div class="registration-form">
-          <h2>Register</h2>
-          <form>
+          <!-- Registration Form -->
+          <form class="register-form">
+            <h2>Register</h2>
             <input type="text" placeholder="First Name" required />
             <input type="text" placeholder="Last Name" required />
             <input type="email" placeholder="Email" required />
             <input type="password" placeholder="Password" required />
+            <!-- Terms & Services Checkbox -->
+            <div class="checkbox">
+              <input type="checkbox" id="terms" />
+              <label for="terms">Agree to Terms & Services</label>
+              <span class="info-icon" onclick="openModal('termsModal')">?</span>
+            </div>
 
-            <!-- Checkbox for Terms and Conditions -->
-            <label>
-              <input type="checkbox" required />
-              I agree to the
-              <a href="#" id="terms-link">terms and conditions</a>
-              <span class="info-icon" id="terms-info">?</span>
-            </label>
-
-            <!-- Checkbox for Newsletter Subscription -->
-            <label>
-              <input type="checkbox" />
-              Sign up for the newsletter
-              <span class="info-icon" id="newsletter-info">?</span>
-            </label>
-
-            <button type="submit">Register</button>
+            <!-- Newsletter Checkbox -->
+            <div class="checkbox">
+              <input type="checkbox" id="newsletter" />
+              <label for="newsletter">Subscribe to newsletter</label>
+              <span class="info-icon" onclick="openModal('newsletterModal')"
+                >?</span
+              >
+            </div>
+            <button type="submit" class="btn">Register</button>
           </form>
         </div>
-      </div>
+      </section>
 
-      <!-- Modal for Terms and Conditions -->
-      <div id="terms-modal" class="modal">
+      <!-- Terms & Conditions Modal -->
+      <div id="termsModal" class="modal">
         <div class="modal-content">
-          <span class="close-btn" id="close-terms">&times;</span>
-          <h2>Terms and Conditions</h2>
+          <span class="close" onclick="closeModal('termsModal')">&times;</span>
+          <h2>Terms & Services</h2>
           <p>
-            By registering, you agree to the following terms and conditions:
-          </p>
-          <ul>
-            <li>You must be at least 18 years old to create an account.</li>
-            <li>
-              You are responsible for maintaining the confidentiality of your
-              login credentials.
-            </li>
-            <li>
-              Our services are provided on a subscription basis, and you agree
-              to pay the subscription fee unless canceled.
-            </li>
-            <li>
-              Downloading or sharing content without permission is strictly
-              prohibited.
-            </li>
-            <li>
-              We reserve the right to modify or discontinue the service at any
-              time.
-            </li>
-            <li>For any questions, please contact our support team.</li>
-          </ul>
-          <p>
-            Make sure to review the full terms and conditions for more detailed
-            information.
+            Here are the terms and services. By checking this box, you agree to
+            abide by them.
           </p>
         </div>
       </div>
 
-      <!-- Modal for Newsletter Information -->
-      <div id="newsletter-modal" class="modal">
+      <!-- Newsletter Modal -->
+      <div id="newsletterModal" class="modal">
         <div class="modal-content">
-          <span class="close-btn" id="close-newsletter">&times;</span>
-          <h2>Newsletter Information</h2>
-          <p>By signing up for our newsletter, you will receive:</p>
-          <ul>
-            <li>Exclusive updates on upcoming shows and new releases.</li>
-            <li>
-              Special discounts and offers only available to newsletter
-              subscribers.
-            </li>
-            <li>Personalized recommendations based on your viewing habits.</li>
-            <li>Access to early-bird content and behind-the-scenes videos.</li>
-          </ul>
+          <span class="close" onclick="closeModal('newsletterModal')"
+            >&times;</span
+          >
+          <h2>Subscribe to Newsletter</h2>
           <p>
-            You can unsubscribe at any time by clicking the "unsubscribe" link
-            in any of our emails. We respect your privacy, and your information
-            will not be shared with third parties.
+            Sign up for our newsletter to receive updates, news, and promotions
+            directly in your inbox.
           </p>
         </div>
       </div>
-    </section>
+    </main>
 
-    <!-- Footer Section -->
-    <footer class="footer">
+    <!-- Footer -->
+    <footer>
       <div class="footer-container">
         <!-- About Us Section -->
         <div class="footer-about">
-          <h2>About Us</h2>
           <p>
-            We provide access to the latest TV series, movies, and exclusive
-            content. Stream your favorite shows anytime, anywhere with our
-            easy-to-use platform.
+            About TVSeries: Stream your favorite shows, movies, and exclusive
+            content.
           </p>
-          <p>Address: 123 Movie Lane, Film City, CA 94016</p>
-          <button class="contact-button">Contact Us</button>
+          <p>Address: 123 TVSeries St, Media City, Country</p>
+          <button class="btn">Contact Us</button>
         </div>
 
-        <!-- Quick Links Section -->
+        <!-- Quick Links -->
         <div class="footer-quick-links">
-          <h2>Quick Links</h2>
+          <h3>Quick Links</h3>
           <ul>
             <li><a href="#">Terms of Service</a></li>
             <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Help Center</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Careers</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Affiliate Program</a></li>
+            <!-- Add remaining links -->
           </ul>
         </div>
 
-        <!-- Newsletter Subscription Section -->
+        <!-- Newsletter Signup -->
         <div class="footer-newsletter">
-          <h2>Subscribe to our Newsletter</h2>
-          <form class="newsletter-form">
-            <input type="email" placeholder="Enter your email" required />
-            <button type="submit">Subscribe</button>
-          </form>
+          <h3>Newsletter</h3>
+          <input type="email" placeholder="Your email" />
+          <button class="btn">Subscribe</button>
         </div>
 
-        <!-- Social Media Links Section -->
-        <div class="footer-social-media">
-          <h2>Follow Us</h2>
-          <div class="social-links">
-            <a href="#">Facebook</a>
-            <a href="#">Twitter</a>
-            <a href="#">Instagram</a>
-            <a href="#">YouTube</a>
-            <a href="#">LinkedIn</a>
-            <a href="#">Pinterest</a>
-          </div>
-          <p>Support Email: support@tvseries.com</p>
+        <!-- Social Media Links -->
+        <div class="footer-social">
+          <h3>Follow Us</h3>
+          <a href="#">Facebook</a>
+          <a href="#">Twitter</a>
+          <!-- Add other social links -->
         </div>
 
         <!-- Get Our App Section -->
-        <div class="footer-app-links">
-          <h2>Get Our App</h2>
-          <div class="app-links">
-            <a href="#">Download on the App Store</a>
-            <a href="#">Get it on Google Play</a>
-          </div>
+        <div class="footer-app">
+          <h3>Get Our App</h3>
+          <a href="#">App Store</a>
+          <a href="#">Google Play</a>
         </div>
 
-<!-- Payment Methods Section -->
-<div class="footer-payment-methods">
-    <h2>Payment Methods</h2>
-    <div class="payment-icons">
-      <a href="https://www.visa.com" target="_blank" rel="noopener noreferrer">
-        <img src="img/icons/visa.png" alt="Visa" />
-      </a>
-      <a href="https://www.mastercard.com" target="_blank" rel="noopener noreferrer">
-        <img src="img/icons/mscard.png" alt="MasterCard" />
-      </a>
-      <a href="https://www.paypal.com" target="_blank" rel="noopener noreferrer">
-        <img src="img/icons/paypal.png" alt="PayPal" />
-      </a>
-      <a href="https://www.americanexpress.com" target="_blank" rel="noopener noreferrer">
-        <img src="img/icons/american.png" alt="American Express" />
-      </a>
-      <a href="https://www.bitcoin.org" target="_blank" rel="noopener noreferrer">
-        <img src="img/icons/bitcoin.png" alt="Bitcoin" />
-      </a>
-    </div>
-  </div>
-  </body>
+        <!-- Payment Methods -->
+        <div class="footer-payment">
+          <h3>Payment Methods</h3>
+          <img src="visa-icon.png" alt="Visa" />
+          <!-- Add other payment icons -->
+        </div>
+      </div>
+    </footer>
 
-  <script>
-    const carousel = document.querySelector(".carousel");
-    let isAtStart = true;
+    <script>
+      let currentSlide = 1;
+      const slides = document.querySelectorAll(".slide");
 
-    function swipeCarousel() {
-      if (isAtStart) {
-        // Move the carousel to the left (show the second 6 items)
-        carousel.style.transform = "translateX(-100%)";
-      } else {
-        // Move the carousel back to the right (show the first 6 items)
-        carousel.style.transform = "translateX(0)";
+      function showSlide(slideIndex) {
+        slides.forEach((slide, index) => {
+          slide.style.display = index + 1 === slideIndex ? "block" : "none";
+        });
       }
-      isAtStart = !isAtStart; // Toggle between the two positions
-    }
 
-    // Set interval to swipe every 4 seconds (4000 ms)
-    setInterval(swipeCarousel, 4000);
-
-    // slider
-    const slider = document.querySelector(".slider");
-    const rightArrow = document.querySelector(".right-arrow");
-    const leftArrow = document.querySelector(".left-arrow");
-    let currentIndex = 0; // Track the current slide index
-    const totalSlides = document.querySelectorAll(".slide").length; // Get total number of slides
-    const slides = document.querySelectorAll(".slide");
-    // Function to slide right when the right arrow is clicked
-    rightArrow.addEventListener("click", function () {
-      if (currentIndex < totalSlides - 1) {
-        currentIndex += 1; // Move to the next slide
-      } else {
-        currentIndex = 0; // Loop back to the first slide
+      function prevSlide() {
+        currentSlide = currentSlide === 1 ? slides.length : currentSlide - 1;
+        showSlide(currentSlide);
       }
-      slider.style.transform = `translateX(-${currentIndex * 100}%)`; // Shift the slider to the next slide
-    });
 
-    // Function to slide left when the left arrow is clicked
-    leftArrow.addEventListener("click", function () {
-      if (currentIndex > 0) {
-        currentIndex -= 1; // Move to the previous slide
-      } else {
-        currentIndex = totalSlides - 1; // Loop back to the last slide
+      function nextSlide() {
+        currentSlide = currentSlide === slides.length ? 1 : currentSlide + 1;
+        showSlide(currentSlide);
       }
-      slider.style.transform = `translateX(-${currentIndex * 100}%)`; // Shift the slider to the previous slide
-    });
 
-    const playButton = document.getElementById("play-button");
+      function playVideo(slideIndex) {
+        // Hide all slides (images and play buttons)
+        const slides = document.querySelectorAll(".slide");
+        slides.forEach((slide) => {
+          slide.style.display = "none";
+        });
 
-    // Function to play the video
-    playButton.addEventListener("click", function () {
-      const currentSlide = slides[currentIndex];
-      const video = currentSlide.querySelector(".video");
+        // Hide all videos initially
+        const videos = document.querySelectorAll(".hero-video");
+        videos.forEach((video) => {
+          video.style.display = "none";
+          video.pause(); // Stop any video that might be playing
+        });
 
-      // Add a "playing" class to hide the image and text, and show the video
-      currentSlide.classList.add("playing");
-
-      // Start the video and ensure it plays in full width
-      video.play();
-    });
-
-    // Get all necessary elements
-    const languageOptions = document.querySelectorAll(".language-option");
-    const languageMenu = document.getElementById("language-menu");
-    const languageDropdown = document.querySelector(".dropdown-content");
-    const languageMenuItem = document.querySelector(".dropdown");
-
-    // Function to adjust dropdown position based on its proximity to the right edge of the screen
-    function adjustDropdownPosition() {
-      const dropdownRect = languageDropdown.getBoundingClientRect();
-      const viewportWidth = window.innerWidth;
-
-      // Check if the dropdown's right edge goes beyond the screen width
-      if (dropdownRect.right > viewportWidth) {
-        // Align to the right if it's too close to the edge
-        languageDropdown.style.left = "auto"; // Remove left alignment
-        languageDropdown.style.right = "0"; // Align to the right edge of the parent
-      } else {
-        // Normal alignment if there's enough space
-        languageDropdown.style.left = "0";
-        languageDropdown.style.right = "auto";
+        // Show the selected video based on the slide index and play it
+        const selectedVideo = document.getElementById(`video${slideIndex}`);
+        selectedVideo.style.display = "block";
+        selectedVideo.play();
       }
-    }
 
-    // Add click event listeners to each language option
-    languageOptions.forEach((option) => {
-      option.addEventListener("click", function (event) {
-        event.preventDefault(); // Prevent default link behavior
+      showSlide(currentSlide);
 
-        // Get the selected language from the data-lang attribute
-        const selectedLanguage = this.getAttribute("data-lang");
+      // Trending
+      let position = 0; // Current position of the carousel (0 for first 6, -100% for the next 6)
+      const totalItems = 12;
+      const visibleItems = 6;
+      const carouselItems = document.querySelector(".carousel-items");
 
-        // Update the text of the "Language" menu item to the selected language
-        languageMenu.textContent = selectedLanguage;
+      function slideCarousel() {
+        // Toggle between first 6 and next 6 items
+        position = position === 0 ? -100 : 0; // Move to the left (show the next 6 items) or back to the right
+        carouselItems.style.transform = `translateX(${position}%)`;
+      }
 
-        // Hide the dropdown after selection
-        languageDropdown.style.display = "none";
-      });
-    });
+      // Automatic sliding every 4 seconds
+      setInterval(slideCarousel, 4000);
 
-    // Show the dropdown when hovering over the "Language" menu item
-    languageMenuItem.addEventListener("mouseenter", function () {
-      languageDropdown.style.display = "block"; // Show the dropdown
-      adjustDropdownPosition(); // Adjust position if needed
-    });
+      // Get all language options
+      const languageOptions = document.querySelectorAll(".language-option");
+      const languageButton = document.getElementById("language-button");
+      const dropdownContent = document.querySelector(".dropdown-content");
 
-    // Hide the dropdown when the mouse leaves the menu item or dropdown
-    languageMenuItem.addEventListener("mouseleave", function () {
-      languageDropdown.style.display = "none";
-    });
+      // Add event listeners to each language option
+      languageOptions.forEach((option) => {
+        option.addEventListener("click", function (e) {
+          e.preventDefault(); // Prevent the default link behavior
 
-    // Get all FAQ question buttons
-    const faqQuestions = document.querySelectorAll(".faq-question");
+          // Set the language button text to the selected language
+          languageButton.textContent = this.textContent;
 
-    // Add click event to each question
-    faqQuestions.forEach((question) => {
-      question.addEventListener("click", function () {
-        // Toggle active class on the parent faq-item
-        const parent = this.parentElement;
-        parent.classList.toggle("active");
-
-        // Collapse all other FAQ items except the one clicked
-        faqQuestions.forEach((otherQuestion) => {
-          const otherParent = otherQuestion.parentElement;
-          if (otherParent !== parent) {
-            otherParent.classList.remove("active");
-          }
+          // Automatically close the dropdown after selection
+          dropdownContent.style.display = "none";
         });
       });
-    });
 
-    // Get elements for terms modal
-    const termsModal = document.getElementById("terms-modal");
-    const termsLink = document.getElementById("terms-info");
-    const closeTerms = document.getElementById("close-terms");
+      // Handle dropdown visibility with hover (reopen it on hover)
+      const dropdown = document.querySelector(".dropdown");
 
-    // Get elements for newsletter modal
-    const newsletterModal = document.getElementById("newsletter-modal");
-    const newsletterLink = document.getElementById("newsletter-info");
-    const closeNewsletter = document.getElementById("close-newsletter");
+      // When hovering over the dropdown, make sure it shows again
+      dropdown.addEventListener("mouseenter", function () {
+        dropdownContent.style.display = "block"; // Reopen on hover
+      });
 
-    // Show Terms Modal when info icon is clicked
-    termsLink.addEventListener("click", function () {
-      termsModal.style.display = "flex";
-    });
+      dropdown.addEventListener("mouseleave", function () {
+        dropdownContent.style.display = "none"; // Close when not hovering
+      });
 
-    // Show Newsletter Modal when info icon is clicked
-    newsletterLink.addEventListener("click", function () {
-      newsletterModal.style.display = "flex";
-    });
-
-    // Close Terms Modal when close button is clicked
-    closeTerms.addEventListener("click", function () {
-      termsModal.style.display = "none";
-    });
-
-    // Close Newsletter Modal when close button is clicked
-    closeNewsletter.addEventListener("click", function () {
-      newsletterModal.style.display = "none";
-    });
-
-    // Close Modals when clicking outside the modal content
-    window.addEventListener("click", function (event) {
-      if (event.target === termsModal) {
-        termsModal.style.display = "none";
+      // Function to open the modal
+      function openModal(modalId) {
+        document.getElementById(modalId).style.display = "block";
       }
-      if (event.target === newsletterModal) {
-        newsletterModal.style.display = "none";
+
+      // Function to close the modal
+      function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
       }
-    });
-  </script>
+
+      // Close modal if the user clicks outside of the modal content
+      window.onclick = function (event) {
+        if (event.target.classList.contains("modal")) {
+          event.target.style.display = "none";
+        }
+      };
+    </script>
+  </body>
 </html>
