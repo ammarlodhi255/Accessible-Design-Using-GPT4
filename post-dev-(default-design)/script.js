@@ -170,6 +170,53 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// Language
+const languageOptions = document.querySelectorAll(".language-option");
+const languageButton = document.getElementById("language-button");
+const dropdownContent = document.querySelector(".dropdown-content");
+
+// Add event listeners to each language option
+languageOptions.forEach((option) => {
+  option.addEventListener("click", function (e) {
+    e.preventDefault(); // Prevent the default link behavior
+
+    // Set the language button text to the selected language
+    languageButton.textContent = this.textContent;
+
+    // Automatically close the dropdown after selection
+    dropdownContent.style.display = "none";
+  });
+});
+
+// Handle dropdown visibility with hover (reopen it on hover)
+const dropdown = document.querySelector(".dropdown");
+
+// When hovering over the dropdown, make sure it shows again
+dropdown.addEventListener("mouseenter", function () {
+  dropdownContent.style.display = "block"; // Reopen on hover
+});
+
+dropdown.addEventListener("mouseleave", function () {
+  dropdownContent.style.display = "none"; // Close when not hovering
+});
+
+// Function to open the modal
+function openModal(modalId) {
+  document.getElementById(modalId).style.display = "block";
+}
+
+// Function to close the modal
+function closeModal(modalId) {
+  document.getElementById(modalId).style.display = "none";
+}
+
+// Close modal if the user clicks outside of the modal content
+window.onclick = function (event) {
+  if (event.target.classList.contains("modal")) {
+    event.target.style.display = "none";
+  }
+};
+
 // SLides
 let currentSlide = 1;
 const slides = document.querySelectorAll(".slide");
@@ -220,32 +267,18 @@ const totalItems = 12; // Total number of items in the carousel
 const carouselItems = document.querySelector(".carousel-items");
 const trendingItems = document.querySelectorAll(".trending-item");
 
-// Function to slide the carousel to the next set of items
-function slideCarousel() {
-  currentIndex += visibleItems; // Move to the next set of items
-  if (currentIndex >= totalItems) {
-    currentIndex = 0; // Loop back to the beginning
-  }
-  const translateXValue = -(100 / visibleItems) * currentIndex; // Calculate the translation value
-  carouselItems.style.transform = `translateX(${translateXValue}%)`;
-}
-
 // Start the carousel sliding automatically every 4 seconds
 let intervalId = setInterval(slideCarousel, 4000);
-
-// Function to stop the carousel
-function stopCarousel() {
-  clearInterval(intervalId); // Stop the automatic sliding
-}
-
-// Function to start the carousel
-function startCarousel() {
-  intervalId = setInterval(slideCarousel, 4000); // Start the automatic sliding
-}
 
 // Play/Pause button functionality with keyboard support
 const pauseButton = document.getElementById("pauseBtn");
 const playButton = document.getElementById("playBtn");
+
+// Add an ARIA live region for screen readers
+const ariaLiveRegion = document.createElement("div");
+ariaLiveRegion.setAttribute("aria-live", "polite");
+ariaLiveRegion.setAttribute("class", "sr-only"); // Visually hidden
+document.body.appendChild(ariaLiveRegion);
 
 // Function to handle button click or key press
 function handleButtonClick(button, action) {
@@ -293,6 +326,13 @@ playButton.addEventListener("keydown", (event) => {
   }
 });
 
+let autoRotateEnabled = true; // Track if auto-rotation is enabled or disabled
+
+// Retrieve the user's saved preference from local storage (if any)
+if (localStorage.getItem("autoRotateEnabled") === "false") {
+  autoRotateEnabled = false;
+}
+
 // Function to slide the carousel to a specific index
 function slideToIndex(index) {
   const translateXValue =
@@ -312,12 +352,20 @@ function slideCarousel() {
     Math.floor(currentIndex / visibleItems) *
     visibleItems;
   carouselItems.style.transform = `translateX(${translateXValue}%)`;
+  // Update ARIA live region to alert screen readers
+  const currentItem =
+    carouselItems.querySelectorAll(".trending-item")[currentIndex];
+  ariaLiveRegion.textContent = `Carousel moved to item: ${
+    currentItem.querySelector("h3").textContent
+  }`;
 }
 
 // Start the carousel sliding automatically every 4 seconds
 function startCarousel() {
-  clearInterval(intervalId); // Clear any existing interval to avoid multiple intervals
-  intervalId = setInterval(slideCarousel, 4000);
+  if (autoRotateEnabled) {
+    clearInterval(intervalId); // Clear any existing interval to avoid multiple intervals
+    intervalId = setInterval(slideCarousel, 4000);
+  }
 }
 
 // Stop the automatic carousel
@@ -339,63 +387,94 @@ trendingItems.forEach((item, index) => {
   });
 
   item.addEventListener("blur", () => {
-    // Resume the carousel when focus leaves the item
-    startCarousel();
+    // Resume the carousel when focus leaves the item (only if auto-rotation is enabled)
+    if (autoRotateEnabled) startCarousel();
+  });
+
+  // Listen for Arrow key navigation between items
+  item.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowRight") {
+      const nextIndex = (index + 1) % totalItems;
+      trendingItems[nextIndex].focus(); // Move focus to the next item
+      slideToIndex(nextIndex); // Swipe to the next item
+      event.preventDefault(); // Prevent any default action
+    } else if (event.key === "ArrowLeft") {
+      const prevIndex = (index - 1 + totalItems) % totalItems;
+      trendingItems[prevIndex].focus(); // Move focus to the previous item
+      slideToIndex(prevIndex); // Swipe to the previous item
+      event.preventDefault(); // Prevent any default action
+    }
   });
 });
 
 // Pause the carousel on hover
 trendingCarousel.addEventListener("mouseenter", stopCarousel);
 
-// Resume the carousel when the mouse leaves
-trendingCarousel.addEventListener("mouseleave", startCarousel);
+// Resume the carousel when the mouse leaves (only if auto-rotation is enabled)
+trendingCarousel.addEventListener("mouseleave", () => {
+  if (autoRotateEnabled) startCarousel();
+});
 
 // Initially start the carousel
-startCarousel();
+if (autoRotateEnabled) startCarousel();
 
-// Language
-const languageOptions = document.querySelectorAll(".language-option");
-const languageButton = document.getElementById("language-button");
-const dropdownContent = document.querySelector(".dropdown-content");
+// New functionality for Disable/Enable Auto Rotate
+const toggleAutoRotateBtn = document.getElementById("toggleAutoRotateBtn");
 
-// Add event listeners to each language option
-languageOptions.forEach((option) => {
-  option.addEventListener("click", function (e) {
-    e.preventDefault(); // Prevent the default link behavior
+toggleAutoRotateBtn.addEventListener("click", () => {
+  autoRotateEnabled = !autoRotateEnabled; // Toggle the auto-rotation status
+  if (!autoRotateEnabled) {
+    stopCarousel(); // Stop the auto-rotation
+    toggleAutoRotateBtn.textContent = "Enable Auto Rotate"; // Update the button text
+  } else {
+    startCarousel(); // Start auto-rotation
+    toggleAutoRotateBtn.textContent = "Disable Auto Rotate"; // Update the button text
+  }
+  // Save the user preference in local storage
+  localStorage.setItem("autoRotateEnabled", autoRotateEnabled.toString());
+});
 
-    // Set the language button text to the selected language
-    languageButton.textContent = this.textContent;
+// Initialize the button text based on user preference
+if (!autoRotateEnabled) {
+  toggleAutoRotateBtn.textContent = "Enable Auto Rotate";
+}
 
-    // Automatically close the dropdown after selection
-    dropdownContent.style.display = "none";
+const skipLink = document.querySelector(".skip-carousel-link");
+
+skipLink.addEventListener("click", () => {
+  stopCarousel(); // Pause the carousel when the user chooses to skip it
+});
+
+// Get all grid items
+const gridItems = document.querySelectorAll(".grid-item");
+
+// Add keyboard navigation support for arrow keys (left and right)
+gridItems.forEach((item, index) => {
+  item.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowRight") {
+      // Move to the next item, if available
+      const nextItem = gridItems[index + 1];
+      if (nextItem) {
+        nextItem.focus();
+      }
+    } else if (event.key === "ArrowLeft") {
+      // Move to the previous item, if available
+      const prevItem = gridItems[index - 1];
+      if (prevItem) {
+        prevItem.focus();
+      }
+    } else if (event.key === "Enter" || event.key === " ") {
+      // Simulate click on Enter or Space
+      event.preventDefault();
+      item.click();
+    }
   });
 });
 
-// Handle dropdown visibility with hover (reopen it on hover)
-const dropdown = document.querySelector(".dropdown");
-
-// When hovering over the dropdown, make sure it shows again
-dropdown.addEventListener("mouseenter", function () {
-  dropdownContent.style.display = "block"; // Reopen on hover
+// Handle item click (optional action, e.g., to play or view details)
+gridItems.forEach((item) => {
+  item.addEventListener("click", () => {
+    alert(`You selected: ${item.querySelector("h3").textContent}`);
+    // Add additional functionality here
+  });
 });
-
-dropdown.addEventListener("mouseleave", function () {
-  dropdownContent.style.display = "none"; // Close when not hovering
-});
-
-// Function to open the modal
-function openModal(modalId) {
-  document.getElementById(modalId).style.display = "block";
-}
-
-// Function to close the modal
-function closeModal(modalId) {
-  document.getElementById(modalId).style.display = "none";
-}
-
-// Close modal if the user clicks outside of the modal content
-window.onclick = function (event) {
-  if (event.target.classList.contains("modal")) {
-    event.target.style.display = "none";
-  }
-};

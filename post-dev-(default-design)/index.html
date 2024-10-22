@@ -158,12 +158,13 @@
     </section>
     <!-- Main content starts here -->
     <main id="main-content">
+      <a href="#most-watched" class="skip-carousel-link">Skip Carousel</a>
 <!-- Trending TV Series Section -->
 <section id="trending" class="trending-section" aria-labelledby="trending-heading" role="region">
   <h2 id="trending-heading">Trending TV Series</h2>
   
   <!-- Trending Carousel Wrapper -->
-  <div class="trending-carousel" role="listbox" aria-label="Trending TV Series Carousel">
+  <div class="trending-carousel" aria-live="polite" role="listbox" aria-label="Trending TV Series Carousel">
     <div class="carousel-items">
       
       <!-- 12 Trending Series Items -->
@@ -231,55 +232,57 @@
   </div>
   
   <!-- Carousel Controls -->
-  <div class="carousel-controls" role="region" aria-label="Carousel Controls">
-    <button id="pauseBtn" aria-label="Pause Carousel">Pause</button>
-    <button id="playBtn" aria-label="Play Carousel" style="display: none;">Play</button>
+  <div class="carousel-controls">
+    <button id="pauseBtn">Pause</button>
+    <button id="playBtn" style="display: none;">Play</button>
+    <button id="toggleAutoRotateBtn">Disable Auto Rotate</button> <!-- New Button -->
   </div>
+  
 </section>
 
 
-      <!-- Most Watched Section -->
-      <section id="most-watched" class="most-watched-section">
-        <h2>Most Watched</h2>
-        <div class="grid-container">
-          <div class="grid-item">
-            <img src="img/river.jpeg" alt="River" />
-            <h3>River</h3>
-          </div>
-          <div class="grid-item">
-            <img src="img/sherwood.jpeg" alt="Sherwood" />
-            <h3>Sherwood</h3>
-          </div>
-          <div class="grid-item">
-            <img src="img/valk.jpeg" alt="Valkyrien" />
-            <h3>Valkyrien</h3>
-          </div>
-          <div class="grid-item">
-            <img src="img/murders.jpeg" alt="Murders" />
-            <h3>Murders</h3>
-          </div>
-          <div class="grid-item">
-            <img src="img/marcella.jpeg" alt="Marcella" />
-            <h3>Marcella</h3>
-          </div>
-          <div class="grid-item">
-            <img src="img/bancroft.jpeg" alt="Bancroft" />
-            <h3>Bancroft</h3>
-          </div>
-          <div class="grid-item">
-            <img src="img/valley.jpeg" alt="The Valley" />
-            <h3>The Valley</h3>
-          </div>
-          <div class="grid-item">
-            <img src="img/crime.jpeg" alt="Crime" />
-            <h3>Crime</h3>
-          </div>
-          <div class="grid-item">
-            <img src="img/harbour.jpeg" alt="Safe Harbour" />
-            <h3>Safe Harbour</h3>
-          </div>
-        </div>
-      </section>
+<!-- Most Watched Section -->
+<section id="most-watched" class="most-watched-section">
+  <h2>Most Watched</h2>
+  <div class="grid-container" role="list">
+    <div class="grid-item" role="listitem" tabindex="0" aria-label="Watch River">
+      <img src="img/river.jpeg" alt="River" />
+      <h3>River</h3>
+    </div>
+    <div class="grid-item" role="listitem" tabindex="0" aria-label="Watch Sherwood">
+      <img src="img/sherwood.jpeg" alt="Sherwood" />
+      <h3>Sherwood</h3>
+    </div>
+    <div class="grid-item" role="listitem" tabindex="0" aria-label="Watch Valkyrien">
+      <img src="img/valk.jpeg" alt="Valkyrien" />
+      <h3>Valkyrien</h3>
+    </div>
+    <div class="grid-item" role="listitem" tabindex="0" aria-label="Watch Murders">
+      <img src="img/murders.jpeg" alt="Murders" />
+      <h3>Murders</h3>
+    </div>
+    <div class="grid-item" role="listitem" tabindex="0" aria-label="Watch Marcella">
+      <img src="img/marcella.jpeg" alt="Marcella" />
+      <h3>Marcella</h3>
+    </div>
+    <div class="grid-item" role="listitem" tabindex="0" aria-label="Watch Bancroft">
+      <img src="img/bancroft.jpeg" alt="Bancroft" />
+      <h3>Bancroft</h3>
+    </div>
+    <div class="grid-item" role="listitem" tabindex="0" aria-label="Watch The Valley">
+      <img src="img/valley.jpeg" alt="The Valley" />
+      <h3>The Valley</h3>
+    </div>
+    <div class="grid-item" role="listitem" tabindex="0" aria-label="Watch Crime">
+      <img src="img/crime.jpeg" alt="Crime" />
+      <h3>Crime</h3>
+    </div>
+    <div class="grid-item" role="listitem" tabindex="0" aria-label="Watch Safe Harbour">
+      <img src="img/harbour.jpeg" alt="Safe Harbour" />
+      <h3>Safe Harbour</h3>
+    </div>
+  </div>
+</section>
 
       <!-- Subscription Plans -->
       <section id="pricing" class="subscription-plans">

@@ -352,6 +352,43 @@ body {
   color: #f5b700; /* Change text color when focused or hovered */
 }
 
+/* Skip Carousel Link Styling */
+.skip-carousel-link {
+  position: absolute;
+  top: -40px;
+  left: 10px;
+  background-color: #f5b700;
+  color: #333;
+  padding: 10px;
+  z-index: 100;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.skip-carousel-link:focus,
+.skip-carousel-link:hover {
+  top: 10px;
+  background-color: #e5a600;
+  color: #000;
+}
+
+#after-carousel {
+  margin-top: 100px; /* Add space below the carousel for the target section */
+}
+
+/* Visually Hidden Class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 /* Most Watched Section */
 .most-watched-section {
   padding: 20px;
@@ -393,6 +430,23 @@ body {
   font-size: 1.2em;
   margin-top: 10px;
   text-align: center;
+}
+
+/* Add focus styling for grid items */
+.grid-item:focus {
+  outline: 2px solid #f5b700; /* Highlight with a visible yellow border */
+  box-shadow: 0 0 10px rgba(245, 183, 0, 0.8); /* Add a glowing effect */
+  transform: scale(1.02); /* Slightly enlarge the item when focused */
+}
+
+/* Default grid item styles */
+.grid-item {
+  cursor: pointer; /* Ensure it looks clickable */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grid-item:hover {
+  transform: scale(1.05); /* Slightly enlarge the item on hover */
 }
 
 /* Subscription Plans */
