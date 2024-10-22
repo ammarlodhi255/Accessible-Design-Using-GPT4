@@ -563,6 +563,8 @@
         let currentOptionIndex = 0;
         let searchString = "";
         let searchTimeout;
+        let lastKey = "";
+        let cycleIndex = 0; // Keeps track of cycling through options with the same starting letter
 
         // Focus on the button to capture keydown events when dropdown is opened
         function toggleDropdown(show) {
@@ -625,7 +627,6 @@
             event.preventDefault();
           } else if (/^[a-zA-Z]$/.test(key)) {
             console.log(`Printable character key pressed: ${key}`);
-            // Handle typing characters to match an option
             handleTypeAheadSearch(key.toLowerCase());
             event.preventDefault();
           }
@@ -634,34 +635,53 @@
         function handleTypeAheadSearch(char) {
           clearTimeout(searchTimeout); // Reset the timeout for the search string
 
-          // Add the typed character to the search string
-          searchString += char;
-
-          // If dropdown isn't expanded, open it
-          if (!expanded) {
-            toggleDropdown(true);
-          }
-
-          // Look for the first option that matches the full search string
-          let matchingIndex = -1;
-          for (let i = 0; i < languageOptions.length; i++) {
-            const optionText = languageOptions[i].textContent
-              .trim()
-              .toLowerCase();
-            if (optionText.startsWith(searchString)) {
-              matchingIndex = i; // Found a match
-              break;
+          // Check if the character typed is the same as the last key pressed
+          if (char === lastKey) {
+            // If the same character is pressed again, cycle through options that start with that character
+            cycleIndex = (cycleIndex + 1) % languageOptions.length;
+            for (let i = 0; i < languageOptions.length; i++) {
+              const optionText = languageOptions[cycleIndex].textContent
+                .trim()
+                .toLowerCase();
+              if (optionText.startsWith(char)) {
+                setActiveDescendant(cycleIndex);
+                break;
+              }
+              cycleIndex = (cycleIndex + 1) % languageOptions.length;
             }
-          }
+          } else {
+            // New character typed, so start a new search
+            searchString += char;
+            lastKey = char; // Update last key pressed
+            let matchingIndex = -1;
 
-          // If a match is found, set the focus to that matching option
-          if (matchingIndex !== -1) {
-            setActiveDescendant(matchingIndex);
+            // If dropdown isn't expanded, open it
+            if (!expanded) {
+              toggleDropdown(true);
+            }
+
+            // Look for the first option that matches the full search string
+            for (let i = 0; i < languageOptions.length; i++) {
+              const optionText = languageOptions[i].textContent
+                .trim()
+                .toLowerCase();
+              if (optionText.startsWith(searchString)) {
+                matchingIndex = i; // Found a match
+                break;
+              }
+            }
+
+            // If a match is found, set the focus to that matching option
+            if (matchingIndex !== -1) {
+              setActiveDescendant(matchingIndex);
+              cycleIndex = matchingIndex; // Set cycleIndex to the first match
+            }
           }
 
           // Clear the search string after a delay (1 second) to allow for typing in quick succession
           searchTimeout = setTimeout(() => {
             searchString = "";
+            lastKey = "";
           }, 1000);
         }
 
