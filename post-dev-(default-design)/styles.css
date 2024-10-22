@@ -99,6 +99,20 @@ body {
   background-color: #555;
 }
 
+.language-option.active {
+  background-color: #f5b700; /* Highlight the active option */
+  color: white;
+}
+
+.language-option {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.language-option:hover {
+  background-color: #ddd; /* Hover effect */
+}
+
 /* Hero Section */
 .hero-section {
   position: relative;

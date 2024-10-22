@@ -24,12 +24,73 @@
         <li><a href="#">FAQ</a></li>
         <li><a href="#">Register</a></li>
         <li><a href="#">About</a></li>
+        <!-- Language Dropdown -->
         <li class="dropdown">
-          <a href="#" id="language-button">Language</a>
-          <ul class="dropdown-content">
-            <li><a href="#" class="language-option">English</a></li>
-            <li><a href="#" class="language-option">Norwegian</a></li>
-            <li><a href="#" class="language-option">Hindi</a></li>
+          <a
+            href="#"
+            id="language-button"
+            role="combobox"
+            aria-expanded="false"
+            aria-controls="language-list"
+            aria-haspopup="listbox"
+            aria-activedescendant="language-option1"
+          >
+            Language
+          </a>
+          <ul
+            class="dropdown-content"
+            id="language-list"
+            role="listbox"
+            tabindex="-1"
+          >
+            <li
+              id="language-option1"
+              role="option"
+              aria-selected="false"
+              class="language-option"
+            >
+              English
+            </li>
+            <li
+              id="language-option2"
+              role="option"
+              aria-selected="false"
+              class="language-option"
+            >
+              Norwegian
+            </li>
+            <li
+              id="language-option3"
+              role="option"
+              aria-selected="false"
+              class="language-option"
+            >
+              Hindi
+            </li>
+            <li
+              id="language-option4"
+              role="option"
+              aria-selected="false"
+              class="language-option"
+            >
+              Nigerian
+            </li>
+            <li
+              id="language-option5"
+              role="option"
+              aria-selected="false"
+              class="language-option"
+            >
+              Eastern Yugur
+            </li>
+            <li
+              id="language-option6"
+              role="option"
+              aria-selected="false"
+              class="language-option"
+            >
+              Hebrew
+            </li>
           </ul>
         </li>
       </ul>
@@ -494,6 +555,142 @@
     </footer>
 
     <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const languageButton = document.getElementById("language-button");
+        const languageList = document.getElementById("language-list");
+        const languageOptions = document.querySelectorAll(".language-option");
+        let expanded = false;
+        let currentOptionIndex = 0;
+        let searchString = "";
+        let searchTimeout;
+
+        // Focus on the button to capture keydown events when dropdown is opened
+        function toggleDropdown(show) {
+          expanded = show;
+          languageButton.setAttribute("aria-expanded", expanded);
+          languageList.style.display = expanded ? "block" : "none";
+
+          if (expanded) {
+            setActiveDescendant(currentOptionIndex);
+            languageButton.focus(); // Ensure the button receives focus
+          }
+        }
+
+        // Set the active option in the dropdown (with visual and accessibility focus)
+        function setActiveDescendant(index) {
+          languageOptions.forEach((option) =>
+            option.classList.remove("active")
+          ); // Remove previous active class
+          languageOptions[index].classList.add("active"); // Add active class to the current option
+          languageButton.setAttribute(
+            "aria-activedescendant",
+            languageOptions[index].id
+          );
+          languageOptions[index].scrollIntoView({ block: "nearest" });
+          currentOptionIndex = index;
+        }
+
+        // Handle keydown events for navigation and character typing
+        languageButton.addEventListener("keydown", (event) => {
+          const key = event.key;
+          console.log(`Key pressed: ${key}`); // Log the pressed key
+
+          if (key === "ArrowDown" || key === "ArrowUp") {
+            console.log("Arrow key pressed.");
+            if (!expanded) {
+              toggleDropdown(true); // Open dropdown if it's not already expanded
+            } else {
+              // Navigate through the options
+              let newIndex =
+                key === "ArrowDown"
+                  ? (currentOptionIndex + 1) % languageOptions.length
+                  : (currentOptionIndex - 1 + languageOptions.length) %
+                    languageOptions.length;
+              setActiveDescendant(newIndex);
+            }
+            event.preventDefault();
+          } else if (key === "Enter" || key === " ") {
+            console.log("Enter or Space key pressed.");
+            if (expanded) {
+              languageButton.textContent =
+                languageOptions[currentOptionIndex].textContent; // Set the text of the selected option
+              toggleDropdown(false); // Close dropdown
+            } else {
+              toggleDropdown(true); // Open dropdown on Enter or Space
+            }
+            event.preventDefault();
+          } else if (key === "Escape") {
+            console.log("Escape key pressed.");
+            toggleDropdown(false); // Close dropdown on Escape
+            event.preventDefault();
+          } else if (/^[a-zA-Z]$/.test(key)) {
+            console.log(`Printable character key pressed: ${key}`);
+            // Handle typing characters to match an option
+            handleTypeAheadSearch(key.toLowerCase());
+            event.preventDefault();
+          }
+        });
+
+        function handleTypeAheadSearch(char) {
+          clearTimeout(searchTimeout); // Reset the timeout for the search string
+
+          // Add the typed character to the search string
+          searchString += char;
+
+          // If dropdown isn't expanded, open it
+          if (!expanded) {
+            toggleDropdown(true);
+          }
+
+          // Look for the first option that matches the full search string
+          let matchingIndex = -1;
+          for (let i = 0; i < languageOptions.length; i++) {
+            const optionText = languageOptions[i].textContent
+              .trim()
+              .toLowerCase();
+            if (optionText.startsWith(searchString)) {
+              matchingIndex = i; // Found a match
+              break;
+            }
+          }
+
+          // If a match is found, set the focus to that matching option
+          if (matchingIndex !== -1) {
+            setActiveDescendant(matchingIndex);
+          }
+
+          // Clear the search string after a delay (1 second) to allow for typing in quick succession
+          searchTimeout = setTimeout(() => {
+            searchString = "";
+          }, 1000);
+        }
+
+        // Click event to toggle dropdown
+        languageButton.addEventListener("click", () => {
+          toggleDropdown(!expanded);
+        });
+
+        // Handle mouse click for option selection
+        languageOptions.forEach((option, index) => {
+          option.addEventListener("click", () => {
+            languageButton.textContent = option.textContent; // Set selected language
+            toggleDropdown(false); // Close dropdown
+            setActiveDescendant(index); // Update active option
+          });
+        });
+
+        // Close dropdown if user clicks outside
+        document.addEventListener("click", (event) => {
+          if (
+            !languageButton.contains(event.target) &&
+            !languageList.contains(event.target)
+          ) {
+            toggleDropdown(false);
+          }
+        });
+      });
+
+      // SLides
       let currentSlide = 1;
       const slides = document.querySelectorAll(".slide");
 
