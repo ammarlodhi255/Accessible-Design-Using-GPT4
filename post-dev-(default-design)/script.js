@@ -213,21 +213,147 @@ function playVideo(slideIndex) {
 showSlide(currentSlide);
 
 // Trending
-let position = 0; // Current position of the carousel (0 for first 6, -100% for the next 6)
-const totalItems = 12;
-const visibleItems = 6;
-const carouselItems = document.querySelector(".carousel-items");
 
+let currentIndex = 0; // Current index for the carousel
+const visibleItems = 6; // Number of items visible in one slide
+const totalItems = 12; // Total number of items in the carousel
+const carouselItems = document.querySelector(".carousel-items");
+const trendingItems = document.querySelectorAll(".trending-item");
+
+// Function to slide the carousel to the next set of items
 function slideCarousel() {
-  // Toggle between first 6 and next 6 items
-  position = position === 0 ? -100 : 0; // Move to the left (show the next 6 items) or back to the right
-  carouselItems.style.transform = `translateX(${position}%)`;
+  currentIndex += visibleItems; // Move to the next set of items
+  if (currentIndex >= totalItems) {
+    currentIndex = 0; // Loop back to the beginning
+  }
+  const translateXValue = -(100 / visibleItems) * currentIndex; // Calculate the translation value
+  carouselItems.style.transform = `translateX(${translateXValue}%)`;
 }
 
-// Automatic sliding every 4 seconds
-setInterval(slideCarousel, 4000);
+// Start the carousel sliding automatically every 4 seconds
+let intervalId = setInterval(slideCarousel, 4000);
 
-// Get all language options
+// Function to stop the carousel
+function stopCarousel() {
+  clearInterval(intervalId); // Stop the automatic sliding
+}
+
+// Function to start the carousel
+function startCarousel() {
+  intervalId = setInterval(slideCarousel, 4000); // Start the automatic sliding
+}
+
+// Play/Pause button functionality with keyboard support
+const pauseButton = document.getElementById("pauseBtn");
+const playButton = document.getElementById("playBtn");
+
+// Function to handle button click or key press
+function handleButtonClick(button, action) {
+  if (action === "pause") {
+    stopCarousel();
+    playButton.style.display = "block"; // Show play button
+    pauseButton.style.display = "none"; // Hide pause button
+    setTimeout(() => {
+      playButton.focus(); // Focus on the play button after DOM changes
+    }, 0);
+  } else if (action === "play") {
+    startCarousel();
+    playButton.style.display = "none"; // Hide play button
+    pauseButton.style.display = "block"; // Show pause button
+    setTimeout(() => {
+      pauseButton.focus(); // Focus on the pause button after DOM changes
+    }, 0);
+  }
+}
+
+// Handle Pause button click
+pauseButton.addEventListener("click", (event) => {
+  event.preventDefault(); // Prevent any default click behavior
+  handleButtonClick(pauseButton, "pause");
+});
+
+// Handle Play button click
+playButton.addEventListener("click", (event) => {
+  event.preventDefault(); // Prevent any default click behavior
+  handleButtonClick(playButton, "play");
+});
+
+// Handle Enter and Space key events for Play/Pause buttons
+pauseButton.addEventListener("keydown", (event) => {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault(); // Prevent default behavior for Space and Enter
+    handleButtonClick(pauseButton, "pause");
+  }
+});
+
+playButton.addEventListener("keydown", (event) => {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault(); // Prevent default behavior for Space and Enter
+    handleButtonClick(playButton, "play");
+  }
+});
+
+// Function to slide the carousel to a specific index
+function slideToIndex(index) {
+  const translateXValue =
+    -(100 / visibleItems) * Math.floor(index / visibleItems) * visibleItems;
+  carouselItems.style.transform = `translateX(${translateXValue}%)`;
+  currentIndex = index;
+}
+
+// Function to slide the carousel automatically
+function slideCarousel() {
+  currentIndex += visibleItems;
+  if (currentIndex >= totalItems) {
+    currentIndex = 0; // Loop back to the beginning
+  }
+  const translateXValue =
+    -(100 / visibleItems) *
+    Math.floor(currentIndex / visibleItems) *
+    visibleItems;
+  carouselItems.style.transform = `translateX(${translateXValue}%)`;
+}
+
+// Start the carousel sliding automatically every 4 seconds
+function startCarousel() {
+  clearInterval(intervalId); // Clear any existing interval to avoid multiple intervals
+  intervalId = setInterval(slideCarousel, 4000);
+}
+
+// Stop the automatic carousel
+function stopCarousel() {
+  clearInterval(intervalId);
+}
+
+// Automatically pause the carousel when navigated to
+const trendingCarousel = document.querySelector(".trending-carousel");
+trendingCarousel.addEventListener("focusin", () => {
+  stopCarousel(); // Pause the carousel when the user navigates to it
+});
+
+// Event listeners to pause the carousel and swipe to focused item
+trendingItems.forEach((item, index) => {
+  item.addEventListener("focus", () => {
+    stopCarousel(); // Pause the carousel
+    slideToIndex(index); // Swipe to the focused item if it's out of view
+  });
+
+  item.addEventListener("blur", () => {
+    // Resume the carousel when focus leaves the item
+    startCarousel();
+  });
+});
+
+// Pause the carousel on hover
+trendingCarousel.addEventListener("mouseenter", stopCarousel);
+
+// Resume the carousel when the mouse leaves
+trendingCarousel.addEventListener("mouseleave", startCarousel);
+
+// Initially start the carousel
+startCarousel();
+
+// Language
 const languageOptions = document.querySelectorAll(".language-option");
 const languageButton = document.getElementById("language-button");
 const dropdownContent = document.querySelector(".dropdown-content");

@@ -232,22 +232,36 @@ body {
 
 /* Play Button */
 .play-btn {
-  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5b700; /* Button background color */
+  color: #000; /* Text color */
+  border: none;
+  padding: 8px 12px; /* Adjusted padding for a compact button */
+  cursor: pointer;
+  font-size: 1.2em; /* Slightly smaller font size */
+  border-radius: 20px; /* Small rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  gap: 6px; /* Space between icon and text */
+  position: absolute; /* Positioned over the slider */
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #f5b700; /* Keeping the same background color */
-  color: #000000; /* Changed the text color to black for better contrast */
-  border: none;
-  padding: 15px 30px;
-  cursor: pointer;
-  font-size: 1.5em;
-  border-radius: 50px; /* Round button */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Added shadow for better visibility */
+  transform: translate(-50%, -50%); /* Center the button */
+  z-index: 2; /* Ensure button is above other elements */
+  text-align: center;
 }
 
 .play-btn:hover {
-  background-color: #e5a600; /* Slightly darker color on hover */
+  background-color: #e5a600; /* Slightly darker background on hover */
+}
+
+/* Icon inside the button */
+.play-icon {
+  width: 60px !important; /* Forcefully set small size for the play icon */
+  height: 40px !important; /* Forcefully set small height */
+  object-fit: contain; /* Ensure aspect ratio is maintained */
+  display: inline-block; /* Ensure it's treated as an inline element */
 }
 
 /* Trending Section */
@@ -257,8 +271,30 @@ body {
 
 .trending-carousel {
   width: 100%;
-  overflow: hidden; /* Hides items that are outside the view */
+  overflow: hidden;
   position: relative;
+}
+
+/* Carousel Controls Styling - Centered below the carousel */
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.carousel-controls button {
+  padding: 10px 20px;
+  background-color: #f5b700;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+  border-radius: 5px;
+  margin: 0 10px; /* Adds space between the play and pause buttons */
+}
+
+.carousel-controls button:hover {
+  background-color: #e5a600;
 }
 
 .carousel-items {
@@ -278,6 +314,7 @@ body {
   margin: 0 auto; /* Center the container */
   margin: 1px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow to give a soft round effect */
+  outline: none; /* Remove default outline */
 }
 
 .trending-item img {
@@ -295,17 +332,24 @@ body {
 }
 
 /* Fancy Hover Effect */
-.trending-item:hover {
-  transform: scale(1); /* Slightly enlarge the item on hover */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More prominent shadow on hover */
+.trending-item:hover,
+.trending-item:focus {
+  transform: scale(1.01); /* Enlarge item when hovered or focused */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More prominent shadow on hover or focus */
 }
 
-.trending-item:hover img {
-  transform: scale(1.05); /* Scale the image slightly more on hover */
+.trending-item:focus {
+  border: 2px solid #f5b700; /* Highlight border when focused */
 }
 
-.trending-item:hover h3 {
-  color: #f5b700; /* Change text color to match your dark yellow theme on hover */
+.trending-item:hover img,
+.trending-item:focus img {
+  transform: scale(1.01); /* Scale image more when hovered or focused */
+}
+
+.trending-item:hover h3,
+.trending-item:focus h3 {
+  color: #f5b700; /* Change text color when focused or hovered */
 }
 
 /* Most Watched Section */

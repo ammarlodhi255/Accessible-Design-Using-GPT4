@@ -106,7 +106,12 @@
         <!-- Slide 1 -->
         <div class="slide" id="slide1">
           <img src="img/blade.jpg" alt="Featured Series 1" />
-          <button class="play-btn" onclick="playVideo(1)">Play</button>
+          <!-- Button with play icon -->
+<button class="play-btn" onclick="playVideo(1)" aria-label="Play Blade video">
+  <img src="img/play-button.svg" alt="" class="play-icon" />
+  Play
+</button>
+
         </div>
         <video id="video1" class="hero-video" controls style="display: none">
           <source src="img/video.mp4" type="video/mp4" />
@@ -117,7 +122,12 @@
         <!-- Slide 2 -->
         <div class="slide" id="slide2">
           <img src="img/clique.avif" alt="Featured Series 2" />
-          <button class="play-btn" onclick="playVideo(2)">Play</button>
+          <!-- Button with play icon -->
+<button class="play-btn" onclick="playVideo(1)" aria-label="Play Blade video">
+  <img src="img/play-button.svg" alt="" class="play-icon" />
+  Play
+</button>
+
         </div>
         <video id="video2" class="hero-video" controls style="display: none">
           <source src="videos/video2.mp4" type="video/mp4" />
@@ -128,7 +138,12 @@
         <!-- Slide 3 -->
         <div class="slide" id="slide3">
           <img src="img/endeavor.avif" alt="Featured Series 3" />
-          <button class="play-btn" onclick="playVideo(3)">Play</button>
+          <!-- Button with play icon -->
+<button class="play-btn" onclick="playVideo(1)" aria-label="Play Blade video">
+  <img src="img/play-button.svg" alt="" class="play-icon" />
+  Play
+</button>
+
         </div>
         <video id="video3" class="hero-video" controls style="display: none">
           <source src="videos/video3.mp4" type="video/mp4" />
@@ -143,63 +158,85 @@
     </section>
     <!-- Main content starts here -->
     <main id="main-content">
-      <!-- Trending TV Series Section -->
-      <section id="trending" class="trending-section">
-        <h2>Trending TV Series</h2>
-        <div class="trending-carousel">
-          <div class="carousel-items">
-            <!-- 12 Trending Series Items with specified image paths -->
-            <div class="trending-item">
-              <img src="img/baptiste.avif" alt="Baptiste" />
-              <h3>Baptiste</h3>
-            </div>
-            <div class="trending-item">
-              <img src="img/clique.avif" alt="Clique" />
-              <h3>Clique</h3>
-            </div>
-            <div class="trending-item">
-              <img src="img/endeavor.avif" alt="Endeavor" />
-              <h3>Endeavor</h3>
-            </div>
-            <div class="trending-item">
-              <img src="img/ragdoll.avif" alt="Ragdoll" />
-              <h3>Ragdoll</h3>
-            </div>
-            <div class="trending-item">
-              <img src="img/unforgotten.avif" alt="Unforgotten" />
-              <h3>Unforgotten</h3>
-            </div>
-            <div class="trending-item">
-              <img src="img/investigation.avif" alt="The Investigation" />
-              <h3>The Investigation</h3>
-            </div>
-            <div class="trending-item">
-              <img src="img/annika.jpeg" alt="Annika" />
-              <h3>Annika</h3>
-            </div>
-            <div class="trending-item">
-              <img src="img/long-call.jpeg" alt="The Long Call" />
-              <h3>The Long Call</h3>
-            </div>
-            <div class="trending-item">
-              <img src="img/unforgiven.jpeg" alt="Unforgiven" />
-              <h3>Unforgiven</h3>
-            </div>
-            <div class="trending-item">
-              <img src="img/shetland.jpeg" alt="Shetland" />
-              <h3>Shetland</h3>
-            </div>
-            <div class="trending-item">
-              <img src="img/ridley.jpeg" alt="Ridley" />
-              <h3>Ridley</h3>
-            </div>
-            <div class="trending-item">
-              <img src="img/karen.jpeg" alt="Karen" />
-              <h3>Karen</h3>
-            </div>
-          </div>
-        </div>
-      </section>
+<!-- Trending TV Series Section -->
+<section id="trending" class="trending-section" aria-labelledby="trending-heading" role="region">
+  <h2 id="trending-heading">Trending TV Series</h2>
+  
+  <!-- Trending Carousel Wrapper -->
+  <div class="trending-carousel" role="listbox" aria-label="Trending TV Series Carousel">
+    <div class="carousel-items">
+      
+      <!-- 12 Trending Series Items -->
+      <div class="trending-item" tabindex="0" role="option" aria-label="Baptiste">
+        <img src="img/baptiste.avif" alt="Baptiste TV Series Poster" />
+        <h3>Baptiste</h3>
+      </div>
+      
+      <div class="trending-item" tabindex="0" role="option" aria-label="Clique">
+        <img src="img/clique.avif" alt="Clique TV Series Poster" />
+        <h3>Clique</h3>
+      </div>
+      
+      <div class="trending-item" tabindex="0" role="option" aria-label="Endeavor">
+        <img src="img/endeavor.avif" alt="Endeavor TV Series Poster" />
+        <h3>Endeavor</h3>
+      </div>
+      
+      <div class="trending-item" tabindex="0" role="option" aria-label="Ragdoll">
+        <img src="img/ragdoll.avif" alt="Ragdoll TV Series Poster" />
+        <h3>Ragdoll</h3>
+      </div>
+      
+      <div class="trending-item" tabindex="0" role="option" aria-label="Unforgotten">
+        <img src="img/unforgotten.avif" alt="Unforgotten TV Series Poster" />
+        <h3>Unforgotten</h3>
+      </div>
+      
+      <div class="trending-item" tabindex="0" role="option" aria-label="The Investigation">
+        <img src="img/investigation.avif" alt="The Investigation TV Series Poster" />
+        <h3>The Investigation</h3>
+      </div>
+      
+      <div class="trending-item" tabindex="0" role="option" aria-label="Annika">
+        <img src="img/annika.jpeg" alt="Annika TV Series Poster" />
+        <h3>Annika</h3>
+      </div>
+      
+      <div class="trending-item" tabindex="0" role="option" aria-label="The Long Call">
+        <img src="img/long-call.jpeg" alt="The Long Call TV Series Poster" />
+        <h3>The Long Call</h3>
+      </div>
+      
+      <div class="trending-item" tabindex="0" role="option" aria-label="Unforgiven">
+        <img src="img/unforgiven.jpeg" alt="Unforgiven TV Series Poster" />
+        <h3>Unforgiven</h3>
+      </div>
+      
+      <div class="trending-item" tabindex="0" role="option" aria-label="Shetland">
+        <img src="img/shetland.jpeg" alt="Shetland TV Series Poster" />
+        <h3>Shetland</h3>
+      </div>
+      
+      <div class="trending-item" tabindex="0" role="option" aria-label="Ridley">
+        <img src="img/ridley.jpeg" alt="Ridley TV Series Poster" />
+        <h3>Ridley</h3>
+      </div>
+      
+      <div class="trending-item" tabindex="0" role="option" aria-label="Karen">
+        <img src="img/karen.jpeg" alt="Karen TV Series Poster" />
+        <h3>Karen</h3>
+      </div>
+    
+    </div>
+  </div>
+  
+  <!-- Carousel Controls -->
+  <div class="carousel-controls" role="region" aria-label="Carousel Controls">
+    <button id="pauseBtn" aria-label="Pause Carousel">Pause</button>
+    <button id="playBtn" aria-label="Play Carousel" style="display: none;">Play</button>
+  </div>
+</section>
+
 
       <!-- Most Watched Section -->
       <section id="most-watched" class="most-watched-section">
