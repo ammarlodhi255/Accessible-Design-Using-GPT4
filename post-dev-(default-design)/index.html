@@ -7,10 +7,14 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <a href="#main-content" class="skip-to-content">Skip to Main Content</a>
+
     <nav class="navbar">
+      <!-- Navigable Logo -->
       <div class="logo">
-        <img src="img/movies.png" alt="TV Series Logo" class="navbar-logo" />
-        <!-- Added logo here -->
+        <a href="index.html">
+          <img src="img/movies.png" alt="TV Series Logo" class="navbar-logo" />
+        </a>
       </div>
       <ul class="nav-links">
         <li><a href="#">Homepage</a></li>
@@ -31,52 +35,51 @@
       </ul>
     </nav>
 
+    <!-- Add the level one heading here -->
+    <h1 class="centered-heading">Welcome to TV Series Hub</h1>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-slider">
+        <!-- Slide 1 -->
+        <div class="slide" id="slide1">
+          <img src="img/blade.jpg" alt="Featured Series 1" />
+          <button class="play-btn" onclick="playVideo(1)">Play</button>
+        </div>
+        <video id="video1" class="hero-video" controls style="display: none">
+          <source src="img/video.mp4" type="video/mp4" />
+          <!-- Provide path to video 1 -->
+          Your browser does not support the video tag.
+        </video>
+
+        <!-- Slide 2 -->
+        <div class="slide" id="slide2">
+          <img src="img/clique.avif" alt="Featured Series 2" />
+          <button class="play-btn" onclick="playVideo(2)">Play</button>
+        </div>
+        <video id="video2" class="hero-video" controls style="display: none">
+          <source src="videos/video2.mp4" type="video/mp4" />
+          <!-- Provide path to video 2 -->
+          Your browser does not support the video tag.
+        </video>
+
+        <!-- Slide 3 -->
+        <div class="slide" id="slide3">
+          <img src="img/endeavor.avif" alt="Featured Series 3" />
+          <button class="play-btn" onclick="playVideo(3)">Play</button>
+        </div>
+        <video id="video3" class="hero-video" controls style="display: none">
+          <source src="videos/video3.mp4" type="video/mp4" />
+          <!-- Provide path to video 3 -->
+          Your browser does not support the video tag.
+        </video>
+
+        <!-- Arrow buttons for navigating slides -->
+        <button class="arrow left" onclick="prevSlide()">&#10094;</button>
+        <button class="arrow right" onclick="nextSlide()">&#10095;</button>
+      </div>
+    </section>
     <!-- Main content starts here -->
     <main id="main-content">
-      <!-- Add the level one heading here -->
-      <h1 class="centered-heading">Welcome to TV Series Hub</h1>
-      <!-- Hero Section -->
-      <section class="hero-section">
-        <div class="hero-slider">
-          <!-- Slide 1 -->
-          <div class="slide" id="slide1">
-            <img src="img/blade.jpg" alt="Featured Series 1" />
-            <button class="play-btn" onclick="playVideo(1)">Play</button>
-          </div>
-          <video id="video1" class="hero-video" controls style="display: none">
-            <source src="img/video.mp4" type="video/mp4" />
-            <!-- Provide path to video 1 -->
-            Your browser does not support the video tag.
-          </video>
-
-          <!-- Slide 2 -->
-          <div class="slide" id="slide2">
-            <img src="img/clique.avif" alt="Featured Series 2" />
-            <button class="play-btn" onclick="playVideo(2)">Play</button>
-          </div>
-          <video id="video2" class="hero-video" controls style="display: none">
-            <source src="videos/video2.mp4" type="video/mp4" />
-            <!-- Provide path to video 2 -->
-            Your browser does not support the video tag.
-          </video>
-
-          <!-- Slide 3 -->
-          <div class="slide" id="slide3">
-            <img src="img/endeavor.avif" alt="Featured Series 3" />
-            <button class="play-btn" onclick="playVideo(3)">Play</button>
-          </div>
-          <video id="video3" class="hero-video" controls style="display: none">
-            <source src="videos/video3.mp4" type="video/mp4" />
-            <!-- Provide path to video 3 -->
-            Your browser does not support the video tag.
-          </video>
-
-          <!-- Arrow buttons for navigating slides -->
-          <button class="arrow left" onclick="prevSlide()">&#10094;</button>
-          <button class="arrow right" onclick="nextSlide()">&#10095;</button>
-        </div>
-      </section>
-
       <!-- Trending TV Series Section -->
       <section class="trending-section">
         <h2>Trending TV Series</h2>
@@ -343,68 +346,91 @@
       <!-- Login and Registration Forms -->
       <section class="forms-section">
         <h2>Login and Register</h2>
-        <!-- Added Heading -->
         <div class="form-container">
           <!-- Login Form -->
           <form class="login-form">
             <h2>Login</h2>
-            <input type="text" placeholder="Username" required />
-            <input type="password" placeholder="Password" required />
+            <label for="login-username">Username</label>
+            <input
+              type="text"
+              id="login-username"
+              name="username"
+              placeholder="Username"
+              required
+            />
+
+            <label for="login-password">Password</label>
+            <input
+              type="password"
+              id="login-password"
+              name="password"
+              placeholder="Password"
+              required
+            />
+
             <button type="submit" class="btn">Login</button>
           </form>
 
           <!-- Registration Form -->
           <form class="register-form">
             <h2>Register</h2>
-            <input type="text" placeholder="First Name" required />
-            <input type="text" placeholder="Last Name" required />
-            <input type="email" placeholder="Email" required />
-            <input type="password" placeholder="Password" required />
+
+            <label for="first-name">First Name</label>
+            <input
+              type="text"
+              id="first-name"
+              name="first-name"
+              placeholder="First Name"
+              required
+            />
+
+            <label for="last-name">Last Name</label>
+            <input
+              type="text"
+              id="last-name"
+              name="last-name"
+              placeholder="Last Name"
+              required
+            />
+
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email"
+              required
+            />
+
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Password"
+              required
+            />
+
             <!-- Terms & Services Checkbox -->
             <div class="checkbox">
-              <input type="checkbox" id="terms" />
+              <input type="checkbox" id="terms" name="terms" />
               <label for="terms">Agree to Terms & Services</label>
               <span class="info-icon" onclick="openModal('termsModal')">?</span>
             </div>
 
             <!-- Newsletter Checkbox -->
             <div class="checkbox">
-              <input type="checkbox" id="newsletter" />
+              <input type="checkbox" id="newsletter" name="newsletter" />
               <label for="newsletter">Subscribe to newsletter</label>
               <span class="info-icon" onclick="openModal('newsletterModal')"
                 >?</span
               >
             </div>
+
             <button type="submit" class="btn">Register</button>
           </form>
         </div>
       </section>
-
-      <!-- Terms & Conditions Modal -->
-      <div id="termsModal" class="modal">
-        <div class="modal-content">
-          <span class="close" onclick="closeModal('termsModal')">&times;</span>
-          <h2>Terms & Services</h2>
-          <p>
-            Here are the terms and services. By checking this box, you agree to
-            abide by them.
-          </p>
-        </div>
-      </div>
-
-      <!-- Newsletter Modal -->
-      <div id="newsletterModal" class="modal">
-        <div class="modal-content">
-          <span class="close" onclick="closeModal('newsletterModal')"
-            >&times;</span
-          >
-          <h2>Subscribe to Newsletter</h2>
-          <p>
-            Sign up for our newsletter to receive updates, news, and promotions
-            directly in your inbox.
-          </p>
-        </div>
-      </div>
     </main>
 
     <!-- Footer -->
@@ -433,7 +459,13 @@
         <!-- Newsletter Signup -->
         <div class="footer-newsletter">
           <h3>Newsletter</h3>
-          <input type="email" placeholder="Your email" />
+          <label for="footer-email">Enter your email to subscribe</label>
+          <input
+            type="email"
+            id="footer-email"
+            placeholder="Your email"
+            aria-label="Email for newsletter subscription"
+          />
           <button class="btn">Subscribe</button>
         </div>
 
