@@ -62,10 +62,12 @@ body {
   color: #f5b700;
 }
 
-/* Focus management */
+/* Focus state for keyboard navigation */
 .nav-links a:focus {
-  outline: 2px solid #f5b700;
-  padding: 8px; /* Reduce padding when focused */
+  color: #f5b700; /* Change text color */
+  outline: 2px solid #f5b700; /* Add outline for visual indication */
+  border-bottom: 4px solid #f5b700; /* Same border as hover for bottom indication */
+  padding-bottom: 8px; /* Adjust padding so it doesn’t shift when focus border appears */
 }
 
 /* High contrast mode adjustments */

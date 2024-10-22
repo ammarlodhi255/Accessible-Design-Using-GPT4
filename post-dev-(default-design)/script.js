@@ -2,8 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const languageButton = document.getElementById("language-button");
   const languageList = document.getElementById("language-list");
   const languageOptions = document.querySelectorAll(".language-option");
-  const navLinks = document.querySelectorAll(".nav-links a"); // All nav menu links
-
   let expanded = false;
   let currentOptionIndex = 0;
   let searchString = "";
@@ -11,123 +9,28 @@ document.addEventListener("DOMContentLoaded", () => {
   let lastKey = "";
   let cycleIndex = 0;
 
-  // Sticky Navbar and Active Section Indicator
-  const sections = document.querySelectorAll("section"); // All the sections on the page
-  const navbarHeight = document.querySelector(".navbar").offsetHeight;
-
-  window.addEventListener("scroll", () => {
-    let currentSection = "";
-
-    // Loop through each section and check if it's in the viewport
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop - navbarHeight - 50; // Account for navbar height
-      if (pageYOffset >= sectionTop) {
-        currentSection = section.getAttribute("id");
-      }
-    });
-
-    // Add the active class to the corresponding menu item
-    navLinks.forEach((link) => {
-      link.classList.remove("active-indicator"); // Remove active from all
-      if (link.getAttribute("href").substring(1) === currentSection) {
-        link.classList.add("active-indicator"); // Add active to the current section's link
-      }
-    });
-  });
-
-  // Focus management for navigation
-  let currentMenuIndex = 0;
-
-  // Function to scroll to the section and set focus on its heading
-  function scrollToSection(event, sectionId) {
-    event.preventDefault();
-    const section = document.querySelector(sectionId);
-    section.scrollIntoView({ behavior: "smooth" });
-    section.setAttribute("tabindex", "-1");
-    section.focus();
-  }
-
-  // Add event listener to all menu items (except language dropdown)
-  navLinks.forEach((link, index) => {
-    if (link.id !== "language-button") {
-      link.addEventListener("click", function (event) {
-        const sectionId = this.getAttribute("href");
-        scrollToSection(event, sectionId);
-      });
-
-      // Handle both Enter and Space for scrolling to the section
-      link.addEventListener("keydown", function (event) {
-        if (event.key === "Enter" || event.key === " ") {
-          const sectionId = this.getAttribute("href");
-          scrollToSection(event, sectionId);
-        }
-
-        // Handle left and right arrow navigation
-        if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
-          navigateMenu(event, index);
-        }
-
-        // Handle character-based focus movement
-        if (/^[a-zA-Z]$/.test(event.key)) {
-          focusByTypedCharacter(event.key.toLowerCase());
-        }
-      });
-    }
-  });
-
-  // Handle navigation with left and right arrow keys for menu items
-  function navigateMenu(event, currentIndex) {
-    const maxIndex = navLinks.length - 1;
-
-    if (event.key === "ArrowRight") {
-      currentMenuIndex = currentIndex + 1 > maxIndex ? 0 : currentIndex + 1;
-    } else if (event.key === "ArrowLeft") {
-      currentMenuIndex = currentIndex - 1 < 0 ? maxIndex : currentIndex - 1;
-    }
-
-    // Move focus to the next or previous menu item
-    navLinks[currentMenuIndex].focus();
-  }
-
-  // Function to move focus based on typed character
-  function focusByTypedCharacter(char) {
-    const startingIndex = currentMenuIndex + 1; // Start searching from the next item
-    let found = false;
-
-    // Search for the first menu item that starts with the typed character
-    for (let i = 0; i < navLinks.length; i++) {
-      const indexToCheck = (startingIndex + i) % navLinks.length; // Wrap around using modulo
-      const linkText = navLinks[indexToCheck].textContent.trim().toLowerCase();
-
-      if (linkText.startsWith(char)) {
-        navLinks[indexToCheck].focus();
-        currentMenuIndex = indexToCheck; // Update the current focused menu item
-        found = true;
-        break;
-      }
-    }
-
-    if (!found) {
-      // No item found, focus does not move
-      console.log(`No menu item found starting with: ${char}`);
-    }
-  }
-
-  // Language dropdown behavior
+  // Focus on the button to capture keydown events when dropdown is opened
   function toggleDropdown(show) {
     expanded = show;
     languageButton.setAttribute("aria-expanded", expanded);
     languageList.style.display = expanded ? "block" : "none";
 
+    // If the dropdown is opened, focus remains on the combobox button
     if (expanded) {
+      languageButton.focus(); // Keep focus on the button
       setActiveDescendant(currentOptionIndex);
-      languageButton.focus();
     }
   }
 
+  // Set the active option in the dropdown (with visual and accessibility focus)
   function setActiveDescendant(index) {
-    languageOptions.forEach((option) => option.classList.remove("active"));
+    languageOptions.forEach((option) => {
+      option.classList.remove("active");
+      option.setAttribute("aria-selected", "false");
+    });
+
     languageOptions[index].classList.add("active");
+    languageOptions[index].setAttribute("aria-selected", "true");
     languageButton.setAttribute(
       "aria-activedescendant",
       languageOptions[index].id
@@ -136,52 +39,70 @@ document.addEventListener("DOMContentLoaded", () => {
     currentOptionIndex = index;
   }
 
+  // Handle keydown events for navigation and character typing
   languageButton.addEventListener("keydown", (event) => {
     const key = event.key;
 
     if (key === "ArrowDown") {
-      event.preventDefault();
       if (!expanded) {
         toggleDropdown(true);
       } else {
+        // Move to the next option only if it's not the last option
         if (currentOptionIndex < languageOptions.length - 1) {
           setActiveDescendant(currentOptionIndex + 1);
         }
       }
-    } else if (key === "ArrowUp") {
       event.preventDefault();
+    } else if (key === "ArrowUp") {
       if (!expanded) {
         toggleDropdown(true);
       } else {
+        // Move to the previous option only if it's not the first option
         if (currentOptionIndex > 0) {
           setActiveDescendant(currentOptionIndex - 1);
         }
       }
-    } else if (key === "Enter" || key === " ") {
       event.preventDefault();
+    } else if (key === "Enter" || key === " ") {
+      // On Enter or Space, select the current option
       if (expanded) {
-        languageButton.textContent =
-          languageOptions[currentOptionIndex].textContent;
+        selectOption(currentOptionIndex);
         toggleDropdown(false);
       } else {
-        toggleDropdown(true);
+        toggleDropdown(true); // Open dropdown if it's not already expanded
       }
-    } else if (key === "Escape") {
       event.preventDefault();
+    } else if (key === "Escape") {
       toggleDropdown(false);
-    } else if (key === "ArrowLeft" || key === "ArrowRight") {
-      // Handle left and right arrow navigation for the language button
-      const languageButtonIndex = Array.from(navLinks).indexOf(languageButton);
-      navigateMenu(event, languageButtonIndex);
+      event.preventDefault();
+    } else if (key === "Tab") {
+      // Close the dropdown and select the current option on Tab key
+      languageButton.textContent =
+        languageOptions[currentOptionIndex].textContent;
+      toggleDropdown(false);
     } else if (/^[a-zA-Z]$/.test(key)) {
       handleTypeAheadSearch(key.toLowerCase());
       event.preventDefault();
     }
   });
 
+  function selectOption(index) {
+    languageButton.textContent = languageOptions[index].textContent;
+    languageOptions.forEach((option) =>
+      option.setAttribute("aria-selected", "false")
+    );
+    languageOptions[index].setAttribute("aria-selected", "true");
+    languageButton.setAttribute(
+      "aria-activedescendant",
+      languageOptions[index].id
+    );
+    currentOptionIndex = index;
+  }
+
   function handleTypeAheadSearch(char) {
     clearTimeout(searchTimeout);
 
+    // Check if the character typed is the same as the last key pressed
     if (char === lastKey) {
       cycleIndex = (cycleIndex + 1) % languageOptions.length;
       for (let i = 0; i < languageOptions.length; i++) {
@@ -223,15 +144,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 1000);
   }
 
+  // Click event to toggle dropdown
   languageButton.addEventListener("click", () => {
     toggleDropdown(!expanded);
   });
 
+  // Handle mouse click for option selection
   languageOptions.forEach((option, index) => {
     option.addEventListener("click", () => {
-      languageButton.textContent = option.textContent;
+      selectOption(index);
       toggleDropdown(false);
-      setActiveDescendant(index);
     });
   });
 
@@ -241,15 +163,6 @@ document.addEventListener("DOMContentLoaded", () => {
       !languageButton.contains(event.target) &&
       !languageList.contains(event.target)
     ) {
-      languageButton.textContent =
-        languageOptions[currentOptionIndex].textContent;
-      toggleDropdown(false);
-    }
-  });
-
-  // Add a focusout listener to handle when focus moves out of the dropdown
-  languageButton.addEventListener("focusout", (event) => {
-    if (!event.relatedTarget || !languageList.contains(event.relatedTarget)) {
       languageButton.textContent =
         languageOptions[currentOptionIndex].textContent;
       toggleDropdown(false);
