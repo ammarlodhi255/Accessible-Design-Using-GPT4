@@ -9,25 +9,27 @@
   <body>
     <a href="#main-content" class="skip-to-content">Skip to Main Content</a>
 
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Main Navigation">
       <!-- Navigable Logo -->
       <div class="logo">
         <a href="index.html">
           <img src="img/movies.png" alt="TV Series Logo" class="navbar-logo" />
         </a>
       </div>
-      <ul class="nav-links">
-        <li><a href="#">Homepage</a></li>
-        <li><a href="#">Trending</a></li>
-        <li><a href="#">Most Watched</a></li>
-        <li><a href="#">Pricing</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Register</a></li>
-        <li><a href="#">About</a></li>
+      <ul class="nav-links" role="menubar">
+        <li><a href="#homepage" role="menuitem" data-page="Homepage">Homepage</a></li>
+        <li><a href="#trending" role="menuitem" data-page="Trending">Trending</a></li>
+        <li>
+          <a href="#most-watched" role="menuitem" data-page="Most Watched">Most Watched</a>
+        </li>
+        <li><a href="#pricing" role="menuitem" data-page="Pricing">Pricing</a></li>
+        <li><a href="#faq" role="menuitem" data-page="FAQ">FAQ</a></li>
+        <li><a href="#register" role="menuitem" data-page="Register">Register</a></li>
+        <li><a href="#about" role="menuitem" data-page="About">About</a></li>
         <!-- Language Dropdown -->
         <li class="dropdown">
           <a
-            href="#"
+          href="#"
             id="language-button"
             role="combobox"
             aria-expanded="false"
@@ -99,7 +101,7 @@
     <!-- Add the level one heading here -->
     <h1 class="centered-heading">Welcome to TV Series Hub</h1>
     <!-- Hero Section -->
-    <section class="hero-section">
+    <section id="homepage" class="hero-section">
       <div class="hero-slider">
         <!-- Slide 1 -->
         <div class="slide" id="slide1">
@@ -142,7 +144,7 @@
     <!-- Main content starts here -->
     <main id="main-content">
       <!-- Trending TV Series Section -->
-      <section class="trending-section">
+      <section id="trending" class="trending-section">
         <h2>Trending TV Series</h2>
         <div class="trending-carousel">
           <div class="carousel-items">
@@ -200,7 +202,7 @@
       </section>
 
       <!-- Most Watched Section -->
-      <section class="most-watched-section">
+      <section id="most-watched" class="most-watched-section">
         <h2>Most Watched</h2>
         <div class="grid-container">
           <div class="grid-item">
@@ -243,7 +245,7 @@
       </section>
 
       <!-- Subscription Plans -->
-      <section class="subscription-plans">
+      <section id="pricing" class="subscription-plans">
         <h2>Subscription Plans</h2>
         <table>
           <thead>
@@ -320,7 +322,7 @@
       </section>
 
       <!-- FAQ Section -->
-      <section class="faq-section">
+      <section id="faq" class="faq-section">
         <h2>Frequently Asked Questions</h2>
 
         <div class="faq-item">
@@ -405,7 +407,7 @@
       </section>
 
       <!-- Login and Registration Forms -->
-      <section class="forms-section">
+      <section id="register" class="forms-section">
         <h2>Login and Register</h2>
         <div class="form-container">
           <!-- Login Form -->
@@ -495,7 +497,7 @@
     </main>
 
     <!-- Footer -->
-    <footer>
+    <footer id="about"
       <div class="footer-container">
         <!-- About Us Section -->
         <div class="footer-about">
@@ -554,280 +556,8 @@
       </div>
     </footer>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const languageButton = document.getElementById("language-button");
-        const languageList = document.getElementById("language-list");
-        const languageOptions = document.querySelectorAll(".language-option");
-        let expanded = false;
-        let currentOptionIndex = 0;
-        let searchString = "";
-        let searchTimeout;
-        let lastKey = "";
-        let cycleIndex = 0; // Keeps track of cycling through options with the same starting letter
+    <script src="script.js">
 
-        // Focus on the button to capture keydown events when dropdown is opened
-        function toggleDropdown(show) {
-          expanded = show;
-          languageButton.setAttribute("aria-expanded", expanded);
-          languageList.style.display = expanded ? "block" : "none";
-
-          if (expanded) {
-            setActiveDescendant(currentOptionIndex);
-            languageButton.focus(); // Ensure the button receives focus
-          }
-        }
-
-        // Set the active option in the dropdown (with visual and accessibility focus)
-        function setActiveDescendant(index) {
-          languageOptions.forEach((option) =>
-            option.classList.remove("active")
-          ); // Remove previous active class
-          languageOptions[index].classList.add("active"); // Add active class to the current option
-          languageButton.setAttribute(
-            "aria-activedescendant",
-            languageOptions[index].id
-          );
-          languageOptions[index].scrollIntoView({ block: "nearest" });
-          currentOptionIndex = index;
-        }
-
-        // Handle keydown events for navigation and character typing
-        languageButton.addEventListener("keydown", (event) => {
-          const key = event.key;
-          console.log(`Key pressed: ${key}`); // Log the pressed key
-
-          if (key === "ArrowDown") {
-            console.log("ArrowDown key pressed.");
-            if (!expanded) {
-              toggleDropdown(true); // Open dropdown if it's not already expanded
-            } else {
-              // Move to the next option only if it's not the last option
-              if (currentOptionIndex < languageOptions.length - 1) {
-                setActiveDescendant(currentOptionIndex + 1);
-              }
-            }
-            event.preventDefault();
-          } else if (key === "ArrowUp") {
-            console.log("ArrowUp key pressed.");
-            if (!expanded) {
-              toggleDropdown(true); // Open dropdown if it's not already expanded
-            } else {
-              // Move to the previous option only if it's not the first option
-              if (currentOptionIndex > 0) {
-                setActiveDescendant(currentOptionIndex - 1);
-              }
-            }
-            event.preventDefault();
-          } else if (key === "Enter" || key === " ") {
-            console.log("Enter or Space key pressed.");
-            if (expanded) {
-              languageButton.textContent =
-                languageOptions[currentOptionIndex].textContent; // Set the text of the selected option
-              toggleDropdown(false); // Close dropdown
-            } else {
-              toggleDropdown(true); // Open dropdown on Enter or Space
-            }
-            event.preventDefault();
-          } else if (key === "Escape") {
-            console.log("Escape key pressed.");
-            toggleDropdown(false); // Close dropdown on Escape
-            event.preventDefault();
-          } else if (key === "Tab") {
-            // Handle Tab key to select the current option and close the dropdown
-            languageButton.textContent =
-              languageOptions[currentOptionIndex].textContent;
-            toggleDropdown(false); // Close dropdown when Tab is pressed
-          } else if (/^[a-zA-Z]$/.test(key)) {
-            console.log(`Printable character key pressed: ${key}`);
-            handleTypeAheadSearch(key.toLowerCase());
-            event.preventDefault();
-          }
-        });
-
-        function handleTypeAheadSearch(char) {
-          clearTimeout(searchTimeout); // Reset the timeout for the search string
-
-          // Check if the character typed is the same as the last key pressed
-          if (char === lastKey) {
-            // If the same character is pressed again, cycle through options that start with that character
-            cycleIndex = (cycleIndex + 1) % languageOptions.length;
-            for (let i = 0; i < languageOptions.length; i++) {
-              const optionText = languageOptions[cycleIndex].textContent
-                .trim()
-                .toLowerCase();
-              if (optionText.startsWith(char)) {
-                setActiveDescendant(cycleIndex);
-                break;
-              }
-              cycleIndex = (cycleIndex + 1) % languageOptions.length;
-            }
-          } else {
-            // New character typed, so start a new search
-            searchString += char;
-            lastKey = char; // Update last key pressed
-            let matchingIndex = -1;
-
-            // If dropdown isn't expanded, open it
-            if (!expanded) {
-              toggleDropdown(true);
-            }
-
-            // Look for the first option that matches the full search string
-            for (let i = 0; i < languageOptions.length; i++) {
-              const optionText = languageOptions[i].textContent
-                .trim()
-                .toLowerCase();
-              if (optionText.startsWith(searchString)) {
-                matchingIndex = i; // Found a match
-                break;
-              }
-            }
-
-            // If a match is found, set the focus to that matching option
-            if (matchingIndex !== -1) {
-              setActiveDescendant(matchingIndex);
-              cycleIndex = matchingIndex; // Set cycleIndex to the first match
-            }
-          }
-
-          // Clear the search string after a delay (1 second) to allow for typing in quick succession
-          searchTimeout = setTimeout(() => {
-            searchString = "";
-            lastKey = "";
-          }, 1000);
-        }
-
-        // Click event to toggle dropdown
-        languageButton.addEventListener("click", () => {
-          toggleDropdown(!expanded);
-        });
-
-        // Handle mouse click for option selection
-        languageOptions.forEach((option, index) => {
-          option.addEventListener("click", () => {
-            languageButton.textContent = option.textContent; // Set selected language
-            toggleDropdown(false); // Close dropdown
-            setActiveDescendant(index); // Update active option
-          });
-        });
-
-        // Close dropdown if user clicks outside
-        document.addEventListener("click", (event) => {
-          if (
-            !languageButton.contains(event.target) &&
-            !languageList.contains(event.target)
-          ) {
-            languageButton.textContent =
-              languageOptions[currentOptionIndex].textContent; // Select the current option
-            toggleDropdown(false); // Close dropdown
-          }
-        });
-      });
-
-      // SLides
-      let currentSlide = 1;
-      const slides = document.querySelectorAll(".slide");
-
-      function showSlide(slideIndex) {
-        slides.forEach((slide, index) => {
-          slide.style.display = index + 1 === slideIndex ? "block" : "none";
-        });
-      }
-
-      function prevSlide() {
-        currentSlide = currentSlide === 1 ? slides.length : currentSlide - 1;
-        showSlide(currentSlide);
-      }
-
-      function nextSlide() {
-        currentSlide = currentSlide === slides.length ? 1 : currentSlide + 1;
-        showSlide(currentSlide);
-      }
-
-      function playVideo(slideIndex) {
-        // Hide all slides (images and play buttons)
-        const slides = document.querySelectorAll(".slide");
-        slides.forEach((slide) => {
-          slide.style.display = "none";
-        });
-
-        // Hide all videos initially
-        const videos = document.querySelectorAll(".hero-video");
-        videos.forEach((video) => {
-          video.style.display = "none";
-          video.pause(); // Stop any video that might be playing
-        });
-
-        // Show the selected video based on the slide index and play it
-        const selectedVideo = document.getElementById(`video${slideIndex}`);
-        selectedVideo.style.display = "block";
-        selectedVideo.play();
-      }
-
-      showSlide(currentSlide);
-
-      // Trending
-      let position = 0; // Current position of the carousel (0 for first 6, -100% for the next 6)
-      const totalItems = 12;
-      const visibleItems = 6;
-      const carouselItems = document.querySelector(".carousel-items");
-
-      function slideCarousel() {
-        // Toggle between first 6 and next 6 items
-        position = position === 0 ? -100 : 0; // Move to the left (show the next 6 items) or back to the right
-        carouselItems.style.transform = `translateX(${position}%)`;
-      }
-
-      // Automatic sliding every 4 seconds
-      setInterval(slideCarousel, 4000);
-
-      // Get all language options
-      const languageOptions = document.querySelectorAll(".language-option");
-      const languageButton = document.getElementById("language-button");
-      const dropdownContent = document.querySelector(".dropdown-content");
-
-      // Add event listeners to each language option
-      languageOptions.forEach((option) => {
-        option.addEventListener("click", function (e) {
-          e.preventDefault(); // Prevent the default link behavior
-
-          // Set the language button text to the selected language
-          languageButton.textContent = this.textContent;
-
-          // Automatically close the dropdown after selection
-          dropdownContent.style.display = "none";
-        });
-      });
-
-      // Handle dropdown visibility with hover (reopen it on hover)
-      const dropdown = document.querySelector(".dropdown");
-
-      // When hovering over the dropdown, make sure it shows again
-      dropdown.addEventListener("mouseenter", function () {
-        dropdownContent.style.display = "block"; // Reopen on hover
-      });
-
-      dropdown.addEventListener("mouseleave", function () {
-        dropdownContent.style.display = "none"; // Close when not hovering
-      });
-
-      // Function to open the modal
-      function openModal(modalId) {
-        document.getElementById(modalId).style.display = "block";
-      }
-
-      // Function to close the modal
-      function closeModal(modalId) {
-        document.getElementById(modalId).style.display = "none";
-      }
-
-      // Close modal if the user clicks outside of the modal content
-      window.onclick = function (event) {
-        if (event.target.classList.contains("modal")) {
-          event.target.style.display = "none";
-        }
-      };
     </script>
   </body>
 </html>

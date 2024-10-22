@@ -26,17 +26,63 @@ body {
   top: 10px; /* Moves it into view when focused */
 }
 
-/* Adjust Navbar Height and Logo Size */
+/* Navbar Styling */
 .navbar {
-  background-color: #333; /* Darker background for better contrast */
-  color: #fff;
-  padding: 20px 30px; /* More padding for a spacious navbar */
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Vertical center alignment for logo and links */
-  position: relative;
-  z-index: 10;
-  border-bottom: 2px solid #f5b700; /* Add a nice separator line below the navbar */
+  align-items: center;
+  background-color: #333;
+  padding: 20px 30px;
+  border-bottom: 4px solid #f5b700; /* Thick border to indicate focus */
+}
+
+.nav-links {
+  list-style-type: none;
+  display: flex;
+  gap: 30px;
+}
+
+/* Default style for menu items */
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1em;
+  padding: 10px;
+}
+
+/* Selected state: Adds border and bold text */
+.nav-links a.selected {
+  border-bottom: 4px solid #f5b700; /* Extra thick border for selected item */
+  font-weight: bold;
+  color: #f5b700;
+}
+
+/* Hover state for menu items */
+.nav-links a:hover {
+  color: #f5b700;
+}
+
+/* Focus management */
+.nav-links a:focus {
+  outline: 2px solid #f5b700;
+  padding: 8px; /* Reduce padding when focused */
+}
+
+/* High contrast mode adjustments */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .nav-links a {
+    background-color: ButtonFace; /* Ensure contrast on high contrast settings */
+    color: ButtonText;
+  }
+  .nav-links a.selected {
+    border-left: 4px solid Highlight; /* Change border color in high contrast mode */
+  }
+}
+
+/* Focus styles for the content heading */
+#content-title {
+  outline: 2px solid #f5b700; /* Visible focus on content heading */
+  padding: 5px;
 }
 
 /* Adjust Logo Size */
@@ -44,26 +90,6 @@ body {
   max-height: 60px; /* Increase height for better visibility */
   width: auto;
   margin-right: 20px;
-}
-
-/* Adjust Links for Better Vertical Alignment */
-.navbar .nav-links {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  gap: 30px; /* More spacing between links */
-}
-
-.navbar .nav-links a {
-  color: white;
-  text-decoration: none;
-  font-size: 1.1em; /* Increase font size for better readability */
-  font-weight: 500;
-}
-
-.navbar .nav-links a:hover {
-  color: #f5b700; /* Add hover effect to match the gold color theme */
 }
 
 /* Make Dropdown Stay Visible on Hover */
@@ -122,6 +148,27 @@ body {
 /* Optional: For a more accessible focus outline */
 .language-option:focus {
   outline: 2px solid #f5b700; /* Focus outline to indicate focus */
+}
+
+/* Focus indicator for the dropdown when opened */
+#language-button.dropdown-open {
+  background-color: #f5b700; /* Highlight the dropdown button */
+  color: white; /* Ensure the text is readable */
+  border: 2px solid #333; /* Add a clear border to indicate focus */
+}
+
+.language-option.active {
+  background-color: #f5b700; /* Highlight the active option */
+  color: white; /* Ensure readability */
+}
+
+.language-option {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.language-option:hover {
+  background-color: #ddd; /* Hover effect */
 }
 
 /* Hero Section */
