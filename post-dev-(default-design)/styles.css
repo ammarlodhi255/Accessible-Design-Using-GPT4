@@ -99,18 +99,29 @@ body {
   background-color: #555;
 }
 
-.language-option.active {
-  background-color: #f5b700; /* Highlight the active option */
-  color: white;
-}
-
+/* Default state for language options */
 .language-option {
   padding: 10px;
   cursor: pointer;
+  background-color: white; /* Default background */
+  color: #333; /* Default dark text color */
 }
 
+/* Hover state for language options (better contrast) */
 .language-option:hover {
-  background-color: #ddd; /* Hover effect */
+  background-color: #222; /* Darker background for better contrast */
+  color: #f5b700; /* Light text color (gold) */
+}
+
+/* Active state for focused option via keyboard navigation (better contrast) */
+.language-option.active {
+  background-color: #f5b700; /* Gold background for the active option */
+  color: #222; /* Darker text for contrast */
+}
+
+/* Optional: For a more accessible focus outline */
+.language-option:focus {
+  outline: 2px solid #f5b700; /* Focus outline to indicate focus */
 }
 
 /* Hero Section */

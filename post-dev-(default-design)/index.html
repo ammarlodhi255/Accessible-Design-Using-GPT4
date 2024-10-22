@@ -597,18 +597,26 @@
           const key = event.key;
           console.log(`Key pressed: ${key}`); // Log the pressed key
 
-          if (key === "ArrowDown" || key === "ArrowUp") {
-            console.log("Arrow key pressed.");
+          if (key === "ArrowDown") {
+            console.log("ArrowDown key pressed.");
             if (!expanded) {
               toggleDropdown(true); // Open dropdown if it's not already expanded
             } else {
-              // Navigate through the options
-              let newIndex =
-                key === "ArrowDown"
-                  ? (currentOptionIndex + 1) % languageOptions.length
-                  : (currentOptionIndex - 1 + languageOptions.length) %
-                    languageOptions.length;
-              setActiveDescendant(newIndex);
+              // Move to the next option only if it's not the last option
+              if (currentOptionIndex < languageOptions.length - 1) {
+                setActiveDescendant(currentOptionIndex + 1);
+              }
+            }
+            event.preventDefault();
+          } else if (key === "ArrowUp") {
+            console.log("ArrowUp key pressed.");
+            if (!expanded) {
+              toggleDropdown(true); // Open dropdown if it's not already expanded
+            } else {
+              // Move to the previous option only if it's not the first option
+              if (currentOptionIndex > 0) {
+                setActiveDescendant(currentOptionIndex - 1);
+              }
             }
             event.preventDefault();
           } else if (key === "Enter" || key === " ") {
@@ -625,6 +633,11 @@
             console.log("Escape key pressed.");
             toggleDropdown(false); // Close dropdown on Escape
             event.preventDefault();
+          } else if (key === "Tab") {
+            // Handle Tab key to select the current option and close the dropdown
+            languageButton.textContent =
+              languageOptions[currentOptionIndex].textContent;
+            toggleDropdown(false); // Close dropdown when Tab is pressed
           } else if (/^[a-zA-Z]$/.test(key)) {
             console.log(`Printable character key pressed: ${key}`);
             handleTypeAheadSearch(key.toLowerCase());
@@ -705,7 +718,9 @@
             !languageButton.contains(event.target) &&
             !languageList.contains(event.target)
           ) {
-            toggleDropdown(false);
+            languageButton.textContent =
+              languageOptions[currentOptionIndex].textContent; // Select the current option
+            toggleDropdown(false); // Close dropdown
           }
         });
       });
