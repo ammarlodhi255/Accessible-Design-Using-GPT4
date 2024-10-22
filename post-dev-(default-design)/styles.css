@@ -92,6 +92,26 @@ body {
   margin-right: 20px;
 }
 
+/* Adjust Links for Better Vertical Alignment */
+.navbar .nav-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 30px; /* More spacing between links */
+}
+
+.navbar .nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1em; /* Increase font size for better readability */
+  font-weight: 500;
+}
+
+.navbar .nav-links a:hover {
+  color: #f5b700; /* Add hover effect to match the gold color theme */
+}
+
 /* Make Dropdown Stay Visible on Hover */
 .navbar .dropdown {
   position: relative;
@@ -148,27 +168,6 @@ body {
 /* Optional: For a more accessible focus outline */
 .language-option:focus {
   outline: 2px solid #f5b700; /* Focus outline to indicate focus */
-}
-
-/* Focus indicator for the dropdown when opened */
-#language-button.dropdown-open {
-  background-color: #f5b700; /* Highlight the dropdown button */
-  color: white; /* Ensure the text is readable */
-  border: 2px solid #333; /* Add a clear border to indicate focus */
-}
-
-.language-option.active {
-  background-color: #f5b700; /* Highlight the active option */
-  color: white; /* Ensure readability */
-}
-
-.language-option {
-  padding: 10px;
-  cursor: pointer;
-}
-
-.language-option:hover {
-  background-color: #ddd; /* Hover effect */
 }
 
 /* Hero Section */

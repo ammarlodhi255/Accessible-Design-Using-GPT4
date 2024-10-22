@@ -11,6 +11,33 @@ document.addEventListener("DOMContentLoaded", () => {
   let lastKey = "";
   let cycleIndex = 0;
 
+  // Sticky Navbar and Active Section Indicator
+  const sections = document.querySelectorAll("section"); // All the sections on the page
+  const navbarHeight = document.querySelector(".navbar").offsetHeight;
+
+  window.addEventListener("scroll", () => {
+    let currentSection = "";
+
+    // Loop through each section and check if it's in the viewport
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop - navbarHeight - 50; // Account for navbar height
+      if (pageYOffset >= sectionTop) {
+        currentSection = section.getAttribute("id");
+      }
+    });
+
+    // Add the active class to the corresponding menu item
+    navLinks.forEach((link) => {
+      link.classList.remove("active-indicator"); // Remove active from all
+      if (link.getAttribute("href").substring(1) === currentSection) {
+        link.classList.add("active-indicator"); // Add active to the current section's link
+      }
+    });
+  });
+
+  // Focus management for navigation
+  let currentMenuIndex = 0;
+
   // Function to scroll to the section and set focus on its heading
   function scrollToSection(event, sectionId) {
     event.preventDefault();
@@ -21,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Add event listener to all menu items (except language dropdown)
-  navLinks.forEach((link) => {
+  navLinks.forEach((link, index) => {
     if (link.id !== "language-button") {
       link.addEventListener("click", function (event) {
         const sectionId = this.getAttribute("href");
@@ -34,9 +61,57 @@ document.addEventListener("DOMContentLoaded", () => {
           const sectionId = this.getAttribute("href");
           scrollToSection(event, sectionId);
         }
+
+        // Handle left and right arrow navigation
+        if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+          navigateMenu(event, index);
+        }
+
+        // Handle character-based focus movement
+        if (/^[a-zA-Z]$/.test(event.key)) {
+          focusByTypedCharacter(event.key.toLowerCase());
+        }
       });
     }
   });
+
+  // Handle navigation with left and right arrow keys for menu items
+  function navigateMenu(event, currentIndex) {
+    const maxIndex = navLinks.length - 1;
+
+    if (event.key === "ArrowRight") {
+      currentMenuIndex = currentIndex + 1 > maxIndex ? 0 : currentIndex + 1;
+    } else if (event.key === "ArrowLeft") {
+      currentMenuIndex = currentIndex - 1 < 0 ? maxIndex : currentIndex - 1;
+    }
+
+    // Move focus to the next or previous menu item
+    navLinks[currentMenuIndex].focus();
+  }
+
+  // Function to move focus based on typed character
+  function focusByTypedCharacter(char) {
+    const startingIndex = currentMenuIndex + 1; // Start searching from the next item
+    let found = false;
+
+    // Search for the first menu item that starts with the typed character
+    for (let i = 0; i < navLinks.length; i++) {
+      const indexToCheck = (startingIndex + i) % navLinks.length; // Wrap around using modulo
+      const linkText = navLinks[indexToCheck].textContent.trim().toLowerCase();
+
+      if (linkText.startsWith(char)) {
+        navLinks[indexToCheck].focus();
+        currentMenuIndex = indexToCheck; // Update the current focused menu item
+        found = true;
+        break;
+      }
+    }
+
+    if (!found) {
+      // No item found, focus does not move
+      console.log(`No menu item found starting with: ${char}`);
+    }
+  }
 
   // Language dropdown behavior
   function toggleDropdown(show) {
@@ -94,6 +169,10 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (key === "Escape") {
       event.preventDefault();
       toggleDropdown(false);
+    } else if (key === "ArrowLeft" || key === "ArrowRight") {
+      // Handle left and right arrow navigation for the language button
+      const languageButtonIndex = Array.from(navLinks).indexOf(languageButton);
+      navigateMenu(event, languageButtonIndex);
     } else if (/^[a-zA-Z]$/.test(key)) {
       handleTypeAheadSearch(key.toLowerCase());
       event.preventDefault();
@@ -156,11 +235,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // Close dropdown if user clicks outside
   document.addEventListener("click", (event) => {
     if (
       !languageButton.contains(event.target) &&
       !languageList.contains(event.target)
     ) {
+      languageButton.textContent =
+        languageOptions[currentOptionIndex].textContent;
+      toggleDropdown(false);
+    }
+  });
+
+  // Add a focusout listener to handle when focus moves out of the dropdown
+  languageButton.addEventListener("focusout", (event) => {
+    if (!event.relatedTarget || !languageList.contains(event.relatedTarget)) {
       languageButton.textContent =
         languageOptions[currentOptionIndex].textContent;
       toggleDropdown(false);
