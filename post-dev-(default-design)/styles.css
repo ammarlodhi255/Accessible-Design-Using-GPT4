@@ -198,18 +198,16 @@ body {
   outline: none;
 }
 
-.hero-section .slide {
+.hero-section .slide img {
   position: relative;
   outline: none;
   border: none;
-  z-index: 2; /* Ensure it's on top */
 }
 
 /* Single layer outline for focus */
-.hero-section .slide:focus,
-.hero-section .slide:focus-visible {
+.hero-section .slide img:focus,
+.hero-section .slide img:focus-visible {
   box-shadow: 0 0 0 4px #ff6600; /* Single orange outline */
-  z-index: 3; /* High z-index to be on top */
   border-radius: 8px; /* Optional rounded corners */
   outline: none !important; /* Remove default outline */
 }
@@ -287,7 +285,7 @@ body {
   padding: 20px;
 }
 #trending {
-  margin-top: 150px; /* Adjust based on the size of the outline */
+  margin-top: 50px; /* Adjust based on the size of the outline */
 }
 
 .trending-carousel {
@@ -1124,7 +1122,7 @@ table td {
   color: #333; /* Ensure text is visible on highlight */
 }
 
-/* FAQ button styling */
+/* FAQ question button styling */
 .faq-question {
   background: none;
   border: none;
@@ -1133,23 +1131,252 @@ table td {
   font-size: 1em;
   width: 100%;
   padding: 10px 0;
+  outline: none;
 }
 
 .faq-question:focus {
   outline: 2px solid #0073e6; /* Focus outline */
 }
 
-/* Hover effect to show the answer */
-.faq-item:hover .answer {
-  display: block;
-}
-
+/* Default hidden state for answers */
 .answer {
+  display: none;
   margin: 0 0 1em 0;
   padding: 0 0 0 1em;
 }
 
-/* Display answer when button is expanded */
+/* Show answer when button is expanded */
 .faq-question[aria-expanded="true"] + .answer {
   display: block;
+}
+
+/* Keep hover functionality for mouse users */
+.faq-item:hover .faq-question[aria-expanded="false"] + .answer {
+  display: block;
+}
+
+/* Remove hover-based visibility if present */
+.faq-question[aria-expanded="true"] + .answer {
+  display: block;
+}
+
+/* Hide the answer by default */
+.answer {
+  display: none;
+}
+
+/* Show answer on hover */
+.faq-item:hover .answer {
+  display: block;
+}
+
+/* Show answer if aria-expanded is true */
+.faq-question[aria-expanded="true"] + .answer {
+  display: block;
+}
+
+/* Ensure the answer stays visible on focus and keyboard activation */
+.faq-item:focus-within .answer {
+  display: block;
+}
+
+/* Consistent outline styling for FAQ question buttons */
+.faq-question:focus {
+  outline: 2px solid #f5b700; /* Match this color to the outline color used elsewhere */
+  box-shadow: 0 0 5px rgba(245, 183, 0, 0.8); /* Optional glow effect for consistency */
+}
+
+/* Consistent outline for FAQ expanded text */
+.answer:focus {
+  outline: 2px solid #f5b700; /* Same color as headings */
+  box-shadow: 0 0 5px rgba(245, 183, 0, 0.8); /* Optional glow effect */
+}
+
+/* Basic styling for the modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: auto;
+}
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  width: 50%;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close:focus {
+  outline: 2px solid #f5b700; /* Use the same outline color as other elements */
+}
+
+/* Styles for the additional options section */
+.additional-options {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.additional-options h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Styles for checkboxes */
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Space between checkbox label and info icon */
+  margin-bottom: 15px;
+  font-size: 1em;
+  cursor: pointer;
+  color: #333;
+}
+
+.checkbox[aria-checked="true"]::before {
+  content: "✓";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 10px;
+  color: #f5b700; /* Checkmark color */
+}
+
+.checkbox[aria-checked="false"]::before {
+  content: "⬜";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 10px;
+  color: #ddd; /* Empty box color */
+}
+
+/* Styles for info icons */
+.info-icon {
+  font-weight: bold;
+  color: #555;
+  font-size: 1.2em;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.info-icon:hover,
+.info-icon:focus {
+  color: #f5b700;
+  outline: none;
+}
+
+/* Accessible focus outline for the entire checkbox */
+.checkbox:focus {
+  outline: 2px solid #f5b700; /* Consistent with other focus elements */
+  border-radius: 5px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* General Footer Styling */
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-container h3 {
+  color: #f5b700; /* Yellow for headings */
+  margin-bottom: 10px;
+}
+
+.footer-container a {
+  color: #f5b700;
+  text-decoration: none;
+}
+
+/* Button Styling */
+.btn {
+  background-color: #f5b700; /* Yellow button background */
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/* Focus Outline with Padding and Shadow */
+.btn:focus {
+  outline: 2px solid #f5b700; /* Yellow outline for focus */
+  outline-offset: 4px; /* Add space around the outline */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Subtle shadow for contrast */
+}
+
+/* Accessibility: Focus styles for input fields */
+input[type="email"]:focus {
+  outline: 2px solid #f5b700; /* Yellow outline */
+  outline-offset: 4px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Media Queries */
+@media (min-width: 768px) {
+  /* Navbar on Medium Devices */
+  .navbar {
+    flex-direction: row;
+  }
+
+  .nav-links {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  /* Two Columns on Tablet for Most Watched Section */
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Navbar on Large Screens */
+  .navbar {
+    padding: 20px 30px;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    height: 100vh;
+  }
+
+  /* Trending Section - More Items per Row */
+  .carousel-items {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Grid Layout for Most Watched Section */
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

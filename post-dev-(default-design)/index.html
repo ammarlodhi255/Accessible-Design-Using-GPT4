@@ -17,19 +17,29 @@
         </a>
       </div>
       <ul class="nav-links" role="menubar">
-        <li><a href="#homepage" role="menuitem" data-page="Homepage">Homepage</a></li>
-        <li><a href="#trending" role="menuitem" data-page="Trending">Trending</a></li>
         <li>
-          <a href="#most-watched" role="menuitem" data-page="Most Watched">Most Watched</a>
+          <a href="#homepage" role="menuitem" data-page="Homepage">Homepage</a>
         </li>
-        <li><a href="#pricing" role="menuitem" data-page="Pricing">Pricing</a></li>
+        <li>
+          <a href="#trending" role="menuitem" data-page="Trending">Trending</a>
+        </li>
+        <li>
+          <a href="#most-watched" role="menuitem" data-page="Most Watched"
+            >Most Watched</a
+          >
+        </li>
+        <li>
+          <a href="#pricing" role="menuitem" data-page="Pricing">Pricing</a>
+        </li>
         <li><a href="#faq" role="menuitem" data-page="FAQ">FAQ</a></li>
-        <li><a href="#register" role="menuitem" data-page="Register">Register</a></li>
+        <li>
+          <a href="#register" role="menuitem" data-page="Register">Register</a>
+        </li>
         <li><a href="#about" role="menuitem" data-page="About">About</a></li>
         <!-- Language Dropdown -->
         <li class="dropdown">
           <a
-          href="#"
+            href="#"
             id="language-button"
             role="combobox"
             aria-expanded="false"
@@ -101,17 +111,24 @@
     <!-- Add the level one heading here -->
     <h1 tabindex="0" class="centered-heading">Welcome to TV Series Hub</h1>
     <!-- Hero Section -->
-    <section id="homepage"  class="hero-section">
+    <section id="homepage" class="hero-section">
       <div class="hero-slider">
         <!-- Slide 1 -->
-        <div class="slide" tabindex="0" id="slide1">
-          <img src="img/blade.jpg" alt="Featured Series 1"/>
+        <div class="slide" id="slide1">
+          <img
+            src="img/blade.jpg"
+            alt="Lone figure in a coat walking toward a hazy, futuristic cityscape with towering buildings, abandoned structures, and a worn vehicle in the foreground, under an orange-tinted sky."
+            tabindex="0"
+          />
           <!-- Button with play icon -->
-<button class="play-btn" onclick="playVideo(1)" aria-label="Play Blade video">
-  <img src="img/play-button.svg" alt="" class="play-icon" />
-  Play
-</button>
-
+          <button
+            class="play-btn"
+            onclick="playVideo(1)"
+            aria-label="Play Blade video"
+          >
+            <img src="img/play-button.svg" alt="" class="play-icon" />
+            Play
+          </button>
         </div>
         <video id="video1" class="hero-video" controls style="display: none">
           <source src="img/video.mp4" type="video/mp4" />
@@ -123,11 +140,14 @@
         <div class="slide" tabindex="0" id="slide2">
           <img src="img/clique.avif" alt="Featured Series 2" />
           <!-- Button with play icon -->
-        <button class="play-btn" onclick="playVideo(1)" aria-label="Play Clique video">
-          <img src="img/play-button.svg" alt="" class="play-icon" />
-          Play
-        </button>
-
+          <button
+            class="play-btn"
+            onclick="playVideo(1)"
+            aria-label="Play Clique video"
+          >
+            <img src="img/play-button.svg" alt="" class="play-icon" />
+            Play
+          </button>
         </div>
         <video id="video2" class="hero-video" controls style="display: none">
           <source src="videos/video2.mp4" type="video/mp4" />
@@ -139,11 +159,14 @@
         <div class="slide" tabindex="0" id="slide3">
           <img src="img/endeavor.avif" alt="Featured Series 3" />
           <!-- Button with play icon -->
-<button class="play-btn" onclick="playVideo(1)" aria-label="Play Endeavor video">
-  <img src="img/play-button.svg" alt="" class="play-icon" />
-  Play
-</button>
-
+          <button
+            class="play-btn"
+            onclick="playVideo(1)"
+            aria-label="Play Endeavor video"
+          >
+            <img src="img/play-button.svg" alt="" class="play-icon" />
+            Play
+          </button>
         </div>
         <video id="video3" class="hero-video" controls style="display: none">
           <source src="videos/video3.mp4" type="video/mp4" />
@@ -157,387 +180,832 @@
       </div>
     </section>
 
-
     <!-- Main content starts here -->
     <main id="main-content">
       <a href="#most-watched" class="skip-carousel-link">Skip Carousel</a>
-<!-- Trending TV Series Section -->
-<section id="trending" class="trending-section" aria-labelledby="trending-heading" role="region">
-  <h2 tabindex="0" id="trending-heading">Trending TV Series</h2>
-  
-  <!-- Trending Carousel Wrapper -->
-  <div class="trending-carousel" aria-live="polite" role="listbox" aria-label="Trending TV Series Carousel">
-    <div class="carousel-items">
-      
-      <!-- 12 Trending Series Items -->
-      <div class="trending-item" tabindex="0" role="option" aria-label="Baptiste">
-        <img src="img/baptiste.avif" alt="Baptiste TV Series Poster" />
-        <h3>Baptiste</h3>
-      </div>
-      
-      <div class="trending-item" tabindex="0" role="option" aria-label="Clique">
-        <img src="img/clique.avif" alt="Clique TV Series Poster" />
-        <h3>Clique</h3>
-      </div>
-      
-      <div class="trending-item" tabindex="0" role="option" aria-label="Endeavor">
-        <img src="img/endeavor.avif" alt="Endeavor TV Series Poster" />
-        <h3>Endeavor</h3>
-      </div>
-      
-      <div class="trending-item" tabindex="0" role="option" aria-label="Ragdoll">
-        <img src="img/ragdoll.avif" alt="Ragdoll TV Series Poster" />
-        <h3>Ragdoll</h3>
-      </div>
-      
-      <div class="trending-item" tabindex="0" role="option" aria-label="Unforgotten">
-        <img src="img/unforgotten.avif" alt="Unforgotten TV Series Poster" />
-        <h3>Unforgotten</h3>
-      </div>
-      
-      <div class="trending-item" tabindex="0" role="option" aria-label="The Investigation">
-        <img src="img/investigation.avif" alt="The Investigation TV Series Poster" />
-        <h3>The Investigation</h3>
-      </div>
-      
-      <div class="trending-item" tabindex="0" role="option" aria-label="Annika">
-        <img src="img/annika.jpeg" alt="Annika TV Series Poster" />
-        <h3>Annika</h3>
-      </div>
-      
-      <div class="trending-item" tabindex="0" role="option" aria-label="The Long Call">
-        <img src="img/long-call.jpeg" alt="The Long Call TV Series Poster" />
-        <h3>The Long Call</h3>
-      </div>
-      
-      <div class="trending-item" tabindex="0" role="option" aria-label="Unforgiven">
-        <img src="img/unforgiven.jpeg" alt="Unforgiven TV Series Poster" />
-        <h3>Unforgiven</h3>
-      </div>
-      
-      <div class="trending-item" tabindex="0" role="option" aria-label="Shetland">
-        <img src="img/shetland.jpeg" alt="Shetland TV Series Poster" />
-        <h3>Shetland</h3>
-      </div>
-      
-      <div class="trending-item" tabindex="0" role="option" aria-label="Ridley">
-        <img src="img/ridley.jpeg" alt="Ridley TV Series Poster" />
-        <h3>Ridley</h3>
-      </div>
-      
-      <div class="trending-item" tabindex="0" role="option" aria-label="Karen">
-        <img src="img/karen.jpeg" alt="Karen TV Series Poster" />
-        <h3>Karen</h3>
-      </div>
-    
-    </div>
-  </div>
-  
-  <!-- Carousel Controls -->
-  <div class="carousel-controls">
-    <button id="pauseBtn">Pause</button>
-    <button id="playBtn" style="display: none;">Play</button>
-    <button id="toggleAutoRotateBtn">Disable Auto Rotate</button> <!-- New Button -->
-  </div>
-  
-</section>
-
-
-<!-- Most Watched Section -->
-<section id="most-watched" class="most-watched-section">
-  <h2 tabindex="0">Most Watched</h2>
-  <div class="grid-container" role="list">
-    <div class="grid-item" role="listitem" tabindex="0" aria-label="Watch River">
-      <img src="img/river.jpeg" alt="River" />
-      <h3>River</h3>
-    </div>
-    <div class="grid-item" role="listitem" tabindex="0" aria-label="Watch Sherwood">
-      <img src="img/sherwood.jpeg" alt="Sherwood" />
-      <h3>Sherwood</h3>
-    </div>
-    <div class="grid-item" role="listitem" tabindex="0" aria-label="Watch Valkyrien">
-      <img src="img/valk.jpeg" alt="Valkyrien" />
-      <h3>Valkyrien</h3>
-    </div>
-    <div class="grid-item" role="listitem" tabindex="0" aria-label="Watch Murders">
-      <img src="img/murders.jpeg" alt="Murders" />
-      <h3>Murders</h3>
-    </div>
-    <div class="grid-item" role="listitem" tabindex="0" aria-label="Watch Marcella">
-      <img src="img/marcella.jpeg" alt="Marcella" />
-      <h3>Marcella</h3>
-    </div>
-    <div class="grid-item" role="listitem" tabindex="0" aria-label="Watch Bancroft">
-      <img src="img/bancroft.jpeg" alt="Bancroft" />
-      <h3>Bancroft</h3>
-    </div>
-    <div class="grid-item" role="listitem" tabindex="0" aria-label="Watch The Valley">
-      <img src="img/valley.jpeg" alt="The Valley" />
-      <h3>The Valley</h3>
-    </div>
-    <div class="grid-item" role="listitem" tabindex="0" aria-label="Watch Crime">
-      <img src="img/crime.jpeg" alt="Crime" />
-      <h3>Crime</h3>
-    </div>
-    <div class="grid-item" role="listitem" tabindex="0" aria-label="Watch Safe Harbour">
-      <img src="img/harbour.jpeg" alt="Safe Harbour" />
-      <h3>Safe Harbour</h3>
-    </div>
-  </div>
-</section>
-
-<section id="pricing" class="subscription-plans">
-  <h2 tabindex="0">Subscription Plans</h2>
-
-  <!-- Accessible summary as a live region and keyboard-navigable -->
-  <div id="table-summary" role="region" aria-live="polite" tabindex="0" class="sr-only">
-    This table provides an overview of different subscription plans, including device limits, video quality, and availability of exclusive content.
-  </div>
-
-  <!-- Table with Caption and Accessible Headers -->
-  <table aria-label="Subscription Plans Table">
-    <caption>Subscription Plans Overview</caption>
-    <thead>
-      <tr>
-        <th id="header-plan" scope="col">Plan</th>
-        <th id="header-devices" scope="col">Devices</th>
-        <th id="header-quality" scope="col">Video Quality</th>
-        <th id="header-content" scope="col">Exclusive Content</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr tabindex="0">
-        <td aria-labelledby="plan-plus" aria-describedby="header-plan" id="plan-plus">Plus</td>
-        <td aria-labelledby="devices-2" aria-describedby="header-devices" id="devices-2">2</td>
-        <td aria-labelledby="quality-1080p" aria-describedby="header-quality" id="quality-1080p">1080p</td>
-        <td aria-labelledby="content-no" aria-describedby="header-content" id="content-no">No</td>
-      </tr>
-      <tr tabindex="0">
-        <td aria-labelledby="plan-pro" aria-describedby="header-plan" id="plan-pro">Pro</td>
-        <td aria-labelledby="devices-4" aria-describedby="header-devices" id="devices-4">4</td>
-        <td aria-labelledby="quality-4k" aria-describedby="header-quality" id="quality-4k">4K</td>
-        <td aria-labelledby="content-yes" aria-describedby="header-content" id="content-yes">Yes</td>
-      </tr>
-      <tr tabindex="0">
-        <td aria-labelledby="plan-family" aria-describedby="header-plan" id="plan-family">Family</td>
-        <td aria-labelledby="devices-6" aria-describedby="header-devices" id="devices-6">6</td>
-        <td aria-labelledby="quality-4k-hdr" aria-describedby="header-quality" id="quality-4k-hdr">4K HDR</td>
-        <td aria-labelledby="content-yes" aria-describedby="header-content" id="content-yes">Yes</td>
-      </tr>
-      <tr tabindex="0">
-        <td aria-labelledby="plan-premium" aria-describedby="header-plan" id="plan-premium">Premium</td>
-        <td aria-labelledby="devices-unlimited" aria-describedby="header-devices" id="devices-unlimited">Unlimited</td>
-        <td aria-labelledby="quality-8k" aria-describedby="header-quality" id="quality-8k">8K</td>
-        <td aria-labelledby="content-yes" aria-describedby="header-content" id="content-yes">Yes</td>
-      </tr>
-      <tr tabindex="0">
-        <td aria-labelledby="plan-basic" aria-describedby="header-plan" id="plan-basic">Basic</td>
-        <td aria-labelledby="devices-1" aria-describedby="header-devices" id="devices-1">1</td>
-        <td aria-labelledby="quality-480p" aria-describedby="header-quality" id="quality-480p">480p</td>
-        <td aria-labelledby="content-no" aria-describedby="header-content" id="content-no">No</td>
-      </tr>
-      <tr tabindex="0">
-        <td aria-labelledby="plan-student" aria-describedby="header-plan" id="plan-student">Student</td>
-        <td aria-labelledby="devices-1" aria-describedby="header-devices" id="devices-1">1</td>
-        <td aria-labelledby="quality-1080p" aria-describedby="header-quality" id="quality-1080p">1080p</td>
-        <td aria-labelledby="content-yes" aria-describedby="header-content" id="content-yes">Yes</td>
-      </tr>
-      <tr tabindex="0">
-        <td aria-labelledby="plan-enterprise" aria-describedby="header-plan" id="plan-enterprise">Enterprise</td>
-        <td aria-labelledby="devices-unlimited" aria-describedby="header-devices" id="devices-unlimited">Unlimited</td>
-        <td aria-labelledby="quality-4k-hdr" aria-describedby="header-quality" id="quality-4k-hdr">4K HDR</td>
-        <td aria-labelledby="content-yes" aria-describedby="header-content" id="content-yes">Yes</td>
-      </tr>
-      <tr tabindex="0">
-        <td aria-labelledby="plan-gold" aria-describedby="header-plan" id="plan-gold">Gold</td>
-        <td aria-labelledby="devices-5" aria-describedby="header-devices" id="devices-5">5</td>
-        <td aria-labelledby="quality-4k-hdr" aria-describedby="header-quality" id="quality-4k-hdr">4K HDR</td>
-        <td aria-labelledby="content-yes" aria-describedby="header-content" id="content-yes">Yes</td>
-      </tr>
-      <tr tabindex="0">
-        <td aria-labelledby="plan-family-plus" aria-describedby="header-plan" id="plan-family-plus">Family Plus</td>
-        <td aria-labelledby="devices-8" aria-describedby="header-devices" id="devices-8">8</td>
-        <td aria-labelledby="quality-4k-hdr" aria-describedby="header-quality" id="quality-4k-hdr">4K HDR</td>
-        <td aria-labelledby="content-yes" aria-describedby="header-content" id="content-yes">Yes</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-
-
-
-<!-- FAQ Section -->
-<section id="faq" class="faq-section">
-  <h2 tabindex="0">Frequently Asked Questions</h2>
-
-  <div class="faq-item">
-    <h3>
-      <button
-        class="faq-question"
-        aria-expanded="false"
-        aria-controls="faq1"
-        id="faq-question1"
+      <!-- Trending TV Series Section -->
+      <section
+        id="trending"
+        class="trending-section"
+        aria-labelledby="trending-heading"
+        role="region"
       >
-        What is the cancellation policy?
-      </button>
-    </h3>
-    <p class="answer" id="faq1" role="region" aria-labelledby="faq-question1" hidden>
-      You can cancel anytime through your account settings without any penalties.
-    </p>
-  </div>
+        <h2 tabindex="0" id="trending-heading">Trending TV Series</h2>
 
-  <div class="faq-item">
-    <h3>
-      <button
-        class="faq-question"
-        aria-expanded="false"
-        aria-controls="faq2"
-        id="faq-question2"
-      >
-        How can I upgrade my plan?
-      </button>
-    </h3>
-    <p class="answer" id="faq2" role="region" aria-labelledby="faq-question2" hidden>
-      To upgrade, go to your account settings, select "Subscription," and choose the plan you'd like to upgrade to.
-    </p>
-  </div>
+        <!-- Trending Carousel Wrapper -->
+        <div
+          class="trending-carousel"
+          aria-live="polite"
+          role="listbox"
+          aria-label="Trending TV Series Carousel"
+        >
+          <div class="carousel-items">
+            <!-- 12 Trending Series Items -->
+            <div
+              tabindex="0"
+              class="trending-item"
+              role="option"
+              aria-label="Baptiste"
+            >
+              <img
+                tabindex="0"
+                src="img/baptiste.avif"
+                alt="Promotional poster for 'Baptiste Season 2,' featuring the main characters—a serious-looking older man with grey hair and a woman with a thoughtful expression. They stand in front of a bridge with a faint city map overlay in the background."
+              />
+              <h3>Baptiste</h3>
+            </div>
 
-  <div class="faq-item">
-    <h3>
-      <button
-        class="faq-question"
-        aria-expanded="false"
-        aria-controls="faq3"
-        id="faq-question3"
-      >
-        What payment methods are accepted?
-      </button>
-    </h3>
-    <p class="answer" id="faq3" role="region" aria-labelledby="faq-question3" hidden>
-      We accept Visa, MasterCard, PayPal, American Express, and Bitcoin for payments.
-    </p>
-  </div>
+            <div
+              class="trending-item"
+              tabindex="0"
+              role="option"
+              aria-label="Clique"
+            >
+              <img
+                tabindex="0"
+                src="img/clique.avif"
+                alt="Poster for 'Clique' Season 2 showing a woman's face in a vibrant, layered effect with blue and pink hues, creating a double-exposure look. Text below reads, 'English, Hindi, Tamil, Telugu."
+              />
+              <h3>Clique</h3>
+            </div>
 
-  <div class="faq-item">
-    <h3>
-      <button
-        class="faq-question"
-        aria-expanded="false"
-        aria-controls="faq4"
-        id="faq-question4"
-      >
-        Can I download content to watch offline?
-      </button>
-    </h3>
-    <p class="answer" id="faq4" role="region" aria-labelledby="faq-question4" hidden>
-      Yes, our Plus and Pro plans allow you to download content to watch offline on your devices.
-    </p>
-  </div>
+            <div
+              class="trending-item"
+              tabindex="0"
+              role="option"
+              aria-label="Endeavor"
+            >
+              <img
+                tabindex="0"
+                src="img/endeavor.avif"
+                alt="Poster for 'Endeavour' Series 1 featuring a young man in a trench coat and suit standing on a narrow street lined with brick buildings, with a vintage car visible behind him under a cloudy sky."
+              />
+              <h3>Endeavor</h3>
+            </div>
 
-  <div class="faq-item">
-    <h3>
-      <button
-        class="faq-question"
-        aria-expanded="false"
-        aria-controls="faq5"
-        id="faq-question5"
-      >
-        How do I reset my password?
-      </button>
-    </h3>
-    <p class="answer" id="faq5" role="region" aria-labelledby="faq-question5" hidden>
-      To reset your password, click on "Forgot Password" on the login page, and follow the instructions sent to your email.
-    </p>
-  </div>
+            <div
+              class="trending-item"
+              tabindex="0"
+              role="option"
+              aria-label="Ragdoll"
+            >
+              <img
+                tabindex="0"
+                src="img/ragdoll.avif"
+                alt="Poster for 'Ragdoll' featuring the faces of three individuals overlapping and divided by jagged, torn lines, set against a gradient background with vivid colors. The title 'Ragdoll' is displayed vertically across the image."
+              />
+              <h3>Ragdoll</h3>
+            </div>
 
-  <div class="faq-item">
-    <h3>
-      <button
-        class="faq-question"
-        aria-expanded="false"
-        aria-controls="faq6"
-        id="faq-question6"
-      >
-        Is there a free trial available?
-      </button>
-    </h3>
-    <p class="answer" id="faq6" role="region" aria-labelledby="faq-question6" hidden>
-      Yes, we offer a 7-day free trial on all of our paid subscription plans.
-    </p>
-  </div>
+            <div
+              class="trending-item"
+              tabindex="0"
+              role="option"
+              aria-label="Unforgotten"
+            >
+              <img
+                tabindex="0"
+                src="img/unforgotten.avif"
+                alt="Poster for 'Unforgotten' Series 1 featuring two detectives standing against a moody, overcast sky. The woman in the foreground looks determined, while the man stands slightly behind her, gazing ahead."
+              />
+              <h3>Unforgotten</h3>
+            </div>
 
-  <div class="faq-item">
-    <h3>
-      <button
-        class="faq-question"
-        aria-expanded="false"
-        aria-controls="faq7"
-        id="faq-question7"
-      >
-        Can I share my account with family members?
-      </button>
-    </h3>
-    <p class="answer" id="faq7" role="region" aria-labelledby="faq-question7" hidden>
-      Yes, certain plans like Family and Family Plus allow account sharing across multiple devices.
-    </p>
-  </div>
+            <div
+              class="trending-item"
+              tabindex="0"
+              role="option"
+              aria-label="The Investigation"
+            >
+              <img
+                tabindex="0"
+                src="img/investigation.avif"
+                alt="Poster for 'The Investigation' TV series featuring a line of people in orange vests wading through water, using poles to search the area. A red banner in the corner reads 'First Episode Free."
+              />
+              <h3>The Investigation</h3>
+            </div>
 
-  <div class="faq-item">
-    <h3>
-      <button
-        class="faq-question"
-        aria-expanded="false"
-        aria-controls="faq8"
-        id="faq-question8"
-      >
-        What is the refund policy?
-      </button>
-    </h3>
-    <p class="answer" id="faq8" role="region" aria-labelledby="faq-question8" hidden>
-      We offer a full refund if you cancel within the first 14 days of your subscription, no questions asked.
-    </p>
-  </div>
+            <div
+              class="trending-item"
+              tabindex="0"
+              role="option"
+              aria-label="Annika"
+            >
+              <img
+                tabindex="0"
+                src="img/annika.jpeg"
+                alt="Poster for 'Annika' featuring a woman in a leather jacket standing by a misty lake, with a police boat and forensic investigator in the background, suggesting a crime scene investigation."
+              />
+              <h3>Annika</h3>
+            </div>
 
-  <div class="faq-item">
-    <h3>
-      <button
-        class="faq-question"
-        aria-expanded="false"
-        aria-controls="faq9"
-        id="faq-question9"
-      >
-        How can I contact customer support?
-      </button>
-    </h3>
-    <p class="answer" id="faq9" role="region" aria-labelledby="faq-question9" hidden>
-      You can reach our customer support team via email at support@tvseries.com or through the live chat option on our website.
-    </p>
-  </div>
+            <div
+              class="trending-item"
+              tabindex="0"
+              role="option"
+              aria-label="The Long Call"
+            >
+              <img
+                tabindex="0"
+                src="img/long-call.jpeg"
+                alt="Poster for 'The Long Call' featuring a man in a dark coat standing in water, surrounded by other serious-looking characters against a backdrop of a moody, overcast sky and coastal landscape, suggesting a dark mystery or drama."
+              />
+              <h3>The Long Call</h3>
+            </div>
 
-  <div class="faq-item">
-    <h3>
-      <button
-        class="faq-question"
-        aria-expanded="false"
-        aria-controls="faq10"
-        id="faq-question10"
-      >
-        Are there parental controls available?
-      </button>
-    </h3>
-    <p class="answer" id="faq10" role="region" aria-labelledby="faq-question10" hidden>
-      Yes, we offer customizable parental controls that allow you to restrict content based on ratings or categories.
-    </p>
-  </div>
-</section>
+            <div
+              class="trending-item"
+              tabindex="0"
+              role="option"
+              aria-label="Unforgiven"
+            >
+              <img
+                tabindex="0"
+                src="img/unforgiven.jpeg"
+                alt="Poster for 'Unforgiven' showing a woman with a serious expression, sitting on a stone wall with arms wrapped around her knees, against a gray, overcast sky. Her posture and expression convey a sense of introspection and hardship."
+              />
+              <h3>Unforgiven</h3>
+            </div>
 
-      <!-- Login and Registration Forms -->
+            <div
+              class="trending-item"
+              tabindex="0"
+              role="option"
+              aria-label="Shetland"
+            >
+              <img
+                tabindex="0"
+                src="img/shetland.jpeg"
+                alt="Poster for 'Shetland' featuring two women with serious expressions against a misty, rugged coastal background. A third figure, dressed in a red jacket, is seen running down a narrow path, creating a sense of urgency and mystery."
+              />
+              <h3>Shetland</h3>
+            </div>
+
+            <div
+              class="trending-item"
+              tabindex="0"
+              role="option"
+              aria-label="Ridley"
+            >
+              <img
+                tabindex="0"
+                src="img/ridley.jpeg"
+                alt="Poster for 'Ridley' featuring a man in a leather jacket looking solemnly at the camera, set against a misty field. In the background, two forensic investigators in white suits examine a marked-off crime scene."
+              />
+              <h3>Ridley</h3>
+            </div>
+
+            <div
+              class="trending-item"
+              tabindex="0"
+              role="option"
+              aria-label="Karen"
+            >
+              <img
+                tabindex="0"
+                src="img/karen.jpeg"
+                alt="Poster for 'Karen Pirie' featuring a young woman with short blonde hair and a police lanyard around her neck, looking intently forward. She stands with her arms crossed, flanked by two figures in police attire."
+              />
+              <h3>Karen</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carousel Controls -->
+        <div class="carousel-controls">
+          <button id="pauseBtn">Pause</button>
+          <button id="playBtn" style="display: none">Play</button>
+          <button id="toggleAutoRotateBtn">Disable Auto Rotate</button>
+          <!-- New Button -->
+        </div>
+      </section>
+
+      <!-- Most Watched Section -->
+      <section id="most-watched" class="most-watched-section">
+        <h2 tabindex="0">Most Watched</h2>
+        <div class="grid-container" role="list">
+          <div
+            class="grid-item"
+            role="listitem"
+            tabindex="0"
+            aria-label="Watch River"
+          >
+            <img
+              src="img/river.jpeg"
+              tabindex="0"
+              alt="Poster for the show 'River' featuring a serious-looking man with short blond hair in a dark coat and tie, standing in a dimly lit urban setting with blurred lights in the background."
+            />
+            <h3>River</h3>
+          </div>
+          <div
+            class="grid-item"
+            role="listitem"
+            tabindex="0"
+            aria-label="Watch Sherwood"
+          >
+            <img
+              src="img/sherwood.jpeg"
+              tabindex="0"
+              alt="Poster for the series 'Sherwood,' featuring a close-up of a serious-looking man with short hair in the foreground and a woman with a somber expression standing slightly behind him."
+            />
+            <h3>Sherwood</h3>
+          </div>
+          <div
+            class="grid-item"
+            role="listitem"
+            tabindex="0"
+            aria-label="Watch Valkyrien"
+          >
+            <img
+              src="img/valk.jpeg"
+              tabindex="0"
+              alt="Poster for the series 'Van Der Valk,' showing a blonde man in a blue jacket looking directly at the camera with a serious expression, set against a cloudy sky background."
+            />
+            <h3>Valkyrien</h3>
+          </div>
+          <div
+            class="grid-item"
+            role="listitem"
+            tabindex="0"
+            aria-label="Watch Murders"
+          >
+            <img
+              src="img/murders.jpeg"
+              tabindex="0"
+              alt="Poster for 'The Pembrokeshire Murders,' featuring a man in a dark coat looking to the left against a desolate coastal landscape with cloudy skies and rugged cliffs."
+            />
+            <h3>Murders</h3>
+          </div>
+          <div
+            class="grid-item"
+            role="listitem"
+            tabindex="0"
+            aria-label="Watch Marcella"
+          >
+            <img
+              src="img/marcella.jpeg"
+              tabindex="0"
+              alt="Poster for 'Marcella,' showing a woman with short blonde hair and a serious expression, wearing a blue jacket over a striped shirt, against a modern abstract background."
+            />
+            <h3>Marcella</h3>
+          </div>
+          <div
+            class="grid-item"
+            role="listitem"
+            tabindex="0"
+            aria-label="Watch Bancroft"
+          >
+            <img
+              src="img/bancroft.jpeg"
+              tabindex="0"
+              alt="Poster for 'Bancroft,' showing a woman with a stern expression, dressed in dark clothing with arms crossed, standing in front of a shadowy figure in a hoodie."
+            />
+            <h3>Bancroft</h3>
+          </div>
+          <div
+            class="grid-item"
+            role="listitem"
+            tabindex="0"
+            aria-label="Watch The Valley"
+          >
+            <img
+              src="img/valley.jpeg"
+              tabindex="0"
+              alt="Poster for 'Happy Valley,' showing a policewoman in uniform looking down solemnly, with two men in the background; one has a rugged appearance, and the other is younger. In the foreground, a rural valley scene with scattered buildings and a crashed bicycle is depicted."
+            />
+            <h3>The Valley</h3>
+          </div>
+          <div
+            class="grid-item"
+            role="listitem"
+            tabindex="0"
+            aria-label="Watch Crime"
+          >
+            <img
+              src="img/crime.jpeg"
+              tabindex="0"
+              alt="Poster for 'Crime,' featuring a close-up of a serious-looking man in a suit and trench coat, set against a stark, gray concrete building. The title 'CRIME' is prominently displayed in bold black letters on a yellow banner across the bottom."
+            />
+            <h3>Crime</h3>
+          </div>
+          <div
+            class="grid-item"
+            role="listitem"
+            tabindex="0"
+            aria-label="Watch Safe Harbour"
+          >
+            <img
+              src="img/harbour.jpeg"
+              tabindex="0"
+              alt="Poster for 'Granite Harbour' showing two characters in the foreground, a man in a rust-colored coat and a woman wearing a gray beanie. They appear serious, standing against a backdrop of an overcast sky."
+            />
+            <h3>Safe Harbour</h3>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" class="subscription-plans">
+        <h2 tabindex="0">Subscription Plans</h2>
+
+        <!-- Accessible summary as a live region and keyboard-navigable -->
+        <div
+          id="table-summary"
+          role="region"
+          aria-live="polite"
+          tabindex="0"
+          class="sr-only"
+        >
+          This table provides an overview of different subscription plans,
+          including device limits, video quality, and availability of exclusive
+          content.
+        </div>
+
+        <!-- Table with Caption and Accessible Headers -->
+        <table aria-label="Subscription Plans Table">
+          <!-- <caption>
+            Subscription Plans Overview
+          </caption> -->
+          <thead>
+            <tr>
+              <th id="header-plan" scope="col">Plan</th>
+              <th id="header-devices" scope="col">Devices</th>
+              <th id="header-quality" scope="col">Video Quality</th>
+              <th id="header-content" scope="col">Exclusive Content</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr tabindex="0">
+              <td
+                aria-labelledby="plan-plus"
+                aria-describedby="header-plan"
+                id="plan-plus"
+              >
+                Plus
+              </td>
+              <td
+                aria-labelledby="devices-2"
+                aria-describedby="header-devices"
+                id="devices-2"
+              >
+                2
+              </td>
+              <td
+                aria-labelledby="quality-1080p"
+                aria-describedby="header-quality"
+                id="quality-1080p"
+              >
+                1080p
+              </td>
+              <td
+                aria-labelledby="content-no"
+                aria-describedby="header-content"
+                id="content-no"
+              >
+                No
+              </td>
+            </tr>
+            <tr tabindex="0">
+              <td
+                aria-labelledby="plan-pro"
+                aria-describedby="header-plan"
+                id="plan-pro"
+              >
+                Pro
+              </td>
+              <td
+                aria-labelledby="devices-4"
+                aria-describedby="header-devices"
+                id="devices-4"
+              >
+                4
+              </td>
+              <td
+                aria-labelledby="quality-4k"
+                aria-describedby="header-quality"
+                id="quality-4k"
+              >
+                4K
+              </td>
+              <td
+                aria-labelledby="content-yes"
+                aria-describedby="header-content"
+                id="content-yes"
+              >
+                Yes
+              </td>
+            </tr>
+            <tr tabindex="0">
+              <td
+                aria-labelledby="plan-family"
+                aria-describedby="header-plan"
+                id="plan-family"
+              >
+                Family
+              </td>
+              <td
+                aria-labelledby="devices-6"
+                aria-describedby="header-devices"
+                id="devices-6"
+              >
+                6
+              </td>
+              <td
+                aria-labelledby="quality-4k-hdr"
+                aria-describedby="header-quality"
+                id="quality-4k-hdr"
+              >
+                4K HDR
+              </td>
+              <td
+                aria-labelledby="content-yes"
+                aria-describedby="header-content"
+                id="content-yes"
+              >
+                Yes
+              </td>
+            </tr>
+            <tr tabindex="0">
+              <td
+                aria-labelledby="plan-premium"
+                aria-describedby="header-plan"
+                id="plan-premium"
+              >
+                Premium
+              </td>
+              <td
+                aria-labelledby="devices-unlimited"
+                aria-describedby="header-devices"
+                id="devices-unlimited"
+              >
+                Unlimited
+              </td>
+              <td
+                aria-labelledby="quality-8k"
+                aria-describedby="header-quality"
+                id="quality-8k"
+              >
+                8K
+              </td>
+              <td
+                aria-labelledby="content-yes"
+                aria-describedby="header-content"
+                id="content-yes"
+              >
+                Yes
+              </td>
+            </tr>
+            <tr tabindex="0">
+              <td
+                aria-labelledby="plan-basic"
+                aria-describedby="header-plan"
+                id="plan-basic"
+              >
+                Basic
+              </td>
+              <td
+                aria-labelledby="devices-1"
+                aria-describedby="header-devices"
+                id="devices-1"
+              >
+                1
+              </td>
+              <td
+                aria-labelledby="quality-480p"
+                aria-describedby="header-quality"
+                id="quality-480p"
+              >
+                480p
+              </td>
+              <td
+                aria-labelledby="content-no"
+                aria-describedby="header-content"
+                id="content-no"
+              >
+                No
+              </td>
+            </tr>
+            <tr tabindex="0">
+              <td
+                aria-labelledby="plan-student"
+                aria-describedby="header-plan"
+                id="plan-student"
+              >
+                Student
+              </td>
+              <td
+                aria-labelledby="devices-1"
+                aria-describedby="header-devices"
+                id="devices-1"
+              >
+                1
+              </td>
+              <td
+                aria-labelledby="quality-1080p"
+                aria-describedby="header-quality"
+                id="quality-1080p"
+              >
+                1080p
+              </td>
+              <td
+                aria-labelledby="content-yes"
+                aria-describedby="header-content"
+                id="content-yes"
+              >
+                Yes
+              </td>
+            </tr>
+            <tr tabindex="0">
+              <td
+                aria-labelledby="plan-enterprise"
+                aria-describedby="header-plan"
+                id="plan-enterprise"
+              >
+                Enterprise
+              </td>
+              <td
+                aria-labelledby="devices-unlimited"
+                aria-describedby="header-devices"
+                id="devices-unlimited"
+              >
+                Unlimited
+              </td>
+              <td
+                aria-labelledby="quality-4k-hdr"
+                aria-describedby="header-quality"
+                id="quality-4k-hdr"
+              >
+                4K HDR
+              </td>
+              <td
+                aria-labelledby="content-yes"
+                aria-describedby="header-content"
+                id="content-yes"
+              >
+                Yes
+              </td>
+            </tr>
+            <tr tabindex="0">
+              <td
+                aria-labelledby="plan-gold"
+                aria-describedby="header-plan"
+                id="plan-gold"
+              >
+                Gold
+              </td>
+              <td
+                aria-labelledby="devices-5"
+                aria-describedby="header-devices"
+                id="devices-5"
+              >
+                5
+              </td>
+              <td
+                aria-labelledby="quality-4k-hdr"
+                aria-describedby="header-quality"
+                id="quality-4k-hdr"
+              >
+                4K HDR
+              </td>
+              <td
+                aria-labelledby="content-yes"
+                aria-describedby="header-content"
+                id="content-yes"
+              >
+                Yes
+              </td>
+            </tr>
+            <tr tabindex="0">
+              <td
+                aria-labelledby="plan-family-plus"
+                aria-describedby="header-plan"
+                id="plan-family-plus"
+              >
+                Family Plus
+              </td>
+              <td
+                aria-labelledby="devices-8"
+                aria-describedby="header-devices"
+                id="devices-8"
+              >
+                8
+              </td>
+              <td
+                aria-labelledby="quality-4k-hdr"
+                aria-describedby="header-quality"
+                id="quality-4k-hdr"
+              >
+                4K HDR
+              </td>
+              <td
+                aria-labelledby="content-yes"
+                aria-describedby="header-content"
+                id="content-yes"
+              >
+                Yes
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- FAQ Section -->
+      <section id="faq" class="faq-section">
+        <h2 tabindex="0">Frequently Asked Questions</h2>
+
+        <!-- FAQ Item 1 -->
+        <div class="faq-item">
+          <h3>
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-describedby="faq1"
+              id="faq-question1"
+            >
+              What is the cancellation policy?
+            </button>
+          </h3>
+          <p class="answer" id="faq1" aria-live="assertive" hidden tabindex="0">
+            You can cancel anytime through your account settings without any
+            penalties.
+          </p>
+        </div>
+
+        <!-- FAQ Item 2 -->
+        <div class="faq-item">
+          <h3>
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-describedby="faq2"
+              id="faq-question2"
+            >
+              How can I upgrade my plan?
+            </button>
+          </h3>
+          <p class="answer" id="faq2" aria-live="assertive" hidden tabindex="0">
+            To upgrade, go to your account settings, select "Subscription," and
+            choose the plan you'd like to upgrade to.
+          </p>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div class="faq-item">
+          <h3>
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-describedby="faq3"
+              id="faq-question3"
+            >
+              What payment methods are accepted?
+            </button>
+          </h3>
+          <p class="answer" id="faq3" aria-live="assertive" hidden tabindex="0">
+            We accept Visa, MasterCard, PayPal, American Express, and Bitcoin
+            for payments.
+          </p>
+        </div>
+
+        <!-- FAQ Item 4 -->
+        <div class="faq-item">
+          <h3>
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-describedby="faq4"
+              id="faq-question4"
+            >
+              Can I download content to watch offline?
+            </button>
+          </h3>
+          <p class="answer" id="faq4" aria-live="assertive" hidden tabindex="0">
+            Yes, our Plus and Pro plans allow you to download content to watch
+            offline on your devices.
+          </p>
+        </div>
+
+        <!-- FAQ Item 5 -->
+        <div class="faq-item">
+          <h3>
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-describedby="faq5"
+              id="faq-question5"
+            >
+              How do I reset my password?
+            </button>
+          </h3>
+          <p class="answer" id="faq5" aria-live="assertive" hidden tabindex="0">
+            To reset your password, click on "Forgot Password" on the login
+            page, and follow the instructions sent to your email.
+          </p>
+        </div>
+
+        <!-- FAQ Item 6 -->
+        <div class="faq-item">
+          <h3>
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-describedby="faq6"
+              id="faq-question6"
+            >
+              Is there a free trial available?
+            </button>
+          </h3>
+          <p class="answer" id="faq6" aria-live="assertive" hidden tabindex="0">
+            Yes, we offer a 7-day free trial on all of our paid subscription
+            plans.
+          </p>
+        </div>
+
+        <!-- FAQ Item 7 -->
+        <div class="faq-item">
+          <h3>
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-describedby="faq7"
+              id="faq-question7"
+            >
+              Can I share my account with family members?
+            </button>
+          </h3>
+          <p class="answer" id="faq7" aria-live="assertive" hidden tabindex="0">
+            Yes, certain plans like Family and Family Plus allow account sharing
+            across multiple devices.
+          </p>
+        </div>
+
+        <!-- FAQ Item 8 -->
+        <div class="faq-item">
+          <h3>
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-describedby="faq8"
+              id="faq-question8"
+            >
+              What is the refund policy?
+            </button>
+          </h3>
+          <p class="answer" id="faq8" aria-live="assertive" hidden tabindex="0">
+            We offer a full refund if you cancel within the first 14 days of
+            your subscription, no questions asked.
+          </p>
+        </div>
+
+        <!-- FAQ Item 9 -->
+        <div class="faq-item">
+          <h3>
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-describedby="faq9"
+              id="faq-question9"
+            >
+              How can I contact customer support?
+            </button>
+          </h3>
+          <p class="answer" id="faq9" aria-live="assertive" hidden tabindex="0">
+            You can reach our customer support team via email at
+            support@tvseries.com or through the live chat option on our website.
+          </p>
+        </div>
+
+        <!-- FAQ Item 10 -->
+        <div class="faq-item">
+          <h3>
+            <button
+              class="faq-question"
+              aria-expanded="false"
+              aria-describedby="faq10"
+              id="faq-question10"
+            >
+              Are there parental controls available?
+            </button>
+          </h3>
+          <p
+            class="answer"
+            id="faq10"
+            aria-live="assertive"
+            hidden
+            tabindex="0"
+          >
+            Yes, we offer customizable parental controls that allow you to
+            restrict content based on ratings or categories.
+          </p>
+        </div>
+      </section>
+
       <section id="register" class="forms-section">
         <h2 tabindex="0">Login and Register</h2>
         <div class="form-container">
           <!-- Login Form -->
           <form class="login-form">
-            <h2>Login</h2>
+            <h2 tabindex="0">Login</h2>
+            <!-- Add tabindex="0" to make the heading focusable -->
             <label for="login-username">Username</label>
             <input
               type="text"
@@ -561,7 +1029,7 @@
 
           <!-- Registration Form -->
           <form class="register-form">
-            <h2>Register</h2>
+            <h2 tabindex="0">Register</h2>
 
             <label for="first-name">First Name</label>
             <input
@@ -603,14 +1071,26 @@
             <div class="checkbox">
               <input type="checkbox" id="terms" name="terms" />
               <label for="terms">Agree to Terms & Services</label>
-              <span class="info-icon" onclick="openModal('termsModal')">?</span>
+              <span
+                class="info-icon"
+                tabindex="0"
+                role="button"
+                aria-label="More information on Terms & Services"
+                onclick="openModal('termsModal')"
+                >?</span
+              >
             </div>
 
             <!-- Newsletter Checkbox -->
             <div class="checkbox">
               <input type="checkbox" id="newsletter" name="newsletter" />
               <label for="newsletter">Subscribe to newsletter</label>
-              <span class="info-icon" onclick="openModal('newsletterModal')"
+              <span
+                class="info-icon"
+                tabindex="0"
+                role="button"
+                aria-label="More information on newsletter subscription"
+                onclick="openModal('newsletterModal')"
                 >?</span
               >
             </div>
@@ -619,70 +1099,134 @@
           </form>
         </div>
       </section>
+
+      <!-- Terms & Services Modal -->
+      <div
+        id="termsModal"
+        class="modal"
+        role="dialog"
+        aria-labelledby="termsModalTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-content">
+          <span
+            class="close"
+            tabindex="0"
+            onclick="closeModal('termsModal')"
+            role="button"
+            aria-label="Close Terms & Services Modal"
+            >&times;</span
+          >
+          <h2 id="termsModalTitle" tabindex="0">Terms & Services</h2>
+          <p tabindex="0">
+            This document outlines the terms and services associated with your
+            subscription. By using our services, you agree to these terms and
+            are responsible for adhering to them.
+          </p>
+        </div>
+      </div>
+
+      <!-- Newsletter Modal -->
+      <div
+        id="newsletterModal"
+        class="modal"
+        role="dialog"
+        aria-labelledby="newsletterModalTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-content">
+          <span
+            class="close"
+            tabindex="0"
+            onclick="closeModal('newsletterModal')"
+            role="button"
+            aria-label="Close Newsletter Subscription Modal"
+            >&times;</span
+          >
+          <h2 id="newsletterModalTitle" tabindex="0">
+            Newsletter Subscription
+          </h2>
+          <p tabindex="0">
+            Subscribe to our newsletter to receive the latest updates, exclusive
+            offers, and news about our services. Enter your email on the main
+            page to subscribe.
+          </p>
+        </div>
+      </div>
     </main>
 
     <!-- Footer -->
-    <footer id="about"
-      <div class="footer-container">
-        <!-- About Us Section -->
-        <div class="footer-about">
-          <p>
-            About TVSeries: Stream your favorite shows, movies, and exclusive
-            content.
-          </p>
-          <p>Address: 123 TVSeries St, Media City, Country</p>
-          <button class="btn">Contact Us</button>
-        </div>
+    <footer
+      id="about"
+      class="footer-container"
+      aria-labelledby="footer-heading"
+    >
+      <h2 id="footer-heading" class="sr-only">Footer Section</h2>
 
-        <!-- Quick Links -->
-        <div class="footer-quick-links">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <!-- Add remaining links -->
-          </ul>
-        </div>
+      <!-- About Us Section -->
+      <div class="footer-about" aria-labelledby="about-heading">
+        <h3 id="about-heading">About TVSeries</h3>
+        <p>Stream your favorite shows, movies, and exclusive content.</p>
+        <p>Address: 123 TVSeries St, Media City, Country</p>
+        <button class="btn" aria-label="Contact Us Button">Contact Us</button>
+      </div>
 
-        <!-- Newsletter Signup -->
-        <div class="footer-newsletter">
-          <h3>Newsletter</h3>
-          <label for="footer-email">Enter your email to subscribe</label>
-          <input
-            type="email"
-            id="footer-email"
-            placeholder="Your email"
-            aria-label="Email for newsletter subscription"
-          />
-          <button class="btn">Subscribe</button>
-        </div>
+      <!-- Quick Links -->
+      <div class="footer-quick-links" aria-labelledby="quick-links-heading">
+        <h3 id="quick-links-heading">Quick Links</h3>
+        <ul>
+          <li>
+            <a href="#" aria-label="Terms of Service">Terms of Service</a>
+          </li>
+          <li><a href="#" aria-label="Privacy Policy">Privacy Policy</a></li>
+          <!-- Add remaining links -->
+        </ul>
+      </div>
 
-        <!-- Social Media Links -->
-        <div class="footer-social">
-          <h3>Follow Us</h3>
-          <a href="#">Facebook</a>
-          <a href="#">Twitter</a>
-          <!-- Add other social links -->
-        </div>
+      <!-- Newsletter Signup -->
+      <div class="footer-newsletter" aria-labelledby="newsletter-heading">
+        <h3 id="newsletter-heading">Newsletter</h3>
+        <label for="footer-email">Enter your email to subscribe</label>
+        <input
+          type="email"
+          id="footer-email"
+          placeholder="Your email"
+          aria-label="Email for newsletter subscription"
+        />
+        <button class="btn" aria-label="Subscribe Button">Subscribe</button>
+      </div>
 
-        <!-- Get Our App Section -->
-        <div class="footer-app">
-          <h3>Get Our App</h3>
-          <a href="#">App Store</a>
-          <a href="#">Google Play</a>
-        </div>
+      <!-- Social Media Links -->
+      <div class="footer-social" aria-labelledby="social-heading">
+        <h3 id="social-heading">Follow Us</h3>
+        <ul>
+          <li><a href="#" aria-label="Follow us on Facebook">Facebook</a></li>
+          <li><a href="#" aria-label="Follow us on Twitter">Twitter</a></li>
+          <!-- Add other social links with clear descriptions -->
+        </ul>
+      </div>
 
-        <!-- Payment Methods -->
-        <div class="footer-payment">
-          <h3>Payment Methods</h3>
-          <img src="visa-icon.png" alt="Visa" />
-          <!-- Add other payment icons -->
-        </div>
+      <!-- Get Our App Section -->
+      <div class="footer-app" aria-labelledby="app-heading">
+        <h3 id="app-heading">Get Our App</h3>
+        <ul>
+          <li>
+            <a href="#" aria-label="Download on the App Store">App Store</a>
+          </li>
+          <li>
+            <a href="#" aria-label="Download on Google Play">Google Play</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Payment Methods -->
+      <div class="footer-payment" aria-labelledby="payment-heading">
+        <h3 id="payment-heading">Payment Methods</h3>
+        <img src="visa-icon.png" alt="Visa Payment Method" />
+        <!-- Add other payment icons with descriptive alt attributes -->
       </div>
     </footer>
 
-    <script src="script.js">
-
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>

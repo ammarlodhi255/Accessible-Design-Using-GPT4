@@ -538,28 +538,115 @@ rows.forEach((row, rowIndex) => {
   });
 });
 
-// Select all FAQ question buttons
+// Select all FAQ buttons
 const faqButtons = document.querySelectorAll(".faq-question");
 
 faqButtons.forEach((button) => {
   const answerId = button.getAttribute("aria-controls");
   const answer = document.getElementById(answerId);
 
-  // Toggle visibility and aria-expanded when button is activated
-  const toggleVisibility = () => {
+  // Function to toggle the answer
+  const toggleAnswer = () => {
     const isExpanded = button.getAttribute("aria-expanded") === "true";
+
+    // Toggle aria-expanded based on the current state
     button.setAttribute("aria-expanded", !isExpanded);
     answer.hidden = isExpanded;
+
+    // If expanding, move focus to the answer content to ensure it’s read out by the screen reader
+    if (!isExpanded) {
+      answer.focus();
+    }
   };
 
-  // Click event for mouse users
-  button.addEventListener("click", toggleVisibility);
+  // Add event listeners for mouse click and keyboard activation
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    toggleAnswer();
+  });
 
-  // Keyboard event for Enter and Space keys
   button.addEventListener("keydown", (event) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
-      toggleVisibility();
+      toggleAnswer();
+    }
+  });
+});
+
+// Open modal function
+let lastFocusedElement;
+
+function openModal(modalId) {
+  const modal = document.getElementById(modalId);
+  modal.style.display = "block";
+  modal.setAttribute("aria-hidden", "false");
+
+  // Focus the first element (close button)
+  const focusableElements = modal.querySelectorAll(
+    'a, button, input, [tabindex="0"]'
+  );
+  if (focusableElements.length > 0) {
+    focusableElements[0].focus();
+  }
+
+  // Trap focus within the modal
+  document.addEventListener("keydown", trapFocus);
+}
+
+function closeModal(modalId) {
+  const modal = document.getElementById(modalId);
+  modal.style.display = "none";
+  modal.setAttribute("aria-hidden", "true");
+
+  lastFocusedElement?.focus(); // Return focus to last focused element
+
+  document.removeEventListener("keydown", trapFocus); // Remove focus trap
+}
+
+document.querySelectorAll(".info-icon").forEach((icon) => {
+  icon.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      lastFocusedElement = event.target;
+      icon.click();
+    }
+  });
+});
+
+function trapFocus(event) {
+  const modal = document.querySelector('.modal[style*="display: block"]'); // Currently open modal
+  if (!modal) return;
+
+  const focusableElements = modal.querySelectorAll(
+    'a, button, input, [tabindex="0"]'
+  );
+  const firstElement = focusableElements[0];
+  const lastElement = focusableElements[focusableElements.length - 1];
+
+  if (event.key === "Tab") {
+    if (event.shiftKey) {
+      // Shift + Tab
+      if (document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      }
+    } else {
+      // Tab
+      if (document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    }
+  } else if (event.key === "Escape") {
+    closeModal(modal.id);
+  }
+}
+
+document.querySelectorAll(".modal .close").forEach((closeButton) => {
+  closeButton.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      closeModal(closeButton.closest(".modal").id);
     }
   });
 });
