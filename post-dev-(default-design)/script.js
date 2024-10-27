@@ -275,10 +275,10 @@ const pauseButton = document.getElementById("pauseBtn");
 const playButton = document.getElementById("playBtn");
 
 // Add an ARIA live region for screen readers
-const ariaLiveRegion = document.createElement("div");
-ariaLiveRegion.setAttribute("aria-live", "polite");
-ariaLiveRegion.setAttribute("class", "sr-only"); // Visually hidden
-document.body.appendChild(ariaLiveRegion);
+// const ariaLiveRegion = document.createElement("div");
+// ariaLiveRegion.setAttribute("aria-live", "polite");
+// ariaLiveRegion.setAttribute("class", "sr-only"); // Visually hidden
+// document.body.appendChild(ariaLiveRegion);
 
 // Function to handle button click or key press
 function handleButtonClick(button, action) {
@@ -355,9 +355,9 @@ function slideCarousel() {
   // Update ARIA live region to alert screen readers
   const currentItem =
     carouselItems.querySelectorAll(".trending-item")[currentIndex];
-  ariaLiveRegion.textContent = `Carousel moved to item: ${
-    currentItem.querySelector("h3").textContent
-  }`;
+  // ariaLiveRegion.textContent = `Carousel moved to item: ${
+  //   currentItem.querySelector("h3").textContent
+  // }`;
 }
 
 // Start the carousel sliding automatically every 4 seconds
@@ -476,5 +476,90 @@ gridItems.forEach((item) => {
   item.addEventListener("click", () => {
     alert(`You selected: ${item.querySelector("h3").textContent}`);
     // Add additional functionality here
+  });
+});
+
+const rows = document.querySelectorAll("tbody tr");
+const nextSection = document.getElementById("next-section");
+
+rows.forEach((row, rowIndex) => {
+  const cells = row.querySelectorAll("td");
+  let currentCell = 0;
+
+  // Set initial focus management for each row
+  row.addEventListener("focus", () => {
+    cells.forEach((cell) => (cell.tabIndex = -1)); // Reset all cell tabIndex
+    currentCell = 0;
+    cells[currentCell].tabIndex = 0;
+  });
+
+  // Keyboard navigation within rows
+  row.addEventListener("keydown", (event) => {
+    if (event.key === "Tab" && !event.shiftKey) {
+      if (rowIndex < rows.length - 1) {
+        // Not the last row: move to the next row
+        rows[rowIndex + 1].focus();
+        event.preventDefault();
+      } else {
+        // Last row: move to the next section
+        nextSection.focus();
+      }
+    } else if (event.key === "Tab" && event.shiftKey) {
+      // Move to the previous row with Shift + Tab
+      if (rowIndex > 0) {
+        rows[rowIndex - 1].focus();
+        event.preventDefault();
+      }
+    } else if (event.key === "ArrowRight") {
+      // Move focus to the next cell within the row
+      if (currentCell < cells.length - 1) {
+        cells[currentCell].tabIndex = -1;
+        cells[++currentCell].tabIndex = 0;
+        cells[currentCell].focus();
+      }
+      event.preventDefault();
+    } else if (event.key === "ArrowLeft") {
+      // Move focus to the previous cell within the row
+      if (currentCell > 0) {
+        cells[currentCell].tabIndex = -1;
+        cells[--currentCell].tabIndex = 0;
+        cells[currentCell].focus();
+      }
+      event.preventDefault();
+    } else if (event.key === "ArrowDown" && rowIndex < rows.length - 1) {
+      // Move to the next row with Arrow Down
+      rows[rowIndex + 1].focus();
+      event.preventDefault();
+    } else if (event.key === "ArrowUp" && rowIndex > 0) {
+      // Move to the previous row with Arrow Up
+      rows[rowIndex - 1].focus();
+      event.preventDefault();
+    }
+  });
+});
+
+// Select all FAQ question buttons
+const faqButtons = document.querySelectorAll(".faq-question");
+
+faqButtons.forEach((button) => {
+  const answerId = button.getAttribute("aria-controls");
+  const answer = document.getElementById(answerId);
+
+  // Toggle visibility and aria-expanded when button is activated
+  const toggleVisibility = () => {
+    const isExpanded = button.getAttribute("aria-expanded") === "true";
+    button.setAttribute("aria-expanded", !isExpanded);
+    answer.hidden = isExpanded;
+  };
+
+  // Click event for mouse users
+  button.addEventListener("click", toggleVisibility);
+
+  // Keyboard event for Enter and Space keys
+  button.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      toggleVisibility();
+    }
   });
 });

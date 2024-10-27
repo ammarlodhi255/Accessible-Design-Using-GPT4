@@ -99,13 +99,13 @@
     </nav>
 
     <!-- Add the level one heading here -->
-    <h1 class="centered-heading">Welcome to TV Series Hub</h1>
+    <h1 tabindex="0" class="centered-heading">Welcome to TV Series Hub</h1>
     <!-- Hero Section -->
-    <section id="homepage" class="hero-section">
+    <section id="homepage"  class="hero-section">
       <div class="hero-slider">
         <!-- Slide 1 -->
-        <div class="slide" id="slide1">
-          <img src="img/blade.jpg" alt="Featured Series 1" />
+        <div class="slide" tabindex="0" id="slide1">
+          <img src="img/blade.jpg" alt="Featured Series 1"/>
           <!-- Button with play icon -->
 <button class="play-btn" onclick="playVideo(1)" aria-label="Play Blade video">
   <img src="img/play-button.svg" alt="" class="play-icon" />
@@ -120,13 +120,13 @@
         </video>
 
         <!-- Slide 2 -->
-        <div class="slide" id="slide2">
+        <div class="slide" tabindex="0" id="slide2">
           <img src="img/clique.avif" alt="Featured Series 2" />
           <!-- Button with play icon -->
-<button class="play-btn" onclick="playVideo(1)" aria-label="Play Blade video">
-  <img src="img/play-button.svg" alt="" class="play-icon" />
-  Play
-</button>
+        <button class="play-btn" onclick="playVideo(1)" aria-label="Play Clique video">
+          <img src="img/play-button.svg" alt="" class="play-icon" />
+          Play
+        </button>
 
         </div>
         <video id="video2" class="hero-video" controls style="display: none">
@@ -136,10 +136,10 @@
         </video>
 
         <!-- Slide 3 -->
-        <div class="slide" id="slide3">
+        <div class="slide" tabindex="0" id="slide3">
           <img src="img/endeavor.avif" alt="Featured Series 3" />
           <!-- Button with play icon -->
-<button class="play-btn" onclick="playVideo(1)" aria-label="Play Blade video">
+<button class="play-btn" onclick="playVideo(1)" aria-label="Play Endeavor video">
   <img src="img/play-button.svg" alt="" class="play-icon" />
   Play
 </button>
@@ -156,12 +156,14 @@
         <button class="arrow right" onclick="nextSlide()">&#10095;</button>
       </div>
     </section>
+
+
     <!-- Main content starts here -->
     <main id="main-content">
       <a href="#most-watched" class="skip-carousel-link">Skip Carousel</a>
 <!-- Trending TV Series Section -->
 <section id="trending" class="trending-section" aria-labelledby="trending-heading" role="region">
-  <h2 id="trending-heading">Trending TV Series</h2>
+  <h2 tabindex="0" id="trending-heading">Trending TV Series</h2>
   
   <!-- Trending Carousel Wrapper -->
   <div class="trending-carousel" aria-live="polite" role="listbox" aria-label="Trending TV Series Carousel">
@@ -243,7 +245,7 @@
 
 <!-- Most Watched Section -->
 <section id="most-watched" class="most-watched-section">
-  <h2>Most Watched</h2>
+  <h2 tabindex="0">Most Watched</h2>
   <div class="grid-container" role="list">
     <div class="grid-item" role="listitem" tabindex="0" aria-label="Watch River">
       <img src="img/river.jpeg" alt="River" />
@@ -284,171 +286,254 @@
   </div>
 </section>
 
-      <!-- Subscription Plans -->
-      <section id="pricing" class="subscription-plans">
-        <h2>Subscription Plans</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Plan</th>
-              <th>Devices</th>
-              <th>Video Quality</th>
-              <th>Exclusive Content</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Free</td>
-              <td>1</td>
-              <td>720p</td>
-              <td>No</td>
-            </tr>
-            <tr>
-              <td>Plus</td>
-              <td>2</td>
-              <td>1080p</td>
-              <td>No</td>
-            </tr>
-            <tr>
-              <td>Pro</td>
-              <td>4</td>
-              <td>4K</td>
-              <td>Yes</td>
-            </tr>
-            <tr>
-              <td>Family</td>
-              <td>6</td>
-              <td>4K HDR</td>
-              <td>Yes</td>
-            </tr>
-            <tr>
-              <td>Premium</td>
-              <td>Unlimited</td>
-              <td>8K</td>
-              <td>Yes</td>
-            </tr>
-            <tr>
-              <td>Basic</td>
-              <td>1</td>
-              <td>480p</td>
-              <td>No</td>
-            </tr>
-            <tr>
-              <td>Student</td>
-              <td>1</td>
-              <td>1080p</td>
-              <td>Yes</td>
-            </tr>
-            <tr>
-              <td>Enterprise</td>
-              <td>Unlimited</td>
-              <td>4K HDR</td>
-              <td>Yes</td>
-            </tr>
-            <tr>
-              <td>Gold</td>
-              <td>5</td>
-              <td>4K HDR</td>
-              <td>Yes</td>
-            </tr>
-            <tr>
-              <td>Family Plus</td>
-              <td>8</td>
-              <td>4K HDR</td>
-              <td>Yes</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+<section id="pricing" class="subscription-plans">
+  <h2 tabindex="0">Subscription Plans</h2>
 
-      <!-- FAQ Section -->
-      <section id="faq" class="faq-section">
-        <h2>Frequently Asked Questions</h2>
+  <!-- Accessible summary as a live region and keyboard-navigable -->
+  <div id="table-summary" role="region" aria-live="polite" tabindex="0" class="sr-only">
+    This table provides an overview of different subscription plans, including device limits, video quality, and availability of exclusive content.
+  </div>
 
-        <div class="faq-item">
-          <h3>What is the cancellation policy?</h3>
-          <p class="answer">
-            You can cancel anytime through your account settings without any
-            penalties.
-          </p>
-        </div>
+  <!-- Table with Caption and Accessible Headers -->
+  <table aria-label="Subscription Plans Table">
+    <caption>Subscription Plans Overview</caption>
+    <thead>
+      <tr>
+        <th id="header-plan" scope="col">Plan</th>
+        <th id="header-devices" scope="col">Devices</th>
+        <th id="header-quality" scope="col">Video Quality</th>
+        <th id="header-content" scope="col">Exclusive Content</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr tabindex="0">
+        <td aria-labelledby="plan-plus" aria-describedby="header-plan" id="plan-plus">Plus</td>
+        <td aria-labelledby="devices-2" aria-describedby="header-devices" id="devices-2">2</td>
+        <td aria-labelledby="quality-1080p" aria-describedby="header-quality" id="quality-1080p">1080p</td>
+        <td aria-labelledby="content-no" aria-describedby="header-content" id="content-no">No</td>
+      </tr>
+      <tr tabindex="0">
+        <td aria-labelledby="plan-pro" aria-describedby="header-plan" id="plan-pro">Pro</td>
+        <td aria-labelledby="devices-4" aria-describedby="header-devices" id="devices-4">4</td>
+        <td aria-labelledby="quality-4k" aria-describedby="header-quality" id="quality-4k">4K</td>
+        <td aria-labelledby="content-yes" aria-describedby="header-content" id="content-yes">Yes</td>
+      </tr>
+      <tr tabindex="0">
+        <td aria-labelledby="plan-family" aria-describedby="header-plan" id="plan-family">Family</td>
+        <td aria-labelledby="devices-6" aria-describedby="header-devices" id="devices-6">6</td>
+        <td aria-labelledby="quality-4k-hdr" aria-describedby="header-quality" id="quality-4k-hdr">4K HDR</td>
+        <td aria-labelledby="content-yes" aria-describedby="header-content" id="content-yes">Yes</td>
+      </tr>
+      <tr tabindex="0">
+        <td aria-labelledby="plan-premium" aria-describedby="header-plan" id="plan-premium">Premium</td>
+        <td aria-labelledby="devices-unlimited" aria-describedby="header-devices" id="devices-unlimited">Unlimited</td>
+        <td aria-labelledby="quality-8k" aria-describedby="header-quality" id="quality-8k">8K</td>
+        <td aria-labelledby="content-yes" aria-describedby="header-content" id="content-yes">Yes</td>
+      </tr>
+      <tr tabindex="0">
+        <td aria-labelledby="plan-basic" aria-describedby="header-plan" id="plan-basic">Basic</td>
+        <td aria-labelledby="devices-1" aria-describedby="header-devices" id="devices-1">1</td>
+        <td aria-labelledby="quality-480p" aria-describedby="header-quality" id="quality-480p">480p</td>
+        <td aria-labelledby="content-no" aria-describedby="header-content" id="content-no">No</td>
+      </tr>
+      <tr tabindex="0">
+        <td aria-labelledby="plan-student" aria-describedby="header-plan" id="plan-student">Student</td>
+        <td aria-labelledby="devices-1" aria-describedby="header-devices" id="devices-1">1</td>
+        <td aria-labelledby="quality-1080p" aria-describedby="header-quality" id="quality-1080p">1080p</td>
+        <td aria-labelledby="content-yes" aria-describedby="header-content" id="content-yes">Yes</td>
+      </tr>
+      <tr tabindex="0">
+        <td aria-labelledby="plan-enterprise" aria-describedby="header-plan" id="plan-enterprise">Enterprise</td>
+        <td aria-labelledby="devices-unlimited" aria-describedby="header-devices" id="devices-unlimited">Unlimited</td>
+        <td aria-labelledby="quality-4k-hdr" aria-describedby="header-quality" id="quality-4k-hdr">4K HDR</td>
+        <td aria-labelledby="content-yes" aria-describedby="header-content" id="content-yes">Yes</td>
+      </tr>
+      <tr tabindex="0">
+        <td aria-labelledby="plan-gold" aria-describedby="header-plan" id="plan-gold">Gold</td>
+        <td aria-labelledby="devices-5" aria-describedby="header-devices" id="devices-5">5</td>
+        <td aria-labelledby="quality-4k-hdr" aria-describedby="header-quality" id="quality-4k-hdr">4K HDR</td>
+        <td aria-labelledby="content-yes" aria-describedby="header-content" id="content-yes">Yes</td>
+      </tr>
+      <tr tabindex="0">
+        <td aria-labelledby="plan-family-plus" aria-describedby="header-plan" id="plan-family-plus">Family Plus</td>
+        <td aria-labelledby="devices-8" aria-describedby="header-devices" id="devices-8">8</td>
+        <td aria-labelledby="quality-4k-hdr" aria-describedby="header-quality" id="quality-4k-hdr">4K HDR</td>
+        <td aria-labelledby="content-yes" aria-describedby="header-content" id="content-yes">Yes</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
 
-        <div class="faq-item">
-          <h3>How can I upgrade my plan?</h3>
-          <p class="answer">
-            To upgrade, go to your account settings, select "Subscription," and
-            choose the plan you'd like to upgrade to.
-          </p>
-        </div>
 
-        <div class="faq-item">
-          <h3>What payment methods are accepted?</h3>
-          <p class="answer">
-            We accept Visa, MasterCard, PayPal, American Express, and Bitcoin
-            for payments.
-          </p>
-        </div>
 
-        <div class="faq-item">
-          <h3>Can I download content to watch offline?</h3>
-          <p class="answer">
-            Yes, our Plus and Pro plans allow you to download content to watch
-            offline on your devices.
-          </p>
-        </div>
+<!-- FAQ Section -->
+<section id="faq" class="faq-section">
+  <h2 tabindex="0">Frequently Asked Questions</h2>
 
-        <div class="faq-item">
-          <h3>How do I reset my password?</h3>
-          <p class="answer">
-            To reset your password, click on "Forgot Password" on the login
-            page, and follow the instructions sent to your email.
-          </p>
-        </div>
+  <div class="faq-item">
+    <h3>
+      <button
+        class="faq-question"
+        aria-expanded="false"
+        aria-controls="faq1"
+        id="faq-question1"
+      >
+        What is the cancellation policy?
+      </button>
+    </h3>
+    <p class="answer" id="faq1" role="region" aria-labelledby="faq-question1" hidden>
+      You can cancel anytime through your account settings without any penalties.
+    </p>
+  </div>
 
-        <div class="faq-item">
-          <h3>Is there a free trial available?</h3>
-          <p class="answer">
-            Yes, we offer a 7-day free trial on all of our paid subscription
-            plans.
-          </p>
-        </div>
+  <div class="faq-item">
+    <h3>
+      <button
+        class="faq-question"
+        aria-expanded="false"
+        aria-controls="faq2"
+        id="faq-question2"
+      >
+        How can I upgrade my plan?
+      </button>
+    </h3>
+    <p class="answer" id="faq2" role="region" aria-labelledby="faq-question2" hidden>
+      To upgrade, go to your account settings, select "Subscription," and choose the plan you'd like to upgrade to.
+    </p>
+  </div>
 
-        <div class="faq-item">
-          <h3>Can I share my account with family members?</h3>
-          <p class="answer">
-            Yes, certain plans like Family and Family Plus allow account sharing
-            across multiple devices.
-          </p>
-        </div>
+  <div class="faq-item">
+    <h3>
+      <button
+        class="faq-question"
+        aria-expanded="false"
+        aria-controls="faq3"
+        id="faq-question3"
+      >
+        What payment methods are accepted?
+      </button>
+    </h3>
+    <p class="answer" id="faq3" role="region" aria-labelledby="faq-question3" hidden>
+      We accept Visa, MasterCard, PayPal, American Express, and Bitcoin for payments.
+    </p>
+  </div>
 
-        <div class="faq-item">
-          <h3>What is the refund policy?</h3>
-          <p class="answer">
-            We offer a full refund if you cancel within the first 14 days of
-            your subscription, no questions asked.
-          </p>
-        </div>
+  <div class="faq-item">
+    <h3>
+      <button
+        class="faq-question"
+        aria-expanded="false"
+        aria-controls="faq4"
+        id="faq-question4"
+      >
+        Can I download content to watch offline?
+      </button>
+    </h3>
+    <p class="answer" id="faq4" role="region" aria-labelledby="faq-question4" hidden>
+      Yes, our Plus and Pro plans allow you to download content to watch offline on your devices.
+    </p>
+  </div>
 
-        <div class="faq-item">
-          <h3>How can I contact customer support?</h3>
-          <p class="answer">
-            You can reach our customer support team via email at
-            support@tvseries.com or through the live chat option on our website.
-          </p>
-        </div>
+  <div class="faq-item">
+    <h3>
+      <button
+        class="faq-question"
+        aria-expanded="false"
+        aria-controls="faq5"
+        id="faq-question5"
+      >
+        How do I reset my password?
+      </button>
+    </h3>
+    <p class="answer" id="faq5" role="region" aria-labelledby="faq-question5" hidden>
+      To reset your password, click on "Forgot Password" on the login page, and follow the instructions sent to your email.
+    </p>
+  </div>
 
-        <div class="faq-item">
-          <h3>Are there parental controls available?</h3>
-          <p class="answer">
-            Yes, we offer customizable parental controls that allow you to
-            restrict content based on ratings or categories.
-          </p>
-        </div>
-      </section>
+  <div class="faq-item">
+    <h3>
+      <button
+        class="faq-question"
+        aria-expanded="false"
+        aria-controls="faq6"
+        id="faq-question6"
+      >
+        Is there a free trial available?
+      </button>
+    </h3>
+    <p class="answer" id="faq6" role="region" aria-labelledby="faq-question6" hidden>
+      Yes, we offer a 7-day free trial on all of our paid subscription plans.
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h3>
+      <button
+        class="faq-question"
+        aria-expanded="false"
+        aria-controls="faq7"
+        id="faq-question7"
+      >
+        Can I share my account with family members?
+      </button>
+    </h3>
+    <p class="answer" id="faq7" role="region" aria-labelledby="faq-question7" hidden>
+      Yes, certain plans like Family and Family Plus allow account sharing across multiple devices.
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h3>
+      <button
+        class="faq-question"
+        aria-expanded="false"
+        aria-controls="faq8"
+        id="faq-question8"
+      >
+        What is the refund policy?
+      </button>
+    </h3>
+    <p class="answer" id="faq8" role="region" aria-labelledby="faq-question8" hidden>
+      We offer a full refund if you cancel within the first 14 days of your subscription, no questions asked.
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h3>
+      <button
+        class="faq-question"
+        aria-expanded="false"
+        aria-controls="faq9"
+        id="faq-question9"
+      >
+        How can I contact customer support?
+      </button>
+    </h3>
+    <p class="answer" id="faq9" role="region" aria-labelledby="faq-question9" hidden>
+      You can reach our customer support team via email at support@tvseries.com or through the live chat option on our website.
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h3>
+      <button
+        class="faq-question"
+        aria-expanded="false"
+        aria-controls="faq10"
+        id="faq-question10"
+      >
+        Are there parental controls available?
+      </button>
+    </h3>
+    <p class="answer" id="faq10" role="region" aria-labelledby="faq-question10" hidden>
+      Yes, we offer customizable parental controls that allow you to restrict content based on ratings or categories.
+    </p>
+  </div>
+</section>
 
       <!-- Login and Registration Forms -->
       <section id="register" class="forms-section">
-        <h2>Login and Register</h2>
+        <h2 tabindex="0">Login and Register</h2>
         <div class="form-container">
           <!-- Login Form -->
           <form class="login-form">
