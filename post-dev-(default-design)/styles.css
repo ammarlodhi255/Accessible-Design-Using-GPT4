@@ -1380,3 +1380,54 @@ input[type="email"]:focus {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-payment {
+  text-align: left;
+}
+
+.payment-icons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.payment-icons img {
+  width: 40px;
+  height: auto;
+}
+
+.payment-icons a {
+  text-decoration: none;
+}
+
+/* Footer link styling */
+.footer-container a {
+  color: #ffd700; /* Distinct yellow or gold color for accessibility */
+  text-decoration: underline; /* Adds underline to links */
+}
+
+/* Style specifically for Quick Links in the footer */
+.footer-quick-links ul li a {
+  color: #ffd700; /* Gold color */
+  text-decoration: underline; /* Underline the links */
+}
+
+/* Focus style for the play button */
+.play-btn:focus {
+  outline: 3px solid #000000; /* Black outline */
+  outline-offset: 4px; /* Space around the outline */
+}
+
+table th {
+  background-color: #ffd700; /* Existing yellow background */
+  color: #2c2c2c; /* Dark gray text for better contrast */
+  padding: 12px; /* Optional: Adjust padding for readability */
+  font-weight: bold;
+  text-align: center; /* Center-aligning the text */
+}

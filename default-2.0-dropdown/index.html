@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TV Series Webpage</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="img/movies.png" alt="TV Series Logo" class="navbar-logo" />
+        <!-- Added logo here -->
+      </div>
+      <ul class="nav-links">
+        <li><a href="#">Homepage</a></li>
+        <li><a href="#">Trending</a></li>
+        <li><a href="#">Most Watched</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Register</a></li>
+        <li><a href="#">About</a></li>
+        <!-- Language Combobox -->
+        <!-- Language Combobox -->
+        <li class="dropdown">
+          <div
+            class="combobox"
+            role="combobox"
+            aria-expanded="false"
+            aria-haspopup="listbox"
+            aria-owns="language-listbox"
+            aria-controls="language-listbox"
+            aria-activedescendant=""
+          >
+            <input
+              type="text"
+              id="language-combobox"
+              aria-autocomplete="list"
+              readonly
+              placeholder="Language"
+            />
+            <ul
+              id="language-listbox"
+              role="listbox"
+              class="dropdown-content"
+              tabindex="-1"
+            >
+              <li
+                role="option"
+                id="lang-en"
+                class="language-option"
+                aria-selected="false"
+              >
+                English
+              </li>
+              <li
+                role="option"
+                id="lang-no"
+                class="language-option"
+                aria-selected="false"
+              >
+                Norwegian
+              </li>
+              <li
+                role="option"
+                id="lang-hi"
+                class="language-option"
+                aria-selected="false"
+              >
+                Hindi
+              </li>
+              <!-- New language options -->
+              <li
+                role="option"
+                id="lang-ng"
+                class="language-option"
+                aria-selected="false"
+              >
+                Nigerian
+              </li>
+              <li
+                role="option"
+                id="lang-yug"
+                class="language-option"
+                aria-selected="false"
+              >
+                Eastern Yugur
+              </li>
+              <li
+                role="option"
+                id="lang-he"
+                class="language-option"
+                aria-selected="false"
+              >
+                Hebrew
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-slider">
+        <!-- Slide 1 -->
+        <div class="slide" id="slide1">
+          <img src="img/blade.jpg" alt="Featured Series 1" />
+          <button class="play-btn" onclick="playVideo(1)">Play</button>
+        </div>
+        <video id="video1" class="hero-video" controls style="display: none">
+          <source src="img/video.mp4" type="video/mp4" />
+          <!-- Provide path to video 1 -->
+          Your browser does not support the video tag.
+        </video>
+
+        <!-- Slide 2 -->
+        <div class="slide" id="slide2">
+          <img src="img/clique.avif" alt="Featured Series 2" />
+          <button class="play-btn" onclick="playVideo(2)">Play</button>
+        </div>
+        <video id="video2" class="hero-video" controls style="display: none">
+          <source src="videos/video2.mp4" type="video/mp4" />
+          <!-- Provide path to video 2 -->
+          Your browser does not support the video tag.
+        </video>
+
+        <!-- Slide 3 -->
+        <div class="slide" id="slide3">
+          <img src="img/endeavor.avif" alt="Featured Series 3" />
+          <button class="play-btn" onclick="playVideo(3)">Play</button>
+        </div>
+        <video id="video3" class="hero-video" controls style="display: none">
+          <source src="videos/video3.mp4" type="video/mp4" />
+          <!-- Provide path to video 3 -->
+          Your browser does not support the video tag.
+        </video>
+
+        <!-- Arrow buttons for navigating slides -->
+        <button class="arrow left" onclick="prevSlide()">&#10094;</button>
+        <button class="arrow right" onclick="nextSlide()">&#10095;</button>
+      </div>
+    </section>
+
+    <!-- Trending TV Series Section -->
+    <section class="trending-section">
+      <h2>Trending TV Series</h2>
+      <div class="trending-carousel">
+        <div class="carousel-items">
+          <!-- 12 Trending Series Items with specified image paths -->
+          <div class="trending-item">
+            <img src="img/baptiste.avif" alt="Baptiste" />
+            <h3>Baptiste</h3>
+          </div>
+          <div class="trending-item">
+            <img src="img/clique.avif" alt="Clique" />
+            <h3>Clique</h3>
+          </div>
+          <div class="trending-item">
+            <img src="img/endeavor.avif" alt="Endeavor" />
+            <h3>Endeavor</h3>
+          </div>
+          <div class="trending-item">
+            <img src="img/ragdoll.avif" alt="Ragdoll" />
+            <h3>Ragdoll</h3>
+          </div>
+          <div class="trending-item">
+            <img src="img/unforgotten.avif" alt="Unforgotten" />
+            <h3>Unforgotten</h3>
+          </div>
+          <div class="trending-item">
+            <img src="img/investigation.avif" alt="The Investigation" />
+            <h3>The Investigation</h3>
+          </div>
+          <div class="trending-item">
+            <img src="img/annika.jpeg" alt="Annika" />
+            <h3>Annika</h3>
+          </div>
+          <div class="trending-item">
+            <img src="img/long-call.jpeg" alt="The Long Call" />
+            <h3>The Long Call</h3>
+          </div>
+          <div class="trending-item">
+            <img src="img/unforgiven.jpeg" alt="Unforgiven" />
+            <h3>Unforgiven</h3>
+          </div>
+          <div class="trending-item">
+            <img src="img/shetland.jpeg" alt="Shetland" />
+            <h3>Shetland</h3>
+          </div>
+          <div class="trending-item">
+            <img src="img/ridley.jpeg" alt="Ridley" />
+            <h3>Ridley</h3>
+          </div>
+          <div class="trending-item">
+            <img src="img/karen.jpeg" alt="Karen" />
+            <h3>Karen</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Most Watched Section -->
+    <section class="most-watched-section">
+      <h2>Most Watched</h2>
+      <div class="grid-container">
+        <div class="grid-item">
+          <img src="img/river.jpeg" alt="River" />
+          <h3>River</h3>
+        </div>
+        <div class="grid-item">
+          <img src="img/sherwood.jpeg" alt="Sherwood" />
+          <h3>Sherwood</h3>
+        </div>
+        <div class="grid-item">
+          <img src="img/valk.jpeg" alt="Valkyrien" />
+          <h3>Valkyrien</h3>
+        </div>
+        <div class="grid-item">
+          <img src="img/murders.jpeg" alt="Murders" />
+          <h3>Murders</h3>
+        </div>
+        <div class="grid-item">
+          <img src="img/marcella.jpeg" alt="Marcella" />
+          <h3>Marcella</h3>
+        </div>
+        <div class="grid-item">
+          <img src="img/bancroft.jpeg" alt="Bancroft" />
+          <h3>Bancroft</h3>
+        </div>
+        <div class="grid-item">
+          <img src="img/valley.jpeg" alt="The Valley" />
+          <h3>The Valley</h3>
+        </div>
+        <div class="grid-item">
+          <img src="img/crime.jpeg" alt="Crime" />
+          <h3>Crime</h3>
+        </div>
+        <div class="grid-item">
+          <img src="img/harbour.jpeg" alt="Safe Harbour" />
+          <h3>Safe Harbour</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subscription Plans -->
+    <section class="subscription-plans">
+      <h2>Subscription Plans</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Plan</th>
+            <th>Devices</th>
+            <th>Video Quality</th>
+            <th>Exclusive Content</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Free</td>
+            <td>1</td>
+            <td>720p</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>Plus</td>
+            <td>2</td>
+            <td>1080p</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>Pro</td>
+            <td>4</td>
+            <td>4K</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Family</td>
+            <td>6</td>
+            <td>4K HDR</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Premium</td>
+            <td>Unlimited</td>
+            <td>8K</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Basic</td>
+            <td>1</td>
+            <td>480p</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>Student</td>
+            <td>1</td>
+            <td>1080p</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Enterprise</td>
+            <td>Unlimited</td>
+            <td>4K HDR</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Gold</td>
+            <td>5</td>
+            <td>4K HDR</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Family Plus</td>
+            <td>8</td>
+            <td>4K HDR</td>
+            <td>Yes</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <h3>What is the cancellation policy?</h3>
+        <p class="answer">
+          You can cancel anytime through your account settings without any
+          penalties.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>How can I upgrade my plan?</h3>
+        <p class="answer">
+          To upgrade, go to your account settings, select "Subscription," and
+          choose the plan you'd like to upgrade to.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What payment methods are accepted?</h3>
+        <p class="answer">
+          We accept Visa, MasterCard, PayPal, American Express, and Bitcoin for
+          payments.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Can I download content to watch offline?</h3>
+        <p class="answer">
+          Yes, our Plus and Pro plans allow you to download content to watch
+          offline on your devices.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>How do I reset my password?</h3>
+        <p class="answer">
+          To reset your password, click on "Forgot Password" on the login page,
+          and follow the instructions sent to your email.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Is there a free trial available?</h3>
+        <p class="answer">
+          Yes, we offer a 7-day free trial on all of our paid subscription
+          plans.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Can I share my account with family members?</h3>
+        <p class="answer">
+          Yes, certain plans like Family and Family Plus allow account sharing
+          across multiple devices.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What is the refund policy?</h3>
+        <p class="answer">
+          We offer a full refund if you cancel within the first 14 days of your
+          subscription, no questions asked.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>How can I contact customer support?</h3>
+        <p class="answer">
+          You can reach our customer support team via email at
+          support@tvseries.com or through the live chat option on our website.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Are there parental controls available?</h3>
+        <p class="answer">
+          Yes, we offer customizable parental controls that allow you to
+          restrict content based on ratings or categories.
+        </p>
+      </div>
+    </section>
+
+    <!-- Login and Registration Forms -->
+    <section class="forms-section">
+      <h2>Login and Register</h2>
+      <!-- Added Heading -->
+      <div class="form-container">
+        <!-- Login Form -->
+        <form class="login-form">
+          <h2>Login</h2>
+          <input type="text" placeholder="Username" required />
+          <input type="password" placeholder="Password" required />
+          <button type="submit" class="btn">Login</button>
+        </form>
+
+        <!-- Registration Form -->
+        <form class="register-form">
+          <h2>Register</h2>
+          <input type="text" placeholder="First Name" required />
+          <input type="text" placeholder="Last Name" required />
+          <input type="email" placeholder="Email" required />
+          <input type="password" placeholder="Password" required />
+          <!-- Terms & Services Checkbox -->
+          <div class="checkbox">
+            <input type="checkbox" id="terms" />
+            <label for="terms">Agree to Terms & Services</label>
+            <span class="info-icon" onclick="openModal('termsModal')">?</span>
+          </div>
+
+          <!-- Newsletter Checkbox -->
+          <div class="checkbox">
+            <input type="checkbox" id="newsletter" />
+            <label for="newsletter">Subscribe to newsletter</label>
+            <span class="info-icon" onclick="openModal('newsletterModal')"
+              >?</span
+            >
+          </div>
+          <button type="submit" class="btn">Register</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Terms & Conditions Modal -->
+    <div id="termsModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('termsModal')">&times;</span>
+        <h2>Terms & Services</h2>
+        <p>
+          Here are the terms and services. By checking this box, you agree to
+          abide by them.
+        </p>
+      </div>
+    </div>
+
+    <!-- Newsletter Modal -->
+    <div id="newsletterModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('newsletterModal')"
+          >&times;</span
+        >
+        <h2>Subscribe to Newsletter</h2>
+        <p>
+          Sign up for our newsletter to receive updates, news, and promotions
+          directly in your inbox.
+        </p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <!-- About Us Section -->
+        <div class="footer-about">
+          <p>
+            About TVSeries: Stream your favorite shows, movies, and exclusive
+            content.
+          </p>
+          <p>Address: 123 TVSeries St, Media City, Country</p>
+          <button class="btn">Contact Us</button>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-quick-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <!-- Add remaining links -->
+          </ul>
+        </div>
+
+        <!-- Newsletter Signup -->
+        <div class="footer-newsletter">
+          <h3>Newsletter</h3>
+          <input type="email" placeholder="Your email" />
+          <button class="btn">Subscribe</button>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="footer-social">
+          <h3>Follow Us</h3>
+          <a href="#">Facebook</a>
+          <a href="#">Twitter</a>
+          <!-- Add other social links -->
+        </div>
+
+        <!-- Get Our App Section -->
+        <div class="footer-app">
+          <h3>Get Our App</h3>
+          <a href="#">App Store</a>
+          <a href="#">Google Play</a>
+        </div>
+
+        <!-- Payment Methods -->
+        <div class="footer-payment">
+          <h3>Payment Methods</h3>
+          <img src="visa-icon.png" alt="Visa" />
+          <!-- Add other payment icons -->
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      let currentSlide = 1;
+      const slides = document.querySelectorAll(".slide");
+
+      function showSlide(slideIndex) {
+        slides.forEach((slide, index) => {
+          slide.style.display = index + 1 === slideIndex ? "block" : "none";
+        });
+      }
+
+      function prevSlide() {
+        currentSlide = currentSlide === 1 ? slides.length : currentSlide - 1;
+        showSlide(currentSlide);
+      }
+
+      function nextSlide() {
+        currentSlide = currentSlide === slides.length ? 1 : currentSlide + 1;
+        showSlide(currentSlide);
+      }
+
+      function playVideo(slideIndex) {
+        // Hide all slides (images and play buttons)
+        const slides = document.querySelectorAll(".slide");
+        slides.forEach((slide) => {
+          slide.style.display = "none";
+        });
+
+        // Hide all videos initially
+        const videos = document.querySelectorAll(".hero-video");
+        videos.forEach((video) => {
+          video.style.display = "none";
+          video.pause(); // Stop any video that might be playing
+        });
+
+        // Show the selected video based on the slide index and play it
+        const selectedVideo = document.getElementById(`video${slideIndex}`);
+
+        selectedVideo.style.display = "block";
+        selectedVideo.play();
+      }
+
+      showSlide(currentSlide);
+
+      // Trending
+      let position = 0; // Current position of the carousel (0 for first 6, -100% for the next 6)
+      const totalItems = 12;
+      const visibleItems = 6;
+      const carouselItems = document.querySelector(".carousel-items");
+
+      function slideCarousel() {
+        // Toggle between first 6 and next 6 items
+        position = position === 0 ? -100 : 0; // Move to the left (show the next 6 items) or back to the right
+        carouselItems.style.transform = `translateX(${position}%)`;
+      }
+
+      // Automatic sliding every 4 seconds
+      setInterval(slideCarousel, 4000);
+
+      // Get all language options
+      const languageOptions = document.querySelectorAll(".language-option");
+      const languageButton = document.getElementById("language-button");
+      const dropdownContent = document.querySelector(".dropdown-content");
+
+      // Add event listeners to each language option
+      languageOptions.forEach((option) => {
+        option.addEventListener("click", function (e) {
+          e.preventDefault(); // Prevent the default link behavior
+
+          // Set the language button text to the selected language
+          languageButton.textContent = this.textContent;
+
+          // Automatically close the dropdown after selection
+          dropdownContent.style.display = "none";
+        });
+      });
+
+      // Handle dropdown visibility with hover (reopen it on hover)
+      const dropdown = document.querySelector(".dropdown");
+
+      // When hovering over the dropdown, make sure it shows again
+      dropdown.addEventListener("mouseenter", function () {
+        dropdownContent.style.display = "block"; // Reopen on hover
+      });
+
+      dropdown.addEventListener("mouseleave", function () {
+        dropdownContent.style.display = "none"; // Close when not hovering
+      });
+
+      // Function to open the modal
+      function openModal(modalId) {
+        document.getElementById(modalId).style.display = "block";
+      }
+
+      // Function to close the modal
+      function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+      }
+
+      // Close modal if the user clicks outside of the modal content
+      window.onclick = function (event) {
+        if (event.target.classList.contains("modal")) {
+          event.target.style.display = "none";
+        }
+      };
+      // COMBOBOX
+
+      const combobox = document.querySelector(".combobox");
+      const input = document.getElementById("language-combobox");
+      const listbox = document.getElementById("language-listbox");
+      const options = listbox.querySelectorAll(".language-option");
+      let isListboxOpen = false;
+      let currentIndex = -1;
+      let searchTerm = "";
+      let searchTimeout;
+      let lastChar = "";
+      let repeatCharCount = 0;
+
+      input.addEventListener("keydown", handleKeyDown);
+      input.addEventListener("click", toggleListbox);
+      input.addEventListener("focusout", handleFocusOut);
+
+      options.forEach((option, index) => {
+        option.addEventListener("click", function () {
+          selectOption(index);
+          closeListbox();
+          input.focus();
+        });
+      });
+
+      function handleKeyDown(e) {
+        const key = e.key;
+
+        if (isPrintableCharacter(key)) {
+          e.preventDefault();
+          if (!isListboxOpen) {
+            openListbox();
+          }
+          typeAhead(key);
+          return;
+        }
+
+        switch (key) {
+          case "ArrowDown":
+            e.preventDefault();
+            if (!isListboxOpen) {
+              openListbox();
+            }
+            moveFocus(1);
+            break;
+          case "ArrowUp":
+            e.preventDefault();
+            if (!isListboxOpen) {
+              openListbox();
+            }
+            moveFocus(-1);
+            break;
+          case "Enter":
+          case " ":
+            e.preventDefault();
+            if (!isListboxOpen) {
+              openListbox();
+            } else if (currentIndex >= 0) {
+              selectOption(currentIndex);
+              closeListbox();
+              input.focus();
+            }
+            break;
+          case "Escape":
+            e.preventDefault();
+            closeListbox();
+            input.focus();
+            break;
+          case "Tab":
+            if (isListboxOpen && currentIndex >= 0) {
+              selectOption(currentIndex);
+            }
+            closeListbox();
+            break;
+          default:
+            break;
+        }
+      }
+
+      function isPrintableCharacter(str) {
+        return str.length === 1 && str.match(/\S/);
+      }
+
+      function openListbox() {
+        combobox.setAttribute("aria-expanded", "true");
+        isListboxOpen = true;
+      }
+
+      function closeListbox() {
+        combobox.setAttribute("aria-expanded", "false");
+        combobox.setAttribute("aria-activedescendant", "");
+        options.forEach((option) =>
+          option.setAttribute("aria-selected", "false")
+        );
+        currentIndex = -1;
+        isListboxOpen = false;
+        resetTypeAhead();
+      }
+
+      function toggleListbox() {
+        if (isListboxOpen) {
+          closeListbox();
+        } else {
+          openListbox();
+        }
+      }
+
+      function moveFocus(direction) {
+        if (!isListboxOpen) return;
+
+        let newIndex = currentIndex + direction;
+        if (newIndex < 0) {
+          newIndex = 0;
+        } else if (newIndex >= options.length) {
+          newIndex = options.length - 1;
+        }
+        setFocus(newIndex);
+      }
+
+      function moveFocusToFirstOption() {
+        setFocus(0);
+      }
+
+      function moveFocusToLastOption() {
+        setFocus(options.length - 1);
+      }
+
+      function setFocus(index) {
+        options.forEach((option) =>
+          option.setAttribute("aria-selected", "false")
+        );
+        currentIndex = index;
+        const currentOption = options[currentIndex];
+        currentOption.setAttribute("aria-selected", "true");
+        combobox.setAttribute("aria-activedescendant", currentOption.id);
+        currentOption.scrollIntoView({ block: "nearest" });
+      }
+
+      function selectOption(index) {
+        const selectedOption = options[index];
+        input.value = selectedOption.textContent;
+        closeListbox();
+      }
+
+      function typeAhead(char) {
+        char = char.toLowerCase();
+
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+          resetTypeAhead();
+        }, 1000);
+
+        if (char === lastChar) {
+          repeatCharCount++;
+        } else {
+          repeatCharCount = 0;
+          searchTerm = "";
+        }
+        lastChar = char;
+        searchTerm += char;
+
+        const matchingOptions = [];
+        for (let i = 0; i < options.length; i++) {
+          const optionText = options[i].textContent.toLowerCase();
+          if (optionText.startsWith(searchTerm)) {
+            matchingOptions.push(i);
+          }
+        }
+
+        if (matchingOptions.length > 0) {
+          const indexToFocus =
+            matchingOptions[repeatCharCount % matchingOptions.length];
+          setFocus(indexToFocus);
+        }
+      }
+
+      function resetTypeAhead() {
+        searchTerm = "";
+        lastChar = "";
+        repeatCharCount = 0;
+        clearTimeout(searchTimeout);
+      }
+
+      function handleFocusOut(e) {
+        if (!combobox.contains(e.relatedTarget)) {
+          closeListbox();
+        }
+      }
+    </script>
+  </body>
+</html>

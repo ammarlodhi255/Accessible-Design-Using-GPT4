@@ -1164,13 +1164,14 @@
       <h2 id="footer-heading" class="sr-only">Footer Section</h2>
 
       <!-- About Us Section -->
-      <div class="footer-about" aria-labelledby="about-heading">
-        <h3 id="about-heading">About TVSeries</h3>
-        <p>Stream your favorite shows, movies, and exclusive content.</p>
-        <p>Address: 123 TVSeries St, Media City, Country</p>
-        <button class="btn" aria-label="Contact Us Button">Contact Us</button>
+      <div class="footer-about">
+        <h3 tabindex="0">About TVSeries</h3>
+        <p tabindex="0">
+          Stream your favorite shows, movies, and exclusive content.
+        </p>
+        <p tabindex="0">Address: 123 TVSeries St, Media City, Country</p>
+        <button class="btn">Contact Us</button>
       </div>
-
       <!-- Quick Links -->
       <div class="footer-quick-links" aria-labelledby="quick-links-heading">
         <h3 id="quick-links-heading">Quick Links</h3>
@@ -1220,10 +1221,38 @@
       </div>
 
       <!-- Payment Methods -->
-      <div class="footer-payment" aria-labelledby="payment-heading">
-        <h3 id="payment-heading">Payment Methods</h3>
-        <img src="visa-icon.png" alt="Visa Payment Method" />
-        <!-- Add other payment icons with descriptive alt attributes -->
+      <div class="footer-payment">
+        <h3>Payment Methods</h3>
+        <div class="payment-icons">
+          <a
+            href="https://visa.com"
+            target="_blank"
+            aria-label="Visa - accepted payment method"
+          >
+            <img src="img/icons/visa.png" alt="Visa Payment Method" />
+          </a>
+          <a
+            href="https://mastercard.com"
+            target="_blank"
+            aria-label="Mastercard - accepted payment method"
+          >
+            <img src="img/icons/mscard.png" alt="Mastercard Payment Method" />
+          </a>
+          <a
+            href="https://paypal.com"
+            target="_blank"
+            aria-label="PayPal - accepted payment method"
+          >
+            <img src="img/icons/paypal.png" alt="PayPal Payment Method" />
+          </a>
+          <a
+            href="https://bitcoin.org"
+            target="_blank"
+            aria-label="Bitcoin - accepted payment method"
+          >
+            <img src="img/icons/bitcoin.png" alt="Bitcoin Payment Method" />
+          </a>
+        </div>
       </div>
     </footer>
 

@@ -1,0 +1,747 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  color: #333;
+}
+
+/* Adjust Navbar Height and Logo Size */
+.navbar {
+  background-color: #333; /* Darker background for better contrast */
+  color: #fff;
+  padding: 20px 30px; /* More padding for a spacious navbar */
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Vertical center alignment for logo and links */
+  position: relative;
+  z-index: 10;
+  border-bottom: 2px solid #f5b700; /* Add a nice separator line below the navbar */
+}
+
+/* Adjust Logo Size */
+.navbar .logo img.navbar-logo {
+  max-height: 60px; /* Increase height for better visibility */
+  width: auto;
+  margin-right: 20px;
+}
+
+/* Adjust Links for Better Vertical Alignment */
+.navbar .nav-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 30px; /* More spacing between links */
+}
+
+.navbar .nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1em; /* Increase font size for better readability */
+  font-weight: 500;
+}
+
+.navbar .nav-links a:hover {
+  color: #f5b700; /* Add hover effect to match the gold color theme */
+}
+
+/* Make Dropdown Stay Visible on Hover */
+.navbar .dropdown {
+  position: relative;
+}
+
+.navbar .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  top: 100%;
+  right: 0;
+  list-style: none;
+  padding: 0;
+  z-index: 30;
+  width: 150px;
+}
+
+.navbar .dropdown:hover .dropdown-content,
+.navbar .dropdown-content:hover {
+  display: block;
+}
+
+.navbar .dropdown-content a {
+  display: block;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+.navbar .dropdown-content a:hover {
+  background-color: #555;
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  height: 1000px; /* Fixed height */
+  width: 100%;
+  background-color: #ddd;
+  z-index: 1; /* Ensure the hero section is below the navbar and dropdown */
+  overflow: hidden; /* Prevents overflow outside the section */
+}
+
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Fit the image completely inside the section */
+  object-position: center; /* Center the image */
+  display: block;
+}
+
+/* Video will fill the entire hero section when visible */
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the video covers the entire section */
+  display: none; /* Initially hidden */
+}
+
+/* Slider Arrows */
+.arrow {
+  position: absolute;
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  z-index: 2; /* Ensure the arrows appear above the images */
+}
+
+.arrow.left {
+  left: 10px; /* Position on the far left, with a small gap */
+}
+
+.arrow.right {
+  right: 10px; /* Position on the far right, with a small gap */
+}
+
+/* Play Button */
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f5b700;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  cursor: pointer;
+  font-size: 1.5em;
+  border-radius: 50px; /* Round button */
+}
+
+/* Trending Section */
+.trending-section {
+  padding: 20px;
+}
+
+.trending-carousel {
+  width: 100%;
+  overflow: hidden; /* Hides items that are outside the view */
+  position: relative;
+}
+
+.carousel-items {
+  display: flex;
+  width: 100%; /* Adjusted to fit 12 items in a carousel */
+  transition: transform 1s ease-in-out; /* Smooth animation for sliding */
+}
+
+.trending-item {
+  flex: 1 0 16.66%; /* Each item takes up 1/6th of the carousel container */
+  box-sizing: border-box;
+  text-align: center;
+  padding: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+  border-radius: 20px; /* Rounded corners for the container */
+  overflow: hidden; /* Ensure the image doesn't overflow the container */
+  margin: 0 auto; /* Center the container */
+  margin: 1px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow to give a soft round effect */
+}
+
+.trending-item img {
+  width: 100%;
+  height: auto;
+  max-width: 300px; /* Medium-sized poster */
+  border-radius: 15px; /* Slightly rounded image corners to match the container */
+  transition: transform 0.3s ease; /* Smooth scaling effect on hover */
+}
+
+.trending-item h3 {
+  font-size: 1.2em;
+  margin-top: 10px;
+  transition: color 0.3s ease; /* Smooth text color transition on hover */
+}
+
+/* Fancy Hover Effect */
+.trending-item:hover {
+  transform: scale(1); /* Slightly enlarge the item on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More prominent shadow on hover */
+}
+
+.trending-item:hover img {
+  transform: scale(1.05); /* Scale the image slightly more on hover */
+}
+
+.trending-item:hover h3 {
+  color: #f5b700; /* Change text color to match your dark yellow theme on hover */
+}
+
+/* Most Watched Section */
+.most-watched-section {
+  padding: 20px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 20px;
+}
+
+.grid-item {
+  text-align: center;
+  border-radius: 20px; /* Make the entire container rounded */
+  overflow: hidden; /* Ensure content stays within the rounded border */
+  padding: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+  background-color: #fff; /* Optional: Add background color for better visibility */
+}
+
+.grid-item:hover {
+  transform: scale(1.01); /* Slightly increase the size on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a shadow on hover */
+}
+
+.grid-item img {
+  width: 100%;
+  height: auto;
+  max-width: 500px; /* Medium-sized image */
+  border-radius: 15px; /* Rounded corners for the images */
+  transition: transform 0.3s ease; /* Smooth image scaling effect */
+}
+
+.grid-item:hover img {
+  transform: scale(1.02); /* Slightly scale the image on hover */
+}
+
+.grid-item h3 {
+  font-size: 1.2em;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Subscription Plans */
+.subscription-plans {
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+/* FAQ Section */
+.faq-section {
+  padding: 20px;
+}
+
+.faq-item h3 {
+  cursor: pointer;
+}
+
+.faq-item .answer {
+  display: none;
+}
+
+.faq-item h3:hover + .answer {
+  display: block;
+}
+
+/* Forms Section */
+/* Ensure enough space between sections */
+.forms-section {
+  padding: 40px;
+  text-align: center;
+  margin-bottom: 100px; /* Add space between the form and footer */
+}
+
+.forms-section h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center; /* Center the forms horizontally */
+  align-items: flex-start; /* Align forms to the top */
+  gap: 50px; /* Add spacing between the forms */
+  margin: 0 auto; /* Center the form container itself */
+}
+
+.login-form,
+.register-form {
+  background-color: #f9f9f9;
+  padding: 20px;
+  width: 400px; /* Increased the width to make forms wider */
+  box-sizing: border-box;
+  border-radius: 10px; /* Rounded corners for the forms */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.login-form input,
+.register-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px; /* Gap between checkbox and text */
+  margin-bottom: 15px; /* Space between each checkbox-row */
+}
+
+.checkbox input[type="checkbox"] {
+  margin-right: 10px; /* Space between checkbox and label */
+}
+
+.checkbox label {
+  flex-grow: 1; /* Make the label take up remaining space */
+  text-align: left; /* Align label text to the left */
+}
+
+.info-icon {
+  margin-left: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #555;
+  font-size: 1.2em;
+}
+
+.info-icon:hover {
+  color: #f5b700;
+}
+
+/* Optional: Adjust the size of checkboxes for better alignment */
+.checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+
+.btn {
+  background-color: #f5b700;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px; /* Round border */
+  font-size: 1em;
+  width: 100%; /* Full width button */
+  max-width: 300px; /* Add max width to prevent button from stretching too far */
+}
+
+/* Modal Styling */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 100; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+  overflow: auto; /* Enable scroll if needed */
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto; /* Center vertically and horizontally */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%; /* 50% of the viewport width */
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Fancy shadow */
+  animation: slideIn 0.3s ease-out; /* Animation */
+}
+
+/* Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Info Icon Styling */
+.info-icon {
+  margin-left: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #555;
+  font-size: 1.2em;
+}
+
+.info-icon:hover {
+  color: #f5b700; /* Highlight color on hover */
+}
+
+/* Modal Slide-in Animation */
+@keyframes slideIn {
+  from {
+    transform: translateY(-20%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Info Icon Styling */
+.info-icon {
+  margin-left: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #555;
+  font-size: 1.2em;
+}
+
+.info-icon:hover {
+  color: #f5b700; /* Highlight color on hover */
+}
+
+/* Footer Styles */
+footer {
+  background-color: #000;
+  color: white;
+  padding: 40px 20px;
+  position: relative;
+  width: 100%;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between; /* Ensure sections are spaced evenly */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 20px; /* Add space between sections */
+}
+
+.footer-container > div {
+  flex: 1; /* Allow each section to grow equally */
+  min-width: 200px; /* Ensure minimum width for each section */
+  max-width: 300px; /* Set maximum width to prevent large sections */
+}
+
+.footer-about,
+.footer-quick-links,
+.footer-newsletter,
+.footer-social,
+.footer-app,
+.footer-payment {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between content inside sections */
+}
+
+.footer-about button {
+  align-self: flex-start; /* Align button to the left */
+  background-color: #f5b700;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 20px;
+  white-space: nowrap; /* Prevent text wrapping inside the button */
+}
+
+.footer-newsletter input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+.footer-newsletter .btn {
+  padding: 10px 20px;
+  background-color: #f5b700;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  white-space: nowrap; /* Prevent text wrapping inside the button */
+  width: auto;
+}
+
+.footer-app img,
+.footer-payment img {
+  width: 40px;
+  margin: 5px;
+}
+
+.footer-quick-links ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-quick-links ul li {
+  margin-bottom: 10px;
+}
+
+.footer-quick-links ul li a {
+  color: #f5b700;
+  text-decoration: none;
+}
+
+.footer-quick-links ul li a:hover {
+  text-decoration: underline;
+}
+
+.footer-social a {
+  color: #f5b700;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.footer-social a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Footer - Stack on small screens */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center; /* Center sections on small screens */
+  }
+
+  .footer-container > div {
+    max-width: 100%; /* Allow full width on smaller screens */
+  }
+
+  .footer-about button {
+    align-self: center; /* Center button on small screens */
+  }
+}
+
+/* Buttons */
+.btn {
+  background-color: #f5b700; /* Dark yellow color */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px; /* Round border */
+  font-size: 1em;
+}
+
+/* Centered Headings for Sections */
+.trending-section h2,
+.most-watched-section h2,
+.subscription-plans h2,
+.faq-section h2,
+.forms-section h2 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+/* Trending Section */
+.trending-section {
+  padding: 20px;
+}
+
+.trending-carousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-items {
+  display: flex;
+  width: 100%;
+  transition: transform 1s ease-in-out;
+}
+
+/* Most Watched Section */
+.most-watched-section {
+  padding: 20px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Add a subtle box-shadow or border for separation between sections */
+section:not(.hero-section) {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05); /* Subtle shadow to lift sections */
+  border-radius: 10px; /* Rounded corners for sections */
+  margin: 40px 0; /* Separate sections with margin */
+  padding: 60px 20px; /* More padding for sections to create space */
+  margin-bottom: 40px; /* Space between sections */
+  background-color: white; /* Default background for sections */
+}
+
+/* Optional: Alternating Background Colors for Better Separation */
+.trending-section {
+  background-color: #f9f9f9; /* Light grey for separation */
+}
+
+.most-watched-section {
+  background-color: #ffffff; /* Back to white */
+}
+
+.subscription-plans {
+  background-color: #f9f9f9; /* Alternating background */
+}
+
+.faq-section {
+  background-color: #ffffff; /* Back to white */
+}
+
+.forms-section {
+  background-color: #f9f9f9; /* Alternating background */
+}
+
+/* Divider Line Option: To add a line between sections */
+section:not(:first-of-type) {
+  border-top: 1px solid rgba(0, 0, 0, 0.1); /* Thin top border to separate sections */
+  padding-top: 40px; /* Space after the border */
+}
+
+/* Additional Styling for Headings */
+h2 {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #f5b700; /* Gold color */
+  position: relative;
+}
+
+/* Optional: Add a subtle underline below the heading */
+h2::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  background-color: #f5b700; /* Match the brand color */
+  margin: 10px auto;
+}
+
+/* To maintain the hover effect for grid items in Trending and Most Watched */
+.grid-item,
+.trending-item {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for the grid items */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Keep the hover effect smooth and light */
+.grid-item:hover,
+.trending-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.forms-section h2 {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #f5b700; /* Gold color for consistency */
+  position: relative;
+}
+
+/* Optional: Add the subtle underline to match other headings */
+.forms-section h2::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  background-color: #f5b700;
+  margin: 10px auto;
+}
+
+/* Divider Between Sections */
+.section-divider {
+  background: url("wave-divider.svg") no-repeat center top;
+  background-size: cover;
+  height: 100px;
+  margin-bottom: -50px;
+}
+
+/* Combobox Styles */
+.combobox {
+  position: relative;
+  display: inline-block;
+}
+
+.combobox input[type="text"] {
+  width: 150px;
+  padding: 5px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  max-height: 200px;
+  overflow-y: auto;
+  width: 150px;
+  z-index: 30;
+}
+
+.combobox[aria-expanded="true"] .dropdown-content {
+  display: block;
+}
+
+.language-option {
+  padding: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.language-option[aria-selected="true"],
+.language-option:hover {
+  background-color: #555;
+}
