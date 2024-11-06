@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TV Series Webpage</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="logo">TVSeriesLogo</div>
+      <ul class="nav-links">
+        <li><a href="#">Homepage</a></li>
+        <li><a href="#">Trending</a></li>
+        <li><a href="#">Most Watched</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Register</a></li>
+        <li><a href="#">About</a></li>
+        <li class="dropdown">
+          <a href="#">Language</a>
+          <ul class="dropdown-content">
+            <li><a href="#">English</a></li>
+            <li><a href="#">Norwegian</a></li>
+            <li><a href="#">Hindi</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-slider">
+        <div class="slide" id="slide1">
+          <img src="hero-image1.jpg" alt="Featured Series 1" />
+          <button class="play-btn" onclick="playVideo(1)">Play</button>
+        </div>
+        <div class="slide" id="slide2">
+          <img src="hero-image2.jpg" alt="Featured Series 2" />
+          <button class="play-btn" onclick="playVideo(2)">Play</button>
+        </div>
+        <div class="slide" id="slide3">
+          <img src="hero-image3.jpg" alt="Featured Series 3" />
+          <button class="play-btn" onclick="playVideo(3)">Play</button>
+        </div>
+        <button class="arrow left" onclick="prevSlide()">&#10094;</button>
+        <button class="arrow right" onclick="nextSlide()">&#10095;</button>
+      </div>
+      <video
+        id="video-player"
+        class="hero-video"
+        controls
+        style="display: none"
+      >
+        <source src="" id="video-src" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </section>
+
+    <!-- Trending TV Series Section -->
+    <section class="trending-section">
+      <h2>Trending TV Series</h2>
+      <div class="trending-carousel">
+        <div class="carousel-items">
+          <div class="trending-item">
+            <img src="series1.jpg" alt="Series 1" />
+            <h3>Series 1</h3>
+            <p>Brief description of Series 1.</p>
+          </div>
+          <!-- Repeat similar block for other series -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Most Watched Section -->
+    <section class="most-watched-section">
+      <h2>Most Watched</h2>
+      <div class="grid-container">
+        <!-- Repeat poster rows and grid items -->
+        <div class="grid-item">
+          <img src="poster1.jpg" alt="Most Watched 1" />
+        </div>
+        <!-- Repeat for other posters -->
+      </div>
+    </section>
+
+    <!-- Subscription Plans -->
+    <section class="subscription-plans">
+      <h2>Subscription Plans</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Plan</th>
+            <th>Devices</th>
+            <th>Video Quality</th>
+            <th>Exclusive Content</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Free</td>
+            <td>1</td>
+            <td>720p</td>
+            <td>No</td>
+          </tr>
+          <!-- Repeat rows for Plus and Pro tiers -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>What is the cancellation policy?</h3>
+        <p class="answer">
+          You can cancel anytime through your account settings.
+        </p>
+      </div>
+      <!-- Repeat for other FAQs -->
+    </section>
+
+    <!-- Login and Registration Forms -->
+    <section class="forms-section">
+      <div class="form-container">
+        <!-- Login Form -->
+        <form class="login-form">
+          <h2>Login</h2>
+          <input type="text" placeholder="Username" required />
+          <input type="password" placeholder="Password" required />
+          <button type="submit" class="btn">Login</button>
+        </form>
+
+        <!-- Registration Form -->
+        <form class="register-form">
+          <h2>Register</h2>
+          <input type="text" placeholder="First Name" required />
+          <input type="text" placeholder="Last Name" required />
+          <input type="email" placeholder="Email" required />
+          <input type="password" placeholder="Password" required />
+          <div class="checkbox">
+            <input type="checkbox" id="newsletter" />
+            <label for="newsletter">Subscribe to newsletter</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" id="terms" />
+            <label for="terms">Agree to Terms & Services</label>
+            <span class="info-icon" onclick="showTerms()">i</span>
+          </div>
+          <button type="submit" class="btn">Register</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <!-- About Us Section -->
+        <div class="footer-about">
+          <p>
+            About TVSeries: Stream your favorite shows, movies, and exclusive
+            content.
+          </p>
+          <p>Address: 123 TVSeries St, Media City, Country</p>
+          <button class="btn">Contact Us</button>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-quick-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <!-- Add remaining links -->
+          </ul>
+        </div>
+
+        <!-- Newsletter Signup -->
+        <div class="footer-newsletter">
+          <h3>Newsletter</h3>
+          <input type="email" placeholder="Your email" />
+          <button class="btn">Subscribe</button>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="footer-social">
+          <h3>Follow Us</h3>
+          <a href="#">Facebook</a>
+          <a href="#">Twitter</a>
+          <!-- Add other social links -->
+        </div>
+
+        <!-- Get Our App Section -->
+        <div class="footer-app">
+          <h3>Get Our App</h3>
+          <a href="#">App Store</a>
+          <a href="#">Google Play</a>
+        </div>
+
+        <!-- Payment Methods -->
+        <div class="footer-payment">
+          <h3>Payment Methods</h3>
+          <img src="visa-icon.png" alt="Visa" />
+          <!-- Add other payment icons -->
+        </div>
+      </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+  </body>
+  <script src="script.js"></script>
+</html>

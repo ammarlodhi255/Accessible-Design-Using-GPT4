@@ -1,0 +1,236 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  color: #333;
+}
+
+/* Navigation Bar */
+.navbar {
+  background-color: #000;
+  color: #fff;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .logo {
+  font-size: 1.5em;
+}
+
+.navbar .nav-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar .nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar .dropdown {
+  position: relative;
+}
+
+.navbar .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  top: 30px;
+  list-style: none;
+  padding: 0;
+}
+
+.navbar .dropdown-content a {
+  display: block;
+  padding: 10px;
+}
+
+.navbar .dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  height: 60vh;
+  width: 100%;
+  background-color: #ddd;
+}
+
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f5b700;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1.2em;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+}
+
+/* Trending Section */
+.trending-section {
+  padding: 20px;
+}
+
+.trending-carousel {
+  display: flex;
+  overflow: hidden;
+  padding: 10px 0;
+}
+
+.trending-item {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+}
+
+.trending-item img {
+  width: 100%;
+}
+
+/* Most Watched Section */
+.most-watched-section {
+  padding: 20px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.grid-item img {
+  width: 100%;
+  height: auto;
+}
+
+/* Subscription Plans */
+.subscription-plans {
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+/* FAQ Section */
+.faq-section {
+  padding: 20px;
+}
+
+.faq-item h3 {
+  cursor: pointer;
+}
+
+.faq-item .answer {
+  display: none;
+}
+
+.faq-item h3:hover + .answer {
+  display: block;
+}
+
+/* Forms Section */
+.forms-section {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.login-form,
+.register-form {
+  background-color: #f9f9f9;
+  padding: 20px;
+  width: 45%;
+}
+
+.login-form input,
+.register-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.info-icon {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+/* Footer Section */
+footer {
+  background-color: #000;
+  color: white;
+  padding: 20px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-container > div {
+  width: 30%;
+}
+
+.footer-newsletter input {
+  width: 70%;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.footer-app img,
+.footer-payment img {
+  width: 40px;
+  margin: 5px;
+}
+
+/* Buttons */
+.btn {
+  background-color: #f5b700;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}

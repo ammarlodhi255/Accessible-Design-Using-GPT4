@@ -525,7 +525,7 @@ footer {
 }
 
 .footer-quick-links ul li a {
-  color: #f5b700;
+  /* color: #f5b700; */
   text-decoration: none;
 }
 
@@ -534,7 +534,7 @@ footer {
 }
 
 .footer-social a {
-  color: #f5b700;
+  /* color: #f5b700; */
   text-decoration: none;
   margin-bottom: 10px;
 }
